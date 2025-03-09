@@ -22,7 +22,13 @@ const greetPerson = (name) =>{
 console.log(greetPerson("Patience"))
 
 // Function 4:
-// Write a function calculateArea(radius) that calculates the area of a circle and returns it (use the formula π * radius^2).
+// Write a function calculateArea(radius) that calculates the area of a circle and 
+// returns it (use the formula π * radius^2).
+const calculateArea = (radius) =>{
+    let π = 3.14
+    return π * radius**2
+}
+console.log(calculateArea(2))
 
 // Function 5:
 // Write a function findMax(arr) that takes an array of numbers and returns the highest number in the array.
