@@ -55,3 +55,12 @@ console.log(flattenArray([[1,2], [3,4], [5,6]]))
 // Write a function findIndexOfValue(arr, value) that takes an array and a value and
 //  returns the index of the first occurrence of that value. If the value doesn’t exist, return -1.
 
+const findIndexOfValue = (arr, value) =>{
+    for(let i=0; i<arr.length; i++){
+        if (arr[i] === value){
+            return i
+        }
+    }
+    return NaN
+}
+console.log(findIndexOfValue(["Orange","Grapes", "Apple"], "Orange"))
