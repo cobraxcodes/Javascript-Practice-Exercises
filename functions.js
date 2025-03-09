@@ -59,5 +59,15 @@ const countVowels = (str) =>{
 
 console.log(countVowels("Helloo"))
 // Function 7:
-// Write a function isPalindrome(str) that takes a string and checks if it is a palindrome (reads the same forwards and backwards).
+// Write a function isPalindrome(str) that takes a string and 
+// checks if it is a palindrome
 
+const isPalindrome = (str) =>{
+for(let i=0; i<str.length / 2; i++)
+    if(str[i] !== str[str.length -1 -i]){
+        return false
+    }
+    return true
+}
+
+console.log(isPalindrome("racecar"))
