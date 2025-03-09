@@ -3,7 +3,7 @@
 const reverseArray = (arr) =>{
     let reversed = []
     for(let i=arr.length -1; i >= 0; i--){
-        reversed += arr[i]
+        reversed.push(arr[i])
     }
     return reversed
 }
@@ -15,7 +15,7 @@ const removeDuplicates =(arr) =>{
     let unique = []
     for(let i=0; i<arr.length; i++){
         if(!unique.includes(arr[i])){
-            unique += arr[i]
+            unique.push(arr[i])
         }
     }
     return unique
@@ -44,7 +44,7 @@ const flattenArray = (arr) =>{
     let flattened = []
     for(let i =0; i<arr.length; i++){
         for (let j=0; j<arr[i].length; j++){
-            flattened += arr[i] [j]
+            flattened.push(arr[i][j])
         }
     }
     return flattened
@@ -61,7 +61,7 @@ const findIndexOfValue = (arr, value) =>{
             return i
         }
     }
-    return NaN
+    return -1
 }
 console.log(findIndexOfValue(["Orange","Grapes", "Apple"], "Orange"))
 
