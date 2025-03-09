@@ -45,8 +45,19 @@ const findMax = (arr) =>{
 
 console.log(findMax([1,2,3,4,5,6]))
 // Function 6:
-// Write a function countVowels(str) that takes a string and returns the number of vowels in the string.
+// Write a function countVowels(str) that takes a string and 
+// returns the number of vowels in the string.
+const countVowels = (str) =>{
+    let vowels = 0
+    for(let i=0; i<str.length; i++){
+        if ("aeiouAEIOU".includes(str[i])){
+            vowels++
+        }
+    }
+    return vowels
+}
 
+console.log(countVowels("Helloo"))
 // Function 7:
 // Write a function isPalindrome(str) that takes a string and checks if it is a palindrome (reads the same forwards and backwards).
 
