@@ -71,3 +71,5 @@ for(let i=0; i<str.length / 2; i++)
 }
 
 console.log(isPalindrome("racecar"))
+
+// DONE PART-ONE FUNCTIONS CHALLENGES
