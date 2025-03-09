@@ -64,3 +64,5 @@ const findIndexOfValue = (arr, value) =>{
     return NaN
 }
 console.log(findIndexOfValue(["Orange","Grapes", "Apple"], "Orange"))
+
+// DONE PART-1 ARRAYS CHALLENGES

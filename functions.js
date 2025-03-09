@@ -1,5 +1,11 @@
 // Function 1:
-// Write a function addTwoNumbers(a, b) that takes two numbers and returns their sum.
+// Write a function addTwoNumbers(a, b) that takes two numbers and 
+// returns their sum.
+const addTwoNumbers = (x, y) =>{
+    return x + y
+}
+
+console.log(addTwoNumbers(1,3))
 
 // Function 2:
 // Write a function multiplyNumbers(a, b) that takes two numbers and returns their product.
