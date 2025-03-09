@@ -37,10 +37,20 @@ const sumOddNumbers = (arr) =>{
 console.log(sumOddNumbers([1,2,3,4,5]))
 
 // Array 4:
-// Write a function flattenArray(arr) that takes a nested array (an array of arrays) and flattens it into a single array. 
-// For example:
+// Write a function flattenArray(arr) that takes a nested array (an array of arrays) 
+// and flattens it into a single array. 
 // flattenArray([[1, 2], [3, 4], [5, 6]]) // returns [1, 2, 3, 4, 5, 6]
+const flattenArray = (arr) =>{
+    let flattened = []
+    for(let i =0; i<arr.length; i++){
+        for (let j=0; j<arr[i].length; j++){
+            flattened += arr[i] [j]
+        }
+    }
+    return flattened
+}
 
+console.log(flattenArray([[1,2], [3,4], [5,6]]))
 // Array 5:
 // Write a function findIndexOfValue(arr, value) that takes an array and a value and
 //  returns the index of the first occurrence of that value. If the value doesn’t exist, return -1.
