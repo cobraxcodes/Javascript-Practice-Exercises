@@ -1,6 +1,5 @@
 // Function 1:
-// Write a function addTwoNumbers(a, b) that takes two numbers and 
-// returns their sum.
+// Write a function addTwoNumbers(a, b) that takes two numbers and returns their sum.
 const addTwoNumbers = (x, y) =>{
     return x + y
 }
@@ -9,7 +8,11 @@ console.log(addTwoNumbers(1,3))
 
 // Function 2:
 // Write a function multiplyNumbers(a, b) that takes two numbers and returns their product.
+const multiplyNumbers = (x,y) =>{
+    return x * y
+}
 
+console.log(multiplyNumbers(3,4))
 // Function 3:
 // Write a function greetPerson(name) that takes a name as an argument and returns a greeting string "Hello, [name]!"
 
