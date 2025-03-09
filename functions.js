@@ -14,7 +14,12 @@ const multiplyNumbers = (x,y) =>{
 
 console.log(multiplyNumbers(3,4))
 // Function 3:
-// Write a function greetPerson(name) that takes a name as an argument and returns a greeting string "Hello, [name]!"
+// Write a function greetPerson(name) that takes a name as an argument and
+//  returns a greeting string "Hello, [name]!"
+const greetPerson = (name) =>{
+    return `Hello, ${name}!`
+}
+console.log(greetPerson("Patience"))
 
 // Function 4:
 // Write a function calculateArea(radius) that calculates the area of a circle and returns it (use the formula π * radius^2).
