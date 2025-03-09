@@ -33,6 +33,17 @@ console.log(calculateArea(2))
 // Function 5:
 // Write a function findMax(arr) that takes an array of numbers and returns the highest number in the array.
 
+const findMax = (arr) =>{
+    let largest = 0
+    for (let i=0; i<arr.length; i++){
+        if (largest < arr[i]){
+            largest = arr[i]
+        }
+    }
+    return largest
+}
+
+console.log(findMax([1,2,3,4,5,6]))
 // Function 6:
 // Write a function countVowels(str) that takes a string and returns the number of vowels in the string.
 
