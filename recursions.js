@@ -25,12 +25,11 @@ console.log(sumNumbers(5))
 // returns the string in reverse order.
 
 const stringReverse = (str) =>{
-    if (str.length === 0){
-     return 0
+    if(str.length === 0){
+        return ""
     }
-    return str[0] + stringReverse (str.slice(1))
+    return stringReverse(str.slice(1)) + str[0]
 }
-
 console.log(stringReverse("Hello"))
 
 const reverse = (str) =>{
