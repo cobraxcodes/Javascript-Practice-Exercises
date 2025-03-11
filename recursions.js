@@ -46,9 +46,24 @@ console.log(reverse("Hello"))
 // Sum of Array (Recursion)
 // Write a recursive function that calculates 
 // the sum of all numbers in an array.
+const sumOfArray = (arr) =>{
+    if(arr.length === 0){
+        return 0
+    }
+    return sumOfArray(arr.slice(1))
+}
 
+console.log(sumOfArray([5,5,5,5,5]))
 
-
+// for loop = sum of Array
+const testArray = (arr) =>{
+    let resultArr = 0
+    for (let i=0; i<arr.length; i++){
+        resultArr+= arr[i]
+    }
+    return resultArr
+}
+console.log(testArray([5,5,5,5,5]))
 
 // Exponentiation (Recursion)
 // Write a recursive function 
