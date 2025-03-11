@@ -1,20 +1,46 @@
 // Write a recursive function sumNumbers(n) that takes a number n and
 //  returns the sum of all numbers from 1 to n.
+ 
+const sumNumbers = (n) =>{
+    if(n === 0){
+        return 0
+    }
+    return n + sumNumbers(n-1)
+}
+console.log(sumNumbers(5))
 
-// const sumNumbers = (arr) =>{
-//     if(arr.length === 0){
-//         return 0
-//     }
-//     return sumNumbers(arr[0] + 1)
-// }
+const test = (n) =>{
+    let result = 0;
+    for(let i = 0; i <= n; i++){
+        result+= i
+    }
+    return result
+}
+console.log(test(5))
 
-
-console.log(sumNumbers(2))
+console.log(sumNumbers(5))
 
 // Reverse a String (Recursion)
 // Write a recursive function that takes a string as input and 
 // returns the string in reverse order.
 
+const stringReverse = (str) =>{
+    if (str.length === 0){
+     return 0
+    }
+    return str[0] + stringReverse (str.slice(1))
+}
+
+console.log(stringReverse("Hello"))
+
+const reverse = (str) =>{
+    let reversed = ""
+    for(let i = str.length -1; i >= 0; i--){
+        reversed += str[i]
+    }
+    return reversed
+}
+console.log(reverse("Hello"))
 
 
 
