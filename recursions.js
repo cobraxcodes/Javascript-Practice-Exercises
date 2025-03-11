@@ -32,6 +32,7 @@ const stringReverse = (str) =>{
 }
 console.log(stringReverse("Hello"))
 
+
 const reverse = (str) =>{
     let reversed = ""
     for(let i = str.length -1; i >= 0; i--){
@@ -54,7 +55,6 @@ const sumOfArray = (arr) =>{
 }
 
 console.log(sumOfArray([5,5,5,5,5]))
-
 // for loop = sum of Array
 const testArray = (arr) =>{
     let resultArr = 0
@@ -78,8 +78,6 @@ const multiplyArray = (arr) =>{
 }
 console.log(multiplyArray([5,2]))
 
-
-
 const testMultiply = (arr) =>{
     let testProduct = 1
     for(let i = 0; i<arr.length; i++){
@@ -90,11 +88,26 @@ const testMultiply = (arr) =>{
 
 console.log(testMultiply([1,2,3]))
 
+// Write a recursive function subtractArray that takes an array of 
+// numbers and subtracts each number from the first number in the array.
+
+
+const forSubtract = (arr) =>{
+    let results = 0
+    for(let i=1; i<arr.length; i++ ){
+        results = arr[0] -= arr[i]
+      
+    }
+    return results
+}
+
+console.log(forSubtract([10,3,3]))
 
 // Exponentiation (Recursion)
 // Write a recursive function 
 // that calculates the power of a number.
 //  For example, base^exponent.
+
 
 // Fibonacci Sequence (Recursion)
 // Write a recursive function that returns the nth Fibonacci number.
