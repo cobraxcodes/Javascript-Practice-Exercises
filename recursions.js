@@ -50,7 +50,7 @@ const sumOfArray = (arr) =>{
     if(arr.length === 0){
         return 0
     }
-    return sumOfArray(arr.slice(1))
+    return arr[0] + sumOfArray(arr.slice(1))
 }
 
 console.log(sumOfArray([5,5,5,5,5]))
@@ -64,6 +64,32 @@ const testArray = (arr) =>{
     return resultArr
 }
 console.log(testArray([5,5,5,5,5]))
+
+
+// Write a recursive function multiplyArray(arr) that takes an array of numbers and 
+// returns the product of all the elements in the array.
+
+
+const multiplyArray = (arr) =>{
+    if(arr.length === 0){
+        return 1
+    }
+    return arr[0] * multiplyArray(arr.slice(1))
+}
+console.log(multiplyArray([5,2]))
+
+
+
+const testMultiply = (arr) =>{
+    let testProduct = 1
+    for(let i = 0; i<arr.length; i++){
+       testProduct *= arr[i]
+    }
+    return testProduct
+}
+
+console.log(testMultiply([1,2,3]))
+
 
 // Exponentiation (Recursion)
 // Write a recursive function 
