@@ -107,11 +107,16 @@ console.log(ageMe("Melrose", 10))
 // function multiply(a, b) {
 //     return a * b;
 // }
+const multiply = (a,b) =>{
+    return a * b
+}
 
 
 
 // ️ Write a function that returns the length of a given string.
-
+const stringLength = (str) =>{
+    return str.length
+}
 
 
 // DONE PART-ONE FUNCTIONS CHALLENGES
