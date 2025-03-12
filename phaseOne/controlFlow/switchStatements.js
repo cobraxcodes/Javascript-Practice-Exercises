@@ -1,13 +1,13 @@
 // SYNTAX
 
 // switch (expression) {
-//     case value1:
+//     case argument:
 //       // code to be executed if the expression matches value1
 //       break;  // Optional: exits the switch
-//     case value2:
+//     case argument:
 //       // code to be executed if the expression matches value2
 //       break;
-//     case value3:
+//     case argument:
 //       // code to be executed if the expression matches value3
 //       break;
 //     default:
@@ -23,8 +23,32 @@
 // "Midweek!" if the day is "Wednesday".
 // "It's Friday!" if the day is "Friday".
 // "Weekend!" for any day between Saturday and Sunday (use default to handle this).
-
-
+let day = "Sunday"
+    switch(day){
+        case "Sunday":
+            console.log("It's Sunday!");
+            break;
+        case "Monday":
+            console.log("Happy Monday!")
+            break;
+        case "Tuesday":
+            console.log("It's Taco Tuesday!")
+            break;
+        case "Wednesday":
+            console.log("Happy Hump Day")
+            break;
+        case "Thursday":
+            console.log("Happy Friday Junior!")
+            break;
+        case "Friday":
+            console.log("Thank God It's Friday")
+            break;
+        case "Saturday":
+            console.log("Happy Saturday! Ready for the Weekend!")
+            break;
+        default:
+            console.log("I hope it's Friday!")
+    }
 // Challenge 2: Traffic Light
 
 // Write a switch statement that takes a traffic light color (red, yellow, or green) as input and outputs the appropriate message:
