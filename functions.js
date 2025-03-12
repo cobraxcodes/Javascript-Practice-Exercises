@@ -72,14 +72,33 @@ for(let i=0; i<str.length / 2; i++)
 
 console.log(isPalindrome("racecar"))
 
-// DONE PART-ONE FUNCTIONS CHALLENGES
 
 //  Write a function that takes two numbers and returns their sum.
+const sumOfNumbers = (x,y) =>{
+    let sum;
+    sum = x + y;
+    return sum
+}
 
+console.log(sumOfNumbers(1,1))
 //  Write a function that checks if a number is even or odd.
+const evenOrOdd = (n) =>{
+    if(n % 2 === 0){
+        return "Even"
+    }
+    return "Odd"
+}
+console.log(evenOrOdd(1))
 
 // //  Write a function that takes a name and age, then logs:
+const ageMe = (firstName,age)=>{
+if(age >= 18){
+    return `Hi ${firstName}, your age is ${age}, you are an Adult!`
+}
+return `Hi ${firstName}, your age is ${age}, You are a minor!`
+}
 
+console.log(ageMe("Melrose", 10))
 // "You're an adult!" if age is 18 or above.
 // "You're a minor!" otherwise.
 
@@ -93,3 +112,6 @@ console.log(isPalindrome("racecar"))
 
 // ️ Write a function that returns the length of a given string.
 
+
+
+// DONE PART-ONE FUNCTIONS CHALLENGES
