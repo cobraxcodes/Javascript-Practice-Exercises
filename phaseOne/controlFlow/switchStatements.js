@@ -110,8 +110,24 @@ switch (month){
 // Challenge 4 : Beverage Size
 
 // Write a switch statement that takes a string input representing a beverage size ("small", "medium", or "large") and logs:
-
 // "Small size selected" for "small".
 // "Medium size selected" for "medium".
 // "Large size selected" for "large".
 // "Invalid size" if any other input is provided.
+
+let size = "large"
+
+switch(size){
+    case "small":
+        console.log("Small sized beverage coming up!");
+        break;
+    case "medium":
+        console.log("Regular sized drink, coming up!")
+        break;
+    case "large":
+        console.log("Large drinky drink coming up for pookie in pink")
+        break;
+    default:
+        console.log("Invalid size")
+
+}
