@@ -53,6 +53,22 @@ let day = "Sunday"
 
 // Write a switch statement that takes a traffic light color (red, yellow, or green) as input and outputs the appropriate message:
 
+let light = "red"
+
+switch(light){
+    case "red":
+        console.log("Stop!")
+        break;
+    case "yellow":
+        console.log("Caution!");
+        break;
+    case "green":
+        console.log("Go!");
+        break;
+    default:
+        console.log("Caution!")
+}
+
 // "Stop" if the light is red.
 // "Caution" if the light is yellow.
 // "Go" if the light is green.
