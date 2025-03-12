@@ -52,6 +52,10 @@ let day = "Sunday"
 // Challenge 2: Traffic Light
 
 // Write a switch statement that takes a traffic light color (red, yellow, or green) as input and outputs the appropriate message:
+// "Stop" if the light is red.
+// "Caution" if the light is yellow.
+// "Go" if the light is green.
+
 
 let light = "red"
 
@@ -69,23 +73,10 @@ switch(light){
         console.log("Caution!")
 }
 
-// "Stop" if the light is red.
-// "Caution" if the light is yellow.
-// "Go" if the light is green.
 
 
-// Challenge 3: Grading System
 
-// Write a switch statement to determine the letter grade based on a numeric score:
-
-// If the score is 90 or above, log "A".
-// If the score is between 80 and 89, log "B".
-// If the score is between 70 and 79, log "C".
-// If the score is between 60 and 69, log "D".
-// Otherwise, log "F".
-
-
-// Challenge 4: Month to Season
+// Challenge 3: Month to Season
 
 // Write a switch statement that takes a month (1 to 12) as input and logs the corresponding season:
 
@@ -93,9 +84,30 @@ switch(light){
 // "Spring" for March, April, and May.
 // "Summer" for June, July, and August.
 // "Fall" for September, October, and November.
+let month = 7;
+switch (month){
+    case 12:
+    case 1:
+    case 2:
+         console.log("Get Your Mittens Out! It's Winter Time!")
+         break;
+    case 3:
+    case 4:
+    case 5:
+        console.log("Look Out For The Pollen, It's Spring Time!");
+        break;
+    case 6:
+    case 7:
+    case 8:
+        console.log("Come Outside, It's Summer Time!");
+        break;
+    case 9:
+    case 10:
+    case 11:
+        console.log("Trick Or Treat! It's Fall!")
+}
 
-
-// Challenge 5: Beverage Size
+// Challenge 4 : Beverage Size
 
 // Write a switch statement that takes a string input representing a beverage size ("small", "medium", or "large") and logs:
 
