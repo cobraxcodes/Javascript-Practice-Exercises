@@ -73,3 +73,23 @@ for(let i=0; i<str.length / 2; i++)
 console.log(isPalindrome("racecar"))
 
 // DONE PART-ONE FUNCTIONS CHALLENGES
+
+//  Write a function that takes two numbers and returns their sum.
+
+//  Write a function that checks if a number is even or odd.
+
+// //  Write a function that takes a name and age, then logs:
+
+// "You're an adult!" if age is 18 or above.
+// "You're a minor!" otherwise.
+
+
+//  Convert this function into an arrow function:
+// function multiply(a, b) {
+//     return a * b;
+// }
+
+
+
+// ️ Write a function that returns the length of a given string.
+
