@@ -95,12 +95,15 @@ const reverseMe = (arr) => {
     return reverseAgain
 }
 console.log(reverseMe([1,2,3,4,5]))
-// You have a nested array like this:
-// let nestedArray = [1, [2, 3], [4, [5, 6]]];
-// Write a function that flattens it into a single-level array:
+
 
 // Given an array of numbers, use the filter() method to create a new array that contains only the numbers greater than 10.
+const filterTens = (arr)=>{
+    return arr.filter(x => x>10)
 
+}
+
+console.log(filterTens([10,3,34,12,34,12,41,23,41,2,1,3,4,12]))
 // DONE PART-1 ARRAYS CHALLENGES
 
 
