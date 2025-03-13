@@ -67,9 +67,8 @@ console.log(findIndexOfValue(["Orange","Grapes", "Apple"], "Orange"))
 
 
 // Create an array numbers with the numbers 1 through 5. Then, access and log the third element in the array.
-
-
-
+const arrayNumbers = [1,2,3,4,5]
+console.log(arrayNumbers[2])
 
 //  Array Manipulation
 
@@ -80,10 +79,22 @@ console.log(findIndexOfValue(["Orange","Grapes", "Apple"], "Orange"))
 // Find the index of the number 3.
 // Log the updated array.
 
+const arrayManipulation = [1,2,3,4,5]
+arrayManipulation.push(6)
+arrayManipulation.shift()
+console.log(arrayManipulation)
+console.log(arrayManipulation[1])
+
 // Write a function reverseArray that takes an array as an argument and returns the array in reverse order. Do not use the reverse() method.
 
-
-
+const reverseMe = (arr) => {
+    let reverseAgain = []
+    for(let i=arr.length -1 ; i >= 0; i--){
+        reverseAgain.push(arr[i])
+    }
+    return reverseAgain
+}
+console.log(reverseMe([1,2,3,4,5]))
 // You have a nested array like this:
 // let nestedArray = [1, [2, 3], [4, [5, 6]]];
 // Write a function that flattens it into a single-level array:
