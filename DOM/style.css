@@ -1,0 +1,15 @@
+*{
+    text-align: center;
+}
+body{
+background-color: pink;
+}
+#changeTextButton{
+    margin: 0 auto;
+    height: 5rem;
+    width: 14rem;
+    text-align: center;
+    background-color: lightblue;
+
+
+}
