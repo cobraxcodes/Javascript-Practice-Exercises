@@ -1,6 +1,10 @@
 *{
     text-align: center;
 }
+#colorBox{
+    text-align: center;
+    margin: 0 auto;
+}
 body{
 background-color: pink;
 }
@@ -12,4 +16,10 @@ background-color: pink;
     background-color: lightblue;
 
 
+}
+#changeBodyColorBtn{
+    height: 7rem;
+    width: 16rem;
+    background-color: black;
+    color: wheat;
 }
