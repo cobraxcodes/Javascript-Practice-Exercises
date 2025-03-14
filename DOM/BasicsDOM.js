@@ -54,3 +54,29 @@ const createElement = () =>{
     document.body.appendChild(dynamicElement)
 }
 document.getElementById('createBtn').addEventListener('click', createElement)
+
+
+
+// INTERACTIVE DOM 
+
+// Goal: Create an input field where a user can type something, and a button updates a paragraph with that text.
+// Steps:
+// Add an <input> field and a <button> in your HTML.
+// When the button is clicked, update a <p> element with whatever the user typed.
+
+// 2️⃣ Show/Hide Toggle Button
+// Goal: Clicking a button should hide or show a specific element.
+// Steps:
+// Add a button labeled "Toggle Message".
+// Clicking it should hide a paragraph if it’s visible and show it again if it’s hidden.
+
+// 3️⃣ List Generator
+// Goal: Clicking a button should add a new item to a list dynamically.
+// Steps:
+// Add a <ul> (unordered list) in your HTML.
+// Clicking the button should create a new <li> (list item) and add it inside the <ul>.
+
+// 🔥 Bonus Challenge (Optional)
+// 4️⃣ Light/Dark Mode Switcher
+// Clicking a button switches the page between light mode and dark mode.
+// Use document.body.classList.toggle('dark-mode').
