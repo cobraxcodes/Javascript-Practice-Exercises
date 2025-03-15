@@ -5,8 +5,17 @@
     text-align: center;
     margin: 0 auto;
 }
-body{
-background-color: pink;
+
+
+body {
+    background-color: pink;
+    color: black;
+}
+
+/* Dark mode */
+body.darkMode {
+    background-color: #2c0c16;
+    color: white;
 }
 #changeTextButton{
     margin: 0 auto;
