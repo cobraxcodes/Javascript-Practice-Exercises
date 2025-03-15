@@ -67,7 +67,7 @@ const paragraphUpdate = () =>{
    // getting input field and paragraph first 
    let inputField = document.getElementById('userInput')
    let paragraph = document.getElementById('userUpdate')
-   
+
    // take paragraph content and change it to the value of the input field
    paragraph.textContent=inputField.value
 }
@@ -80,6 +80,21 @@ document.getElementById('inputButton').addEventListener('click', paragraphUpdate
 // Steps:
 // Add a button labeled "Toggle Message".
 // Clicking it should hide a paragraph if it’s visible and show it again if it’s hidden.
+
+const toggleFunction = () =>{
+    // get the paragraph first and initialize to a variable
+    let toggleText = document.getElementById('toggleParagraph')
+
+    // create if statement if it hidden (none) then I want you to show it (display: block)
+    if(toggleText.style.display === 'none'){
+        toggleText.style.display = 'block'
+        // if it is showing I want you to change it hidden('none')
+    }else{
+        toggleText.style.display = 'none'
+    }
+}
+
+document.getElementById('toggleMe').addEventListener('click', toggleFunction)
 
 // 3️⃣ List Generator
 // Goal: Clicking a button should add a new item to a list dynamically.
