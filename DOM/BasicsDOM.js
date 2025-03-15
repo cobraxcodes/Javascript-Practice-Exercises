@@ -102,6 +102,23 @@ document.getElementById('toggleMe').addEventListener('click', toggleFunction)
 // Add a <ul> (unordered list) in your HTML.
 // Clicking the button should create a new <li> (list item) and add it inside the <ul>.
 
+const userList = () =>{
+    // define ul holding list and input where the new list is entered
+    let listHolder = document.getElementById('userListUl')
+    let listInput = document.getElementById('userListInput')
+
+    // create a list element
+    let createList = document.createElement('li')
+    // make new list element text contain contain the value of the text input
+    createList.textContent= listInput.value
+
+    // append list child to list holder
+    listHolder.appendChild(createList)
+    
+    listInput.value= ""
+}
+
+document.getElementById('listButton').addEventListener('click', userList)
 // 🔥 Bonus Challenge (Optional)
 // 4️⃣ Light/Dark Mode Switcher
 // Clicking a button switches the page between light mode and dark mode.
