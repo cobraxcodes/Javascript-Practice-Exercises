@@ -112,7 +112,7 @@ const userList = () =>{
     // make new list element text contain contain the value of the text input
     createList.textContent= listInput.value
 
-    // append list child to list holder
+    // append list child to list holder and pass create list variable
     listHolder.appendChild(createList)
     
     listInput.value= ""
