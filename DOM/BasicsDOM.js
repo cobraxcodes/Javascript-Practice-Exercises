@@ -50,8 +50,9 @@ document.getElementById('changeBox').addEventListener('click', boxColorBtn)
 // To create dynamic element. use .createElement() and add context using .textContext() and append(attach) document.body.appendChild(createElementVariable)
 const createElement = () =>{
     let dynamicElement = document.createElement('p')
+    let dyanmicHolder = document.getElementById('attachDynamic')
     dynamicElement.textContent="Hi, I was dynamically made. Thank you for making Me!"
-    document.body.appendChild(dynamicElement)
+    dyanmicHolder.appendChild(dynamicElement)
 }
 document.getElementById('createBtn').addEventListener('click', createElement)
 
@@ -119,7 +120,12 @@ const userList = () =>{
 }
 
 document.getElementById('listButton').addEventListener('click', userList)
+
 // 🔥 Bonus Challenge (Optional)
 // 4️⃣ Light/Dark Mode Switcher
 // Clicking a button switches the page between light mode and dark mode.
 // Use document.body.classList.toggle('dark-mode').
+const userMode = () =>[
+    document.body.classList.toggle('darkMode')
+]
+document.getElementById('darkModeSwitch').addEventListener('click', userMode)
