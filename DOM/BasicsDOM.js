@@ -117,6 +117,8 @@ const userList = () =>{
     listHolder.appendChild(createList)
     
     listInput.value= ""
+
+    // create a trim here later to prevent empty list input to be added as a list
 }
 
 document.getElementById('listButton').addEventListener('click', userList)
@@ -126,6 +128,7 @@ document.getElementById('listButton').addEventListener('click', userList)
 // Clicking a button switches the page between light mode and dark mode.
 // Use document.body.classList.toggle('dark-mode').
 const userMode = () =>[
+    // create dark mode css class on external css and use it for the toggle
     document.body.classList.toggle('darkMode')
 ]
 document.getElementById('darkModeSwitch').addEventListener('click', userMode)
