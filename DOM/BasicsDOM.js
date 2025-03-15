@@ -63,6 +63,17 @@ document.getElementById('createBtn').addEventListener('click', createElement)
 // Steps:
 // Add an <input> field and a <button> in your HTML.
 // When the button is clicked, update a <p> element with whatever the user typed.
+const paragraphUpdate = () =>{
+   // getting input field and paragraph first 
+   let inputField = document.getElementById('userInput')
+   let paragraph = document.getElementById('userUpdate')
+   
+   // take paragraph content and change it to the value of the input field
+   paragraph.textContent=inputField.value
+}
+
+// attach function to the button so that it changes it when clicked
+document.getElementById('inputButton').addEventListener('click', paragraphUpdate)
 
 // 2️⃣ Show/Hide Toggle Button
 // Goal: Clicking a button should hide or show a specific element.
