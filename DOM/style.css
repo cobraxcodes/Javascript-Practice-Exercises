@@ -35,3 +35,6 @@ background-color: pink;
     font-size: xx-large;
     display: none;
 }
+li{
+    list-style-type: none;
+}
