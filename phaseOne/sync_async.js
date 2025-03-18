@@ -7,8 +7,30 @@
 // Hint: Use setTimeout to simulate a delay like a real API call.
 
 
-
-
+const simulate = (sucessCallback , failureCallback) => {
+    // create notice that a function has started
+    console.log("feching API data");
+    // simulates the delay that happens when actually calling an API
+        setTimeout(() =>{
+            // create probability
+            let success = Math.random() > 0.5;
+            // if let success is true then this will be the output logged in the console.
+            if(success) {
+              sucessCallback("API data retrieve successful")
+              // if false then this will show instead
+            }else{
+              failureCallback("Error, failure on retrieving API data")
+            }
+            // this is how long setTimeOut will delay or wait until executing the code inside it
+        }, 2000)
+}
+// calling the function here
+simulate(
+    // This will show the success message
+    (message)=>console.log(message),
+    // this will show failure message
+(error) => console.log(error)
+);
 // Exercise 2: Retry Logic with Success/Failure Callbacks
 // Objective: Modify the above exercise to add a retry mechanism. If the API call fails, we should attempt the call again up to 3 times.
 // Requirements:
