@@ -11,6 +11,7 @@ const simulate = (sucessCallback , failureCallback) => {
     // create notice that a function has started
     console.log("feching API data");
     // simulates the delay that happens when actually calling an API
+    //syntax: setTimeout(function (), delay)
         setTimeout(() =>{
             // create probability
             let success = Math.random() > 0.5;
@@ -26,9 +27,9 @@ const simulate = (sucessCallback , failureCallback) => {
 }
 // calling the function here
 simulate(
-    // This will show the success message
+    // log whatever (message) recieves from successCallback
     (message)=>console.log(message),
-    // this will show failure message
+    // logs whatever (error ) recieved from failureCallback
 (error) => console.log(error)
 );
 // Exercise 2: Retry Logic with Success/Failure Callbacks
