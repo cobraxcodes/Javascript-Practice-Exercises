@@ -75,8 +75,23 @@ retry(
 // The function should take two parameters: a delay time (in milliseconds) and a callback function.
 // Use setTimeout to delay the callback.
 // Call the callback function after the delay is over.
+const delay = (y,x, ms) =>{
+    console.log("testing Delay ...")
+    setTimeout(()=>{
+        let random = Math.random  > 0.5
+        if(random){
+            y("delay works")
+        }else{
+            x("delay no work")
+        }
+    }, ms)
+}
 
-
+delay(
+    (message) => console.log(message),
+    (error) => console.log(error),
+    6000
+)
 
 
 // Exercise 4: Processing an Array of Items with Callback
