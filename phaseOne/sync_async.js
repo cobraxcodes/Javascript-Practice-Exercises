@@ -75,6 +75,8 @@ retry(
 // The function should take two parameters: a delay time (in milliseconds) and a callback function.
 // Use setTimeout to delay the callback.
 // Call the callback function after the delay is over.
+
+// added ms parameter for delay input
 const delay = (y,x, ms) =>{
     console.log("testing Delay ...")
     setTimeout(()=>{
@@ -95,7 +97,8 @@ delay(
 
 
 // Exercise 4: Processing an Array of Items with Callback
-// Objective: Create a function processItems that accepts an array of items and processes each item asynchronously. For each item:
+// Objective: Create a function processItems that accepts an array of items and processes each item asynchronously. 
+// For each item:
 // Log the item using the success callback.
 // If an item has a value of null, invoke the failure callback.
 // Requirements:
@@ -104,8 +107,22 @@ delay(
 // If the item is null, call the failure callback with the message "❌ Item is invalid!".
 // Otherwise, call the success callback and log the item.
 
+const processItems = (arr, success, fail) =>{
+    console.log('Processing items')
+    for ( let i = 0; i<arr.length; i++){
+        if(arr[i] === null){
+            fail("Item invalid!")
+        }else{
+            success(`${arr[i]}, items recieved`)
+        }
+    }
+}
 
-
+processItems(
+    ([42, null, "hello", null, true]),
+    (message) => console.log(message),
+    (fail) => console.log(fail)
+)
 
 // Exercise 5: Asynchronous File Download Simulation
 // Objective: Simulate downloading files asynchronously using callback functions. The function should take a file name and a callback to handle the "downloaded" file.
