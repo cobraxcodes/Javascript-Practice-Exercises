@@ -40,18 +40,23 @@ simulate(
 // If the call succeeds at any point, the success callback should be invoked.
 // If it fails after 3 attempts, call the failure callback with an error message.
 
+// add tries parameter for retry counts
 const retry = (yes, no, tries = 2) =>{
     console.log("Retrieving API ...")
-
+// to simulate real api calls and how long they take
     setTimeout(()=>{
         let randomNum = Math.random () > 0.5
         if(randomNum){
             yes("API retrieved successfully")
         }else{
             console.log(`API retrieval faiure, Retrying retrieval. ${tries} tries left.`)
+            // recursive loop that checks if there are still tries left to 
+            // keep retrieving API
             if(tries > 0){
                 retry(yes, no, tries - 1)
             }else{
+                // if tries are 0 and api retrieve is still not achieved
+                // failure message
                 no(`API retrieval failed. ${tries} tries left.`)
             }
         }
