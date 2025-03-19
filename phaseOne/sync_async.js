@@ -32,6 +32,7 @@ simulate(
     // logs whatever (error ) recieved from failureCallback
 (error) => console.log(error)
 );
+
 // Exercise 2: Retry Logic with Success/Failure Callbacks
 // Objective: Modify the above exercise to add a retry mechanism. If the API call fails, we should attempt the call again up to 3 times.
 // Requirements:
@@ -39,9 +40,29 @@ simulate(
 // If the call succeeds at any point, the success callback should be invoked.
 // If it fails after 3 attempts, call the failure callback with an error message.
 
+const retry = (yes, no, tries = 2) =>{
+    console.log("Retrieving API ...")
 
+    setTimeout(()=>{
+        let randomNum = Math.random () > 0.5
+        if(randomNum){
+            yes("API retrieved successfully")
+        }else{
+            console.log(`API retrieval faiure, Retrying retrieval. ${tries} tries left.`)
+            if(tries > 0){
+                retry(yes, no, tries - 1)
+            }else{
+                no(`API retrieval failed. ${tries} tries left.`)
+            }
+        }
+    }, 3000)
+}
 
-
+// creating callback for user
+retry(
+    (tryYes) => console.log(tryYes),
+    (tryNo) => console.log(tryNo)
+)
 // Exercise 3: Delay Function with Callback
 // Objective: Create a delay function that takes a number of milliseconds as input and then calls a provided callback after the delay. 
 // This is useful for simulating async operations.
