@@ -147,6 +147,24 @@ fileDownload(
 // Objective: Create a function that handles multiple success and failure callbacks. 
 // The function should process each item in an array of tasks and pass either a success or failure message to the corresponding callback.
 // Requirements:
-// Pass two sets of callbacks:
+// Pass two sets of callbacks: (odd or even)
 // Success callbacks: If the task is completed, call the success callback.
 // Failure callbacks: If the task is not completed, call the failure callback.
+const checkPoints = (arr, success, fail) =>{
+	console.log("Checking array items ... ")
+  setTimeout(() =>{
+  for(let i=0; i<arr.length; i++){
+  if(typeof arr[i] === "number" && arr[i] % 2 === 0){
+  success(`Item ${arr[i]} passed successfully`)
+  }else{
+  fail(`Item ${arr[i]} failed to pass`)
+  }
+  }
+  }, 3000)
+}
+
+checkPoints (
+([1,2,3,4,5,6]),
+(message) => console.log(message),
+(error) => console.log(error)
+)
