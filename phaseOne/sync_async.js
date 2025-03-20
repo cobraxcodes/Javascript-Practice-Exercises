@@ -199,3 +199,37 @@ remote(
 // Accept an array of objects, each with a name and age property.
 // Filter out people younger than 18.
 // Pass the filtered list of adults to a callback function.
+const filterAdults = (people, success, fail) =>{
+    console.log('Filtering now ...')
+    for(let i =0; i<people.length; i++){
+        if(people[i].age > 18){
+            success(`The age is ${people[i].age}, filter passed`)
+        }else{
+            fail(`The age is ${people[i].age}, filter failed`)
+        }
+    }
+ }
+
+ filterAdults(
+    [
+        {name: "Kraken",
+         age: 28
+        },
+        {
+         name: "Darren",
+         age: 16
+        },
+        {
+            name: "Monica",
+            age:44
+        },
+        {
+            name: "Ada",
+            age: 13
+        }
+    ],
+    (message) => console.log(message),
+    (error) => console.log(error)
+ );
+
+
