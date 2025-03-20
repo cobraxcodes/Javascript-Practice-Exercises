@@ -125,13 +125,23 @@ processItems(
 )
 
 // Exercise 5: Asynchronous File Download Simulation
-// Objective: Simulate downloading files asynchronously using callback functions. The function should take a file name and a callback to handle the "downloaded" file.
+// Objective: Simulate downloading files asynchronously using callback functions. 
+// The function should take a file name and a callback to handle the "downloaded" file.
 // Requirements:
 // Use setTimeout to simulate the download process.
 // After 3 seconds, invoke the callback with the file name as a success message.
 
+const fileDownload = (movie, success) =>{
+        console.log("Downloading movie")
+        setTimeout(()=>{
+        success(`${movie} has been downloaded`)
+        }, 3000)
+}
 
-
+fileDownload(
+    ("The Shining"),
+    (message) => console.log (message)
+)
 
 // Exercise 6: Handle Multiple Success and Failure Callbacks
 // Objective: Create a function that handles multiple success and failure callbacks. 
