@@ -168,3 +168,34 @@ checkPoints (
 (message) => console.log(message),
 (error) => console.log(error)
 )
+
+
+// Exercise 7: Fetch Data and Process
+// Create a function fetchData that simulates fetching data from a remote server. It should:
+// Accept a URL (just a string for now).
+// Simulate a delay using setTimeout (e.g., 2 seconds).
+// Call a callback function with a "fetched data" message.
+
+const remote = (str, success, fail) =>{
+    console.log("Fetching data ... ")
+    setTimeout(()=>{
+        let random = Math.random() > 0.5
+        if(random){
+            success(`${str} retrieved. Data successfully received`)
+        }else{
+            fail('Data failed to retrieve')
+        }
+        
+    }, 2000)
+}
+
+remote(
+    ('facebook.com'),
+    (message) => console.log(message),
+    (error) => console.log(error)
+)
+// Exercise 8: Array Filter with Callback
+// Write a function filterAdults that filters an array of people objects based on age. The function should:
+// Accept an array of objects, each with a name and age property.
+// Filter out people younger than 18.
+// Pass the filtered list of adults to a callback function.
