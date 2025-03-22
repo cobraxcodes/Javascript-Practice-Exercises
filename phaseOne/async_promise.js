@@ -85,6 +85,9 @@
 // Then fetch "linkedin.com".
 // Log results properly.
 
+
+
+
 // const fetchMultipleData = (url) =>{
 //     return new Promise ((success, fail) =>{
 //         console.log("Retrieving data ... ")
@@ -126,38 +129,64 @@
 // The original fetchData() request.
 // A timeout promise that rejects after 3 seconds.
 
-const fetchDataRace = (url) =>{
-    return new Promise ((success, fail) =>{
-        console.log("Fetching data...")
 
-            // creating a timeout here for 3 seconds
-            // if it has been 3 seconds and no info was retrieved, fail is delivered
-        const time = Math.random() * 3000;
 
-        setTimeout(() =>{
-            let random = Math.random() > 0.5;
-            if(random){
-                success(`Successfully retrieved data from ${url}`)
-            }else{
-                fail(`Failed to retrieve data from ${url}`)
-            }
-        }, time)
-    })
-}
+// const fetchDataRace = (url) =>{
+//     return new Promise ((success, fail) =>{
+//         console.log("Fetching data...")
 
-        const getDataRace = async () =>{
-            try{
-                // racing between these urls which one we're able to retrieve data from first
-                const result = await Promise.race([
-                    fetchDataRace('instagram.com'),
-                    fetchDataRace('facebook.com'),
-                    fetchDataRace('reddit.com'),
-                ]) 
-                // logs the fastest one
-                console.log(result)}
-            catch(error){
-                console.log(error)
-            }
-        }
+//             // creates delay of 3 seconds
+//         const time = Math.random() * 10000;
 
-    getDataRace()
+//         setTimeout(() =>{
+//             let random = Math.random() > 0.5;
+//             if(random){
+//                 success(`Successfully retrieved data from ${url}`)
+//             }else{
+//                 fail(`Failed to retrieve data from ${url}`)
+//             }
+//         }, time)
+//     })
+// }
+
+//         const getDataRace = async () =>{
+//             try{
+//                 // racing between these urls which one we're able to retrieve data from first
+//                 const result = await Promise.race([
+//                     fetchDataRace('instagram.com'),
+//                     fetchDataRace('facebook.com'),
+//                     fetchDataRace('reddit.com'),
+
+//                     // times out the code if data has not been recieved within 3 seconds 
+//                     new Promise((_, reject) => setTimeout(()=> reject("Request timed out"), 3000))
+//                 ]) 
+//                 // logs the fastest one
+//                 console.log(result)}
+//             catch(error){
+//                 console.log(error)
+//             }
+//         }
+
+//     getDataRace()
+
+
+// Exercise #3: Delayed Data Fetch
+// Create a function that fetches data from a URL and simulates a delay of 2-4 seconds. Once the data is "fetched", 
+// log the message Data fetched successfully from {url}. If the data cannot be fetched within 4 seconds, log Request timed out.
+
+// Exercise #4: Fetch Data Sequentially with Error Handling
+// Write a function that fetches data from two URLs sequentially. If one fails,
+//  it should skip to the next URL and log an error message. If both fail, it should log All requests failed.
+
+// Exercise #5: Multiple Data Fetch with a Success Rate
+// Write a function that fetches data from three URLs simultaneously (in parallel). If any one of them succeeds,
+//  log At least one data fetched successfully. If all of them fail, log All requests failed.
+
+// Exercise #6:  Simulate Multiple Retries
+// Create a function that fetches data from a URL, but if it fails, retry up to 3 times before rejecting with a failure message. 
+// You should use a delay of 2 seconds between each retry attempt.
+
+
+// Exercise #7 :Promise Race with a Delay
+// Simulate a race between three different promises that resolve with different time delays 
+// (e.g., 1 second, 2 seconds, and 3 seconds). Log the result as soon as the first one resolves and indicate the time taken.
