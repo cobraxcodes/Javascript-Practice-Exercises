@@ -173,6 +173,38 @@
 // Exercise #3: Delayed Data Fetch
 // Create a function that fetches data from a URL and simulates a delay of 2-4 seconds. Once the data is "fetched", 
 // log the message Data fetched successfully from {url}. If the data cannot be fetched within 4 seconds, log Request timed out.
+ const fetchDelayedData = (url) =>{
+    return new Promise((success, fail)=>{
+        console.log("Retrieving data ... ")
+
+        let timeDelayed = (Math.random() * 2000)+ 2000;
+
+            setTimeout(()=>{
+                let random = Math.random() > 0.5
+                if(random){
+                    success(`Data fetched successfuly from ${url}`)
+                }else{
+                    fail(`Data fetched unsuccessfully from ${url}`)
+                }
+            }, timeDelayed)
+    },)
+ }
+        const getDelayedData = async() =>{
+           try{
+            const result = await Promise.race([
+                fetchDelayedData('reddit.com'),
+                fetchDelayedData('facebook.com'),
+                // make sure to add _, in promise because we're not dealing with the resolve part
+                // only the reject if the promise times out 
+                new Promise ((_, reject) =>setTimeout(()=>reject("Request timed out"), 4000))
+            ])
+            console.log(result)
+           }catch (error){
+            console.log(error)
+           }
+        }
+
+getDelayedData()
 
 // Exercise #4: Fetch Data Sequentially with Error Handling
 // Write a function that fetches data from two URLs sequentially. If one fails,
