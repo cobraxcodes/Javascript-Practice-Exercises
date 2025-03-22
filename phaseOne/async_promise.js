@@ -85,36 +85,36 @@
 // Then fetch "linkedin.com".
 // Log results properly.
 
-const fetchMultipleData = (url) =>{
-    return new Promise ((success, fail) =>{
-        console.log("Retrieving data ... ")
+// const fetchMultipleData = (url) =>{
+//     return new Promise ((success, fail) =>{
+//         console.log("Retrieving data ... ")
 
-        setTimeout (() =>{
-            let random = Math.random() > 0.5
-            if(random){
-                success(`Successfully retrieved data from ${url}`)
-            }else{
-                fail(`Failed to retrieve data from ${url}`)
-            }
-        }, 3000)
+//         setTimeout (() =>{
+//             let random = Math.random() > 0.5
+//             if(random){
+//                 success(`Successfully retrieved data from ${url}`)
+//             }else{
+//                 fail(`Failed to retrieve data from ${url}`)
+//             }
+//         }, 3000)
 
-    })
-}
+//     })
+// }
 
-    const getMultipleData = async () =>{
-        try{
-            const result = await fetchMultipleData ("threads.com")
-            console.log(result)
-            const resultTwo = await fetchMultipleData ("linkedin.com")
-            console.log(resultTwo)
-        }catch (error){
-            console.log(error)
-        }
-    }
+//     const getMultipleData = async () =>{
+//         try{
+//             const result = await fetchMultipleData ("threads.com")
+//             console.log(result)
+//             const resultTwo = await fetchMultipleData ("linkedin.com")
+//             console.log(resultTwo)
+//         }catch (error){
+//             console.log(error)
+//         }
+//     }
 
 
     
-    getMultipleData()
+//     getMultipleData()
 
 // Exercise 2: Fetch Data with a Timeout
 // Sometimes network requests take too long.
@@ -125,3 +125,35 @@ const fetchMultipleData = (url) =>{
 // Use Promise.race() to compare:
 // The original fetchData() request.
 // A timeout promise that rejects after 3 seconds.
+
+const fetchDataRace = (url) =>{
+    return new Promise ((success, fail) =>{
+        console.log("Fetching data now ...")
+
+        setTimeout(() =>{
+            let random = Math.random() > 0.5
+            if(random){
+                success(`${url} data fetched successfully`)
+            }else{
+                fail(`${url} data fetch failed`)
+            }
+            // timesout 
+        }, (Math.random() * 2000 + 1000) < 3000)
+    })
+}
+
+    const getDataRace = async () =>{
+        try{
+            // using promise race to return whichever one is fastest
+            const result = await Promise.race([
+                fetchDataRace('instagram.com'),
+                fetchDataRace('facebook.com'),
+                fetchDataRace('reddit.com'),
+            ])
+                console.log(`Fastest to send data`, result)
+        }catch(error){
+            console.log('Request timed out,', error)
+        }
+    }
+
+    getDataRace()
