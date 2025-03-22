@@ -46,68 +46,37 @@
     // NOW TO REWRITE IT 
 // WITHOUT PEEKING THIS TIME
 
-const fetchData = (url) =>{
-    return new Promise ((success, fail) =>{
-        console.log("Retrieving data ...");
+// const fetchData = (url) =>{
+//     return new Promise ((success, fail) =>{
+//         console.log("Retrieving data ...");
 
-        setTimeout (() =>{
-                let random = Math.random() > 0.5
-            if(random){
-                success("Data retrieved successfully")
-            }else{
-                fail("Data failed to retrieve")
-            }
-        }, 2000)
-    })
-}
+//         setTimeout (() =>{
+//                 let random = Math.random() > 0.5
+//             if(random){
+//                 success("Data retrieved successfully")
+//             }else{
+//                 fail("Data failed to retrieve")
+//             }
+//         }, 2000)
+//     })
+// }
 
-        const getData = async () => {
-            try{
-                let result = await  fetchData("instagram.com")
-                console.log(result)
-            }catch(error){
-                console.log(error)
-            }
-        }
+//         const getData = async () => {
+//             try{
+//                 let result = await  fetchData("instagram.com")
+//                 console.log(result)
+//             }catch(error){
+//                 console.log(error)
+//             }
+//         }
 
-getData()
+// getData()
 
 
 
 // Exercise 1: Fetch Multiple Data Requests
 // Modify fetchData so it can fetch multiple URLs in sequence.
 // Write an async function that fetches two URLs one after the other.
-
-const fetchMutipleData = () =>{
-    return new Promise ((success, fail) =>{
-        console.log("Fetching data... ")
-        setTimeout(()=>{
-            let random = Math.random() > 0.5
-            if(random){
-                success("Successfully fetched data")
-            }else{
-                fail("Failed to retreive data")
-            }
-        }, 2000)
-    })
-}
-
-        const getMultipleData = async() =>{
-            try {
-                // fetching data from first url
-                const firstResult = await fetchMutipleData ("threads.com")
-                console.log(firstResult)
-                // fetching data from second url
-                const secondResult = await fetchMutipleData ("linkedin.com")
-                console.log(secondResult)
-            }catch(error){
-                console.log(error)
-            }
-            
-        } 
-
-getMultipleData()
-
 // Your Task:
 // Modify fetchData(url) to accept any URL.
 // Write getMultipleData():
@@ -116,7 +85,36 @@ getMultipleData()
 // Then fetch "linkedin.com".
 // Log results properly.
 
+const fetchMultipleData = (url) =>{
+    return new Promise ((success, fail) =>{
+        console.log("Retrieving data ... ")
 
+        setTimeout (() =>{
+            let random = Math.random() > 0.5
+            if(random){
+                success(`Successfully retrieved data from ${url}`)
+            }else{
+                fail(`Failed to retrieve data from ${url}`)
+            }
+        }, 3000)
+
+    })
+}
+
+    const getMultipleData = async () =>{
+        try{
+            const result = await fetchMultipleData ("threads.com")
+            console.log(result)
+            const resultTwo = await fetchMultipleData ("linkedin.com")
+            console.log(resultTwo)
+        }catch (error){
+            console.log(error)
+        }
+    }
+
+
+    
+    getMultipleData()
 
 // Exercise 2: Fetch Data with a Timeout
 // Sometimes network requests take too long.
