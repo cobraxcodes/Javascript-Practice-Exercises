@@ -71,3 +71,29 @@ const fetchData = (url) =>{
         }
 
 getData()
+
+
+
+// Exercise 1: Fetch Multiple Data Requests
+// Modify fetchData so it can fetch multiple URLs in sequence.
+// Write an async function that fetches two URLs one after the other.
+
+// Your Task:
+// Modify fetchData(url) to accept any URL.
+// Write getMultipleData():
+// Fetch "twitter.com" first.
+// Wait for it to finish.
+// Then fetch "linkedin.com".
+// Log results properly.
+
+
+
+// Exercise 2: Fetch Data with a Timeout
+// Sometimes network requests take too long.
+// Modify fetchData so it fails automatically after 3 seconds if the data is not retrieved.
+
+// Your Task:
+// If fetchData() takes more than 3 seconds, it should automatically reject with "Request timed out".
+// Use Promise.race() to compare:
+// The original fetchData() request.
+// A timeout promise that rejects after 3 seconds.
