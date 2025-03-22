@@ -78,10 +78,40 @@ getData()
 // Modify fetchData so it can fetch multiple URLs in sequence.
 // Write an async function that fetches two URLs one after the other.
 
+const fetchMutipleData = () =>{
+    return new Promise ((success, fail) =>{
+        console.log("Fetching data... ")
+        setTimeout(()=>{
+            let random = Math.random() > 0.5
+            if(random){
+                success("Successfully fetched data")
+            }else{
+                fail("Failed to retreive data")
+            }
+        }, 2000)
+    })
+}
+
+        const getMultipleData = async() =>{
+            try {
+                // fetching data from first url
+                const firstResult = await fetchMutipleData ("threads.com")
+                console.log(firstResult)
+                // fetching data from second url
+                const secondResult = await fetchMutipleData ("linkedin.com")
+                console.log(secondResult)
+            }catch(error){
+                console.log(error)
+            }
+            
+        } 
+
+getMultipleData()
+
 // Your Task:
 // Modify fetchData(url) to accept any URL.
 // Write getMultipleData():
-// Fetch "twitter.com" first.
+// Fetch "threads.com" first.
 // Wait for it to finish.
 // Then fetch "linkedin.com".
 // Log results properly.
