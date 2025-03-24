@@ -46,31 +46,31 @@
     // NOW TO REWRITE IT 
 // WITHOUT PEEKING THIS TIME
 
-// const fetchData = (url) =>{
-//     return new Promise ((success, fail) =>{
-//         console.log("Retrieving data ...");
+const fetchData = (url) =>{
+    return new Promise ((success, fail) =>{
+        console.log("Retrieving data ...");
 
-//         setTimeout (() =>{
-//                 let random = Math.random() > 0.5
-//             if(random){
-//                 success("Data retrieved successfully")
-//             }else{
-//                 fail("Data failed to retrieve")
-//             }
-//         }, 2000)
-//     })
-// }
+        setTimeout (() =>{
+                let random = Math.random() > 0.5
+            if(random){
+                success("Data retrieved successfully")
+            }else{
+                fail("Data failed to retrieve")
+            }
+        }, 2000)
+    })
+}
 
-//         const getData = async () => {
-//             try{
-//                 let result = await  fetchData("instagram.com")
-//                 console.log(result)
-//             }catch(error){
-//                 console.log(error)
-//             }
-//         }
+        const getData = async () => {
+            try{
+                let result = await  fetchData("instagram.com")
+                console.log(result)
+            }catch(error){
+                console.log(error)
+            }
+        }
 
-// getData()
+getData()
 
 
 
@@ -88,36 +88,36 @@
 
 
 
-// const fetchMultipleData = (url) =>{
-//     return new Promise ((success, fail) =>{
-//         console.log("Retrieving data ... ")
+const fetchMultipleData = (url) =>{
+    return new Promise ((success, fail) =>{
+        console.log("Retrieving data ... ")
 
-//         setTimeout (() =>{
-//             let random = Math.random() > 0.5
-//             if(random){
-//                 success(`Successfully retrieved data from ${url}`)
-//             }else{
-//                 fail(`Failed to retrieve data from ${url}`)
-//             }
-//         }, 3000)
+        setTimeout (() =>{
+            let random = Math.random() > 0.5
+            if(random){
+                success(`Successfully retrieved data from ${url}`)
+            }else{
+                fail(`Failed to retrieve data from ${url}`)
+            }
+        }, 3000)
 
-//     })
-// }
+    })
+}
 
-//     const getMultipleData = async () =>{
-//         try{
-//             const result = await fetchMultipleData ("threads.com")
-//             console.log(result)
-//             const resultTwo = await fetchMultipleData ("linkedin.com")
-//             console.log(resultTwo)
-//         }catch (error){
-//             console.log(error)
-//         }
-//     }
+    const getMultipleData = async () =>{
+        try{
+            const result = await fetchMultipleData ("threads.com")
+            console.log(result)
+            const resultTwo = await fetchMultipleData ("linkedin.com")
+            console.log(resultTwo)
+        }catch (error){
+            console.log(error)
+        }
+    }
 
 
     
-//     getMultipleData()
+    getMultipleData()
 
 // Exercise 2: Fetch Data with a Timeout
 // Sometimes network requests take too long.
@@ -131,43 +131,43 @@
 
 
 
-// const fetchDataRace = (url) =>{
-//     return new Promise ((success, fail) =>{
-//         console.log("Fetching data...")
+const fetchDataRace = (url) =>{
+    return new Promise ((success, fail) =>{
+        console.log("Fetching data...")
 
-//             // creates delay of 3 seconds
-//         const time = Math.random() * 10000;
+            // creates delay of 3 seconds
+        const time = Math.random() * 10000;
 
-//         setTimeout(() =>{
-//             let random = Math.random() > 0.5;
-//             if(random){
-//                 success(`Successfully retrieved data from ${url}`)
-//             }else{
-//                 fail(`Failed to retrieve data from ${url}`)
-//             }
-//         }, time)
-//     })
-// }
+        setTimeout(() =>{
+            let random = Math.random() > 0.5;
+            if(random){
+                success(`Successfully retrieved data from ${url}`)
+            }else{
+                fail(`Failed to retrieve data from ${url}`)
+            }
+        }, time)
+    })
+}
 
-//         const getDataRace = async () =>{
-//             try{
-//                 // racing between these urls which one we're able to retrieve data from first
-//                 const result = await Promise.race([
-//                     fetchDataRace('instagram.com'),
-//                     fetchDataRace('facebook.com'),
-//                     fetchDataRace('reddit.com'),
+        const getDataRace = async () =>{
+            try{
+                // racing between these urls which one we're able to retrieve data from first
+                const result = await Promise.race([
+                    fetchDataRace('instagram.com'),
+                    fetchDataRace('facebook.com'),
+                    fetchDataRace('reddit.com'),
 
-//                     // times out the code if data has not been recieved within 3 seconds 
-//                     new Promise((_, reject) => setTimeout(()=> reject("Request timed out"), 3000))
-//                 ]) 
-//                 // logs the fastest one
-//                 console.log(result)}
-//             catch(error){
-//                 console.log(error)
-//             }
-//         }
+                    // times out the code if data has not been recieved within 3 seconds 
+                    new Promise((_, reject) => setTimeout(()=> reject("Request timed out"), 3000))
+                ]) 
+                // logs the fastest one
+                console.log(result)}
+            catch(error){
+                console.log(error)
+            }
+        }
 
-//     getDataRace()
+    getDataRace()
 
 
 // Exercise #3: Delayed Data Fetch
@@ -175,38 +175,38 @@
 // log the message Data fetched successfully from {url}. If the data cannot be fetched within 4 seconds, log Request timed out.
 
 
-//  const fetchDelayedData = (url) =>{
-//     return new Promise((success, fail)=>{
-//         console.log("Retrieving data ... ")
+ const fetchDelayedData = (url) =>{
+    return new Promise((success, fail)=>{
+        console.log("Retrieving data ... ")
 
-//         let timeDelayed = (Math.random() * 2000)+ 2000;
+        let timeDelayed = (Math.random() * 2000)+ 2000;
 
-//             setTimeout(()=>{
-//                 let random = Math.random() > 0.5
-//                 if(random){
-//                     success(`Data fetched successfuly from ${url}`)
-//                 }else{
-//                     fail(`Data fetched unsuccessfully from ${url}`)
-//                 }
-//             }, timeDelayed)
-//     },)
-//  }
-//         const getDelayedData = async() =>{
-//            try{
-//             const result = await Promise.race([
-//                 fetchDelayedData('reddit.com'),
-//                 fetchDelayedData('facebook.com'),
-//                 // make sure to add _, in promise because we're not dealing with the resolve part
-//                 // only the reject if the promise times out 
-//                 new Promise ((_, reject) =>setTimeout(()=>reject("Request timed out"), 4000))
-//             ])
-//             console.log(result)
-//            }catch (error){
-//             console.log(error)
-//            }
-//         }
+            setTimeout(()=>{
+                let random = Math.random() > 0.5
+                if(random){
+                    success(`Data fetched successfuly from ${url}`)
+                }else{
+                    fail(`Data fetched unsuccessfully from ${url}`)
+                }
+            }, timeDelayed)
+    },)
+ }
+        const getDelayedData = async() =>{
+           try{
+            const result = await Promise.race([
+                fetchDelayedData('reddit.com'),
+                fetchDelayedData('facebook.com'),
+                // make sure to add _, in promise because we're not dealing with the resolve part
+                // only the reject if the promise times out 
+                new Promise ((_, reject) =>setTimeout(()=>reject("Request timed out"), 4000))
+            ])
+            console.log(result)
+           }catch (error){
+            console.log(error)
+           }
+        }
 
-// getDelayedData()
+getDelayedData()
 
 // Exercise #4: Fetch Data Sequentially with Error Handling
 // Write a function that gets data from two URLs sequentially. If one fails,
@@ -289,6 +289,8 @@ getSequentialData("weather.com", "nbc.com")
             let fetched = 0
             let failed = 0
             try{
+                // use promise.race for and urls in array for parallel execution
+                // simultaneous execution without timedOut does not need to be in a promise.race()
                 const result = await Promise.race([
                     fetchParallelData('reddit.com'),
                     fetchParallelData('facebook.com'),
@@ -300,7 +302,7 @@ getSequentialData("weather.com", "nbc.com")
             }catch(error){
                 failed++
                 console.log(error)
-            }if(fetched > 1){
+            }if(fetched >= 1){
                 console.log("At least one data fetched succcesfully")
             }else if(failed === 3){
                 console.log("All requests failed")
@@ -312,6 +314,46 @@ getSequentialData("weather.com", "nbc.com")
 // Create a function that fetches data from a URL, but if it fails, retry up to 3 times before rejecting with a failure message. 
 // You should use a delay of 2 seconds between each retry attempt.
 
+const fetchDataRetries = (url, retries = 3) =>{
+    return new Promise ((resolve, reject)=>{
+        console.log("Retrieving data...")
+
+        // set Delay 2 seconds in between
+        const timeDelay = (Math.random() * 2000) + 1000
+
+            setTimeout(()=>{
+                let chance = Math.random() > 0.5
+                if(chance){
+                    resolve(`${url} data retrieval success`)
+                }else{
+                    // NESTING IF STATEMENT HERE
+                    // because else happens when retrieval is not a success
+                    // nesting if gives it direction to what happens to those errors
+                    if(retries > 0){
+                        console.log(`Retrying fetch with ${retries} retries left`)
+                        fetchDataRetries(url, retries -1)
+                        .then(resolve)
+                        .catch(reject)
+                        // if the if statement doesnt work
+                        // this nested else is the last resort.
+                    }else{
+                        reject(`${retries} retries left. Data fetching failed`)
+                    }
+                
+                }
+            }, timeDelay) 
+    })
+}
+                const getDataRetries = async () =>{
+                    try{
+                        const result = await fetchDataRetries('reddit.com')
+                        console.log(result)
+                    }catch(error){
+                        console.log(error)
+                    }
+                }
+
+        getDataRetries()
 
 // Exercise #7 :Promise Race with a Delay
 // Simulate a race between three different promises that resolve with different time delays 
