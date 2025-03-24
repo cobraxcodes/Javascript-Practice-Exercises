@@ -273,8 +273,6 @@ getSequentialData("weather.com", "nbc.com")
         return new Promise ((resolve, reject) =>{
             console.log("Parallel data being retrieved ...")
 
-            let timeParallel = (Math.random()*2000) + 2000;
-
             setTimeout(()=>{
                 let random = Math.random() > 0.5
                 if(random){
@@ -282,7 +280,7 @@ getSequentialData("weather.com", "nbc.com")
                 }else{
                     reject(`Data rejected by ${url}`)
                 }
-            }, timeParallel)
+            }, 2000)
         })
     }
         const getParallelData = async() =>{
@@ -358,3 +356,40 @@ const fetchDataRetries = (url, retries = 3) =>{
 // Exercise #7 :Promise Race with a Delay
 // Simulate a race between three different promises that resolve with different time delays 
 // (e.g., 1 second, 2 seconds, and 3 seconds). Log the result as soon as the first one resolves and indicate the time taken.
+
+const fetchRaceDelay = (url) =>{
+    return new Promise ((resolve, reject) =>{
+            console.log('Retrieving data...')
+
+            let timeDelay = Math.floor(Math.random() * 2000) + 1000
+
+            setTimeout(()=>{
+                let chance = Math.random() > 0.5
+                if(chance){
+                    resolve(`${url} data recieved`)
+                }else{
+                    reject(`${url} data failed to retrieve`)
+                }
+            }, timeDelay)
+     })
+}
+
+    const getRaceDelay = async () =>{
+        // records start time of function
+        const startTime = Date.now()
+        try{
+            const result = await Promise.race([
+               fetchRaceDelay('reddit.com'),
+                fetchRaceDelay('facebook.com'),
+                fetchRaceDelay('netflix.com'),
+            ])
+            // calculates the end time of function
+            const endTime = Date.now() - startTime
+            console.log(`${result} was the fastest at ${endTime} time `)
+        }catch(error){
+            const endTime = Date.now() - startTime
+            console.log(`${error} slowest at ${endTime}`)
+        }
+    }
+
+    getRaceDelay()
