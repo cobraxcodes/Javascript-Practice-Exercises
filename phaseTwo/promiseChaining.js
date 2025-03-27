@@ -93,7 +93,40 @@ doubleNum(29)
 // Process the payment.
 // Ship the order.
 // Log the final shipping confirmation.
+const placeOrder = (str)=>{
+    return new Promise ((resolve) =>{
+        console.log(`Order Placed : ${str}`)
 
+        setTimeout(()=>{
+            resolve(str)
+        }, 2000)
+    })
+}
+
+const processPayment = (str) =>{
+    return new Promise((resolve)=>{
+        console.log(`Payment sucessful for: ${str}`)
+
+        setTimeout(()=>{
+            resolve(str)
+        },1500)
+    })
+}
+
+const shipOrder = (str) =>{
+    return new Promise((resolve)=>{
+        console.log(`Order shipped: ${str}`)
+
+        setTimeout(()=>{
+            resolve(str)
+        }, 1000)
+    })
+}
+
+placeOrder()
+    .then((result1) => processPayment(result1))
+    .then((result2) => shipOrder(result2))
+    .catch((error)=> console.log(error))
 
 // Exercise 3: Handling Errors in a Chain
 // Modify Exercise 2, but now make processPayment() fail randomly 50% of the time (reject with "Payment failed").
