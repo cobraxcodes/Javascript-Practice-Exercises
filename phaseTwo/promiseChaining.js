@@ -46,9 +46,43 @@
 // Start with 5.
 // Double it → Square the result → Subtract 5.
 // Log the final output.
+const doubleNum = (num) =>{
+    return new Promise ((resolve) =>{
+        console.log(`Doubling ${num}`)
+        setTimeout(()=>{
+            let double = num * 2
+            resolve(double)
+        }, 1000)
+    })
+}
 
+const squareNumber = (num) =>{
+    return new Promise ((resolve)=>{
+        console.log(`Squaring ${num} ...`)
 
+        setTimeout(()=>{
+            let squared = num * num
+            resolve(squared)
+        }, 1000)
+    })
+}
 
+const subtractFive = (num) =>{
+    return new Promise ((resolve) =>{
+        console.log(`Subtracting 5 from ${num}`)
+
+        setTimeout (()=>{
+            let subtract = num - 5
+            resolve(subtract)
+        }, 1000)
+    })
+}
+
+doubleNum(29)
+    .then((result) => squareNumber(result)) 
+    .then((result2) => subtractFive(result2))
+    .then((finalResult)=> console.log(`Final Output: ${finalResult}`))
+    .catch((error) => console.log(error))
 // Exercise 2: Simulating an Order Processing System
 // Create three functions that return Promises:
 // placeOrder(order): Resolves in 2 seconds with "Order placed: <order>".
