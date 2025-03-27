@@ -131,7 +131,45 @@ placeOrder()
 // Exercise 3: Handling Errors in a Chain
 // Modify Exercise 2, but now make processPayment() fail randomly 50% of the time (reject with "Payment failed").
 // 👉 If it fails, catch the error and log: "Order failed: Payment could not be processed".
+const placeOrder = (str)=>{
+    return new Promise ((resolve) =>{
+        console.log(`Order Placed : ${str}`)
 
+        setTimeout(()=>{
+            resolve(str)
+        }, 2000)
+    })
+}
+
+const processPayment = (str) =>{
+    return new Promise((resolve, reject)=>{
+        console.log("Payment processing")
+
+        setTimeout(()=>{
+          let random = Math.random() > 0.5
+          if(random){
+          resolve(str)
+          }else{
+          reject(`Order failed: ${str} payment could not be processed`)
+          }
+        },1500)
+    })
+}
+
+const shipOrder = (str) =>{
+    return new Promise((resolve)=>{
+        console.log(`Order shipped: ${str}`)
+
+        setTimeout(()=>{
+            resolve(str)
+        }, 1000)
+    })
+}
+
+placeOrder("Laptop")
+    .then((result1) => processPayment(result1))
+    .then((result2) => shipOrder(result2))
+    .catch((error)=> console.log(error))
 
 // Exercise 4: Simulating a User Login System
 // Create three functions that return Promises:
