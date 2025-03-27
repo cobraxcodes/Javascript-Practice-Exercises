@@ -198,7 +198,6 @@ placeOrder("Laptop")
 
 const validateUser = (username) =>{
     return new Promise ((resolve, reject)=>{
-        console.log(`Validating ${username}`)
       
       setTimeout(()=>{
       if(username.toLowerCase() === "admin"){
@@ -247,7 +246,40 @@ const validateUser = (username) =>{
 // Start with "San Francisco".
 // Fetch city data → Get temperature → Suggest clothing.
 // Log the final clothing suggestion.
-
+const fetchCity = (city) =>{
+    return new Promise ((resolve)=>{
+                    console.log(`Fetching weather for ${city}`)
+           
+           setTimeout(()=>{
+           resolve(city)
+           }, 1000)
+    })
+    }
+    
+    const getTemperature = (city) =>{
+    return new Promise((resolve)=>{
+            console.log(`The temperature in ${city} is 25 C`)
+       
+       setTimeout(()=>{
+       resolve(city)
+       }, 1500)
+    })
+    }
+    
+    const suggestClothing = (temp) =>{
+    return new Promise ((resolve)=>{
+                    console.log("It's warm, wear light clothing")
+           
+           setTimeout(()=>{
+           resolve(temp)
+           }, 1000)
+    })
+    }
+    
+    fetchCity("San Francisco")
+    .then((result1)=> getTemperature(result1))
+    .then((result2)=> suggestClothing(result2))
+   /*  .then((finalResult)=>console.log(finalResult)) */
 
 // Exercise 6: Movie Recommendation System
 // Create functions that return Promises:
