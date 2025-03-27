@@ -183,6 +183,60 @@ placeOrder("Laptop")
 // Log the final message.
 // Handle errors (e.g., if the username isn’t "admin", stop the chain).
 
+// Exercise 4: Simulating a User Login System
+// Create three functions that return Promises:
+// validateUser(username): Resolves in 1 second if the username is "admin", 
+/* otherwise rejects with "Invalid user". */
+// fetchUserData(username): Resolves in 1.5 seconds with "User data for: <username>".
+// showDashboard(data): Resolves in 1 second with "Welcome to the dashboard: <data>".
+// 👉 Chain them to:
+// Validate the username "admin".
+// Fetch user data.
+// Show the dashboard.
+// Log the final message.
+// Handle errors (e.g., if the username isn’t "admin", stop the chain).
+
+const validateUser = (username) =>{
+    return new Promise ((resolve, reject)=>{
+        console.log(`Validating ${username}`)
+      
+      setTimeout(()=>{
+      if(username.toLowerCase() === "admin"){
+      resolve(`${username}`)
+      }else{
+      reject("Invalid user")
+      }
+      
+      }, 1000)
+    })
+    }
+    
+    const fetchUserData = (username) =>{
+    return new Promise ((resolve)=>{
+        console.log(`User data for: ${username}`)
+      
+      setTimeout(()=>{
+      resolve(username)
+      }, 1500)
+    })
+    }
+    
+    const showDashboard = (data) =>{
+    return new Promise ((resolve) =>{
+        console.log(`Welcome to dashboard: ${data}`)
+      
+      setTimeout(()=>{
+      resolve(data)
+      }, 1000)
+    })
+    }
+    
+    validateUser("x")
+    .then((result1) =>fetchUserData(result1))
+    .then((result2) =>showDashboard(result2))
+    /* .then((finalResult) =>console.log(finalResult)) */
+    .catch((error)=>console.log(error))
+
 
 // Exercise 5: Fetching Weather Data with Fake API
 // Create three functions that return Promises:
