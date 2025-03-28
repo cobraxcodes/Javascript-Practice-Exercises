@@ -131,45 +131,45 @@ placeOrder()
 // Exercise 3: Handling Errors in a Chain
 // Modify Exercise 2, but now make processPayment() fail randomly 50% of the time (reject with "Payment failed").
 // 👉 If it fails, catch the error and log: "Order failed: Payment could not be processed".
-const placeOrder = (str)=>{
-    return new Promise ((resolve) =>{
-        console.log(`Order Placed : ${str}`)
+// const placeOrder = (str)=>{
+//     return new Promise ((resolve) =>{
+//         console.log(`Order Placed : ${str}`)
 
-        setTimeout(()=>{
-            resolve(str)
-        }, 2000)
-    })
-}
+//         setTimeout(()=>{
+//             resolve(str)
+//         }, 2000)
+//     })
+// }
 
-const processPayment = (str) =>{
-    return new Promise((resolve, reject)=>{
-        console.log("Payment processing")
+// const processPayment = (str) =>{
+//     return new Promise((resolve, reject)=>{
+//         console.log("Payment processing")
 
-        setTimeout(()=>{
-          let random = Math.random() > 0.5
-          if(random){
-          resolve(str)
-          }else{
-          reject(`Order failed: ${str} payment could not be processed`)
-          }
-        },1500)
-    })
-}
+//         setTimeout(()=>{
+//           let random = Math.random() > 0.5
+//           if(random){
+//           resolve(str)
+//           }else{
+//           reject(`Order failed: ${str} payment could not be processed`)
+//           }
+//         },1500)
+//     })
+// }
 
-const shipOrder = (str) =>{
-    return new Promise((resolve)=>{
-        console.log(`Order shipped: ${str}`)
+// const shipOrder = (str) =>{
+//     return new Promise((resolve)=>{
+//         console.log(`Order shipped: ${str}`)
 
-        setTimeout(()=>{
-            resolve(str)
-        }, 1000)
-    })
-}
+//         setTimeout(()=>{
+//             resolve(str)
+//         }, 1000)
+//     })
+// }
 
-placeOrder("Laptop")
-    .then((result1) => processPayment(result1))
-    .then((result2) => shipOrder(result2))
-    .catch((error)=> console.log(error))
+// placeOrder("Laptop")
+//     .then((result1) => processPayment(result1))
+//     .then((result2) => shipOrder(result2))
+//     .catch((error)=> console.log(error))
 
 // Exercise 4: Simulating a User Login System
 // Create three functions that return Promises:
@@ -290,6 +290,42 @@ const fetchCity = (city) =>{
 // Get preferences for userId: 101.
 // Fetch movie recommendations based on the user’s preference.
 // Display the movies.
+
+const getUserPreferences = (userId) =>{
+    return new Promise ((resolve) =>{
+        console.log(`User ${userId} prefers Action movies`)
+
+        setTimeout(()=>{
+            resolve("Action")
+        }, 1000)
+    })
+}
+
+const fetchRecommendedMovies = (genre) =>{
+    return new Promise ((resolve)=>{
+        console.log("Recommended movies: Mad Max, John Wick")
+
+        setTimeout(()=>{
+            resolve(["Aquaman", "John Wick", "Wonder Woman"])
+        }, 1500)
+    })
+}
+
+const displayMovies = (movies) =>{
+    return new Promise ((resolve) =>{
+        console.log(`Here are your favorite movies: ${movies}`)
+
+        setTimeout(()=>{
+            resolve(movies)
+        }, 1000)
+    })
+}
+
+getUserPreferences(101)
+    .then((result1) => fetchRecommendedMovies(result1))
+    .then((result2) => displayMovies(result2))
+    /* .then((finalResult) => console.log(finalResult)) */
+    .catch((errors) => console.log(errors))
 
 
 // Exercise 7: Simulating an Online Quiz
