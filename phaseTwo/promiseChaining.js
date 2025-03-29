@@ -339,6 +339,55 @@ getUserPreferences(101)
 // Show results only if the answer is correct.
 // If the answer is wrong, stop the chain and log "Try again!".
 
+const startQuiz = (start) => {
+    return new Promise((resolve) => {
+        console.log("Quiz has started");
+        setTimeout(() => {
+            resolve(start);
+        }, 1000);
+    });
+};
+
+const answerQuestion = (answer) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let random = Math.random() > 0.5; 
+            if (random) {
+                resolve("Correct answer!");
+            } else {
+                reject("Wrong answer!");
+                console.log("Wrong answer!")
+            }
+        }, 1500);
+    });
+};
+
+const showResults = (done) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Quiz completed");
+        }, 1000); 
+    });
+};
+
+startQuiz()
+    .then((result)=>{
+   return  answerQuestion(result)
+    })
+    .then((result2)=>{
+    console.log(result2)
+   return  showResults(result2)
+    })
+    .then((finalResult)=>{
+    console.log(finalResult)
+    })
+    .catch((error) =>{
+    console.log("Try again!")
+    return error
+})
+  
+
+
 // Exercise 8: Chaining API Calls (Fake Data)
 // Create three functions that return Promises:
 // fetchUserID(username): Resolves in 1 second with "User ID for <username> is 456".
