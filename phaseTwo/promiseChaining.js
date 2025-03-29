@@ -398,7 +398,50 @@ startQuiz()
 // Get the user ID → Fetch their posts → Display the posts.
 // Handle errors (e.g., if the user isn’t found, stop the chain).
 
+const fetchUserID = (username) =>{
+    return new Promise ((resolve, reject) =>{
+        setTimeout(() =>{
+        let random = Math.random() > 0.5
+        if(random){
+               resolve(`User ID for ${username} is 456`);
+        }else{
+         reject(`User not found`)
+        }
+        }, 1000)
+    })
+}
 
+const fetchUserPost = (userId) =>{
+    return new Promise ((resolve) =>{
+        setTimeout(() =>{
+        let posts = ["Hi", "Hello", "Hey World!"]
+            resolve(`Posts by ${userId}: ${posts}`)
+        }, 1500)
+    })
+}
+
+const displayPosts = (posts) =>{
+    return new Promise ((resolve, reject) =>{
+        setTimeout(() =>{
+            resolve(`Showing posts: ${posts}`)
+            reject("Invalid")
+        }, 1000)
+    })
+}
+
+
+fetchUserID("john Doe")
+    .then((result)=>{
+    console.log(result)
+   return fetchUserPost(result)
+    })
+   .then((result1)=>{
+    console.log(result1)
+   return displayPosts(result1)
+   })
+    .then((finalResult) => console.log(finalResult))
+    .catch((error) => console.log(error))
+     
 // Exercise 9: Simulating a Banking System
 // Create three functions that return Promises:
 // checkBalance(accountNumber): Resolves in 1 second with "Balance: $500", but 50% of the time fails with "Insufficient funds".
@@ -409,8 +452,55 @@ startQuiz()
 // Withdraw $100.
 // Confirm the transaction.
 // If funds are insufficient, stop the chain and log "Transaction failed!".
+const checkBalance = (accountNumber) =>{
+    return new Promise ((resolve, reject) =>{
+        console.log("Checking account balance")
 
+        setTimeout(()=>{
+            let random = Math.random() > 0.5
+            if(random){
+            let balance = 500
+                resolve(`Balance for ${accountNumber}: ${balance}`)
+            }else{
+                reject(`Insuffient funds. You ain't go no money :(`)
+            }
+        }, 1000)
+    })
+}
 
+const withdrawAmount = (amount) =>{
+    return new Promise ((resolve, reject)=>{
+        setTimeout(()=>{
+        let withdraw = 100
+        let balance = 500 - withdraw
+       if(withdraw <= 500){
+        resolve(`Withdrew ${withdraw}, remaining balance of ${balance}`)
+       }else{
+        reject('Insufficient funds! You aint got no money :(')
+       }
+        }, 1500)
+    }) 
+}
+
+const confirmTransaction = () =>{
+    return new Promise((resolve) =>{
+        setTimeout(()=>{
+            resolve("Transaction successful")
+        },1000)
+    })
+}
+
+checkBalance(12345)
+.then((result) =>{
+console.log(result)
+return withdrawAmount(result)
+})
+.then((result1)=>{
+console.log(result1)
+return confirmTransaction(result1)
+})
+.then((finalResult) => console.log(finalResult))
+.catch((error) => console.log(`Transaction failed: ${error}`))
 // Exercise 10: Booking a Flight
 // Create three functions that return Promises:
 // searchFlights(from, to): Resolves in 1.5 seconds with "Flights found from <from> to <to>".
