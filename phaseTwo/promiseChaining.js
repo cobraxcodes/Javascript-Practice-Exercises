@@ -510,3 +510,45 @@ return confirmTransaction(result1)
 // Search for flights from "New York" to "Los Angeles".
 // Select flight ID 9876.
 // Confirm the booking.
+
+
+const searchFlights = (from, to) =>{
+    return new Promise ((resolve, reject) =>{
+        console.log("Finding the best flights for you ... ")
+
+        setTimeout(() =>{
+            let random = Math.random() > 0.5
+            if(random){
+                resolve(`Flights from ${from} to ${to}`)
+            }else{
+                reject("No flights found")
+            }
+        }, 1500)
+    })
+}
+
+const selectFlight = (flightId)=>{
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(`Flight ${flightId} selected`)
+        }, 1700)
+    })
+}
+
+const confirmBooking = () =>{
+    return new Promise((resolve)=>{
+        resolve('Booking confirmed!')
+    }, 2000)
+}
+
+searchFlights("Las Vegas", "Honolulu")
+.then((result)=>{
+    console.log(result)
+    return selectFlight(123456)
+})
+.then((result1)=>{
+    console.log(result1)
+    return confirmBooking(result1)
+})
+.then((finalResult) => console.log(finalResult))
+.catch((error) => console.log(error))
