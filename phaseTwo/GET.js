@@ -98,6 +98,8 @@
 // //     console.log(firstCountry.population)
 // // })
 // // .catch(error => console.log(error))
+
+
 // // Challenge #7
 // // 5️⃣ Fetch a Joke 🤣
 // // Use the JokeAPI to get a random programming-related joke.
@@ -170,3 +172,84 @@ fetch("http://www.omdbapi.com/?s=batman&apikey=c0527436")
          console.log(`Year: ${five.Year}`)
 })
 .catch(error => console.log(error))
+
+
+
+
+
+
+
+// LOOPING THROUGH APIs
+// 1️⃣ Fetch Latest News Articles 📰
+// API: News API
+// 📌 Why? News sites & dashboards need to display multiple articles.
+// 🔹 Task: Fetch the latest 5 headlines from BBC News and log the title & description.
+
+
+
+// 2️⃣ Fetch a List of Space Missions 🚀
+// API: SpaceX API
+// 📌 Why? Useful for space-related apps & tracking launches.
+// 🔹 Task: Fetch the last 5 SpaceX launches and log the mission name & launch year.
+
+
+
+
+// 3️⃣ Fetch Top Trending Movies 🎬
+// API: TMDb API
+// 📌 Why? Movie apps need real-time trending lists.
+// 🔹 Task: Fetch the top 5 trending movies today and log title & release date.
+
+
+
+// 4️⃣ Fetch Random Chuck Norris Jokes 🤣
+// API: Chuck Norris Jokes
+// 📌 Why? Fun apps use APIs for random jokes & entertainment.
+// 🔹 Task: Fetch and log 5 different Chuck Norris jokes.
+
+
+
+// 5️⃣ Fetch Cryptocurrency Prices 💰
+// API: CoinGecko
+// 📌 Why? Crypto apps show real-time prices.
+// 🔹 Task: Fetch and log the prices of Bitcoin, Ethereum, Solana, Dogecoin, and Cardano.
+
+
+
+
+// 6️⃣ Fetch Popular JavaScript Books 📚
+// API: Google Books API
+// 📌 Why? Useful for book review sites & recommendation engines.
+// 🔹 Task: Search for “JavaScript” books and log the titles & authors of 5 books.
+
+
+
+
+// 7️⃣ Fetch 5 Remote Job Listings 💼
+// API: Remotive API
+// 📌 Why? Used for job search sites & career platforms.
+// 🔹 Task: Fetch and display 5 remote job titles and company names.
+
+
+
+
+// 8️⃣ Fetch 5 Random Countries 🌍
+// API: REST Countries
+// 📌 Why? Geography & travel apps need country data.
+// 🔹 Task: Fetch and display 5 country names & their capital cities.
+
+
+
+
+// 9️⃣ Fetch 5 Random Cat Images 🐱
+// API: The Cat API
+// 📌 Why? Used in pet adoption & entertainment apps.
+// 🔹 Task: Fetch and display 5 random cat images.
+
+
+
+// 🔟 Fetch 5 Upcoming Sports Events ⚽
+// API: The SportsDB
+// 📌 Why? Sports apps use this for event schedules.
+// 🔹 Task: Fetch and log 5 upcoming events for the English Premier League.
+
