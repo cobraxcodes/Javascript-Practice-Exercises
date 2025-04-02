@@ -56,32 +56,41 @@
 // // }))
 // .catch(error => console.log(error))
 
-
+// Challenge #4
 // 1️⃣ Fetch Random Cat Facts 🐱
 // Use the Cat Facts API to fetch and log a random cat fact.
 // API URL: https://catfact.ninja/fact
 // Task: Log the fact from the response.
 
-fetch("https://catfact.ninja/fact")
-.then(result => result.json())
-.then(data => console.log(data.fact))
-.catch(error => console.log(`Error occured:${error}`))
+// fetch("https://catfact.ninja/fact")
+// .then(result => result.json())
+// .then(data => console.log(data.fact))
+// .catch(error => console.log(`Error occured:${error}`))
 
-// 2️⃣ Fetch Random Quotes 📜
-// Use the Quotable API to get a random inspirational quote.
-// API URL: https://api.quotable.io/random
-// Task: Log the quote and the author's name.
 
+// Challenge #5
 // 3️⃣ Fetch Pokemon Data ⚡
 // Use the PokéAPI to fetch data for a specific Pokémon (e.g., Pikachu).
 // API URL: https://pokeapi.co/api/v2/pokemon/pikachu
 // Task: Log Pikachu's name, base experience, and types.
 
+fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+.then(res => res.json())
+.then(data =>{
+    console.log(data.name)
+    console.log(data.base_experience)
+    console.log(data.types)
+})
+.catch(error => console.log(error))
+
+// Challenge #6
 // 4️⃣ Fetch a List of Countries 🌍
 // Use the Rest Countries API to fetch a list of countries.
 // API URL: https://restcountries.com/v3.1/all
 // Task: Log the name, capital, and population of the first country in the list.
 
+
+// Challenge #7
 // 5️⃣ Fetch a Joke 🤣
 // Use the JokeAPI to get a random programming-related joke.
 // API URL: https://v2.jokeapi.dev/joke/Programming
