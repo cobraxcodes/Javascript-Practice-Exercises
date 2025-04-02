@@ -113,31 +113,34 @@
 // // })
 // // .catch(error => console.log(error))
 
-// Challenge #8 - Fetch a Random Activity 🎲
-// API: Bored API
-// URL: https://www.boredapi.com/api/activity
-// Task: Log a random activity suggestion.
 
-
-// Challenge #9 - Fetch Cryptocurrency Prices 💰
+// Challenge #8 - Fetch Cryptocurrency Prices 💰
 // API: CoinGecko
 // URL: https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd
 // Task: Log Bitcoin and Ethereum prices in USD.
 
+// fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd")
+// .then(result => result.json())
+// .then(data =>{
+//     const bprice = data.bitcoin.usd
+//     const eprice = data.ethereum.usd
+//    console.log(`Bitcoin Price: $${bprice}`)
+//    console.log(`Ethereum Price: $${eprice}`)
+// })
+// .catch(error => console.log(error))
 
-// Challenge #10 - Fetch a NASA Astronomy Picture 🪐
+
+// Challenge #9 - Fetch a NASA Astronomy Picture 🪐
 // API: NASA APOD API
 // URL: https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
 // Task: Log the title, explanation, and image URL of NASA’s Astronomy Picture of the Day.
+fetch("https://api.nasa.gov/planetary/apod?api_key=M8BARK7p4Dke7weFzONxDkFC7eeeDsZ9eBepcHx8")
+.then(res => res.json())
+.then(data => console.log(data))
+.catch(error => console.log(error))
 
 
-// Challenge #11 - Fetch Random Kanye West Quotes 🎤
-// API: Kanye Rest API
-// URL: https://api.kanye.rest/
-// Task: Log a random Kanye West quote.
-
-
-// Challenge #12 - Fetch Top 10 Movies 🎬
+// Challenge #10 - Fetch Top 10 Movies 🎬
 // API: OMDb API
 // URL: http://www.omdbapi.com/?s=batman&apikey=YOUR_API_KEY
 // Task: Log the title and year of the first 5 movies from the search results.
