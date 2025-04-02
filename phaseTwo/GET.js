@@ -136,7 +136,11 @@
 // Task: Log the title, explanation, and image URL of NASA’s Astronomy Picture of the Day.
 fetch("https://api.nasa.gov/planetary/apod?api_key=M8BARK7p4Dke7weFzONxDkFC7eeeDsZ9eBepcHx8")
 .then(res => res.json())
-.then(data => console.log(data))
+.then(data=>{
+    console.log(`Title: ${data.title}`)
+    console.log(`Summary: ${data.explanation}`)
+    console.log(data.hdurl)
+})
 .catch(error => console.log(error))
 
 
