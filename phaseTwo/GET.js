@@ -134,17 +134,39 @@
 // API: NASA APOD API
 // URL: https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY
 // Task: Log the title, explanation, and image URL of NASA’s Astronomy Picture of the Day.
-fetch("https://api.nasa.gov/planetary/apod?api_key=M8BARK7p4Dke7weFzONxDkFC7eeeDsZ9eBepcHx8")
-.then(res => res.json())
-.then(data=>{
-    console.log(`Title: ${data.title}`)
-    console.log(`Summary: ${data.explanation}`)
-    console.log(data.hdurl)
-})
-.catch(error => console.log(error))
+
+// fetch("https://api.nasa.gov/planetary/apod?api_key=M8BARK7p4Dke7weFzONxDkFC7eeeDsZ9eBepcHx8")
+// .then(res => res.json())
+// .then(data=>{
+//     console.log(`Title: ${data.title}`)
+//     console.log(`Summary: ${data.explanation}`)
+//     console.log(data.hdurl)
+// })
+// .catch(error => console.log(error))
 
 
 // Challenge #10 - Fetch Top 10 Movies 🎬
 // API: OMDb API
 // URL: http://www.omdbapi.com/?s=batman&apikey=YOUR_API_KEY
 // Task: Log the title and year of the first 5 movies from the search results.
+
+fetch("http://www.omdbapi.com/?s=batman&apikey=c0527436")
+.then(res => res.json())
+.then(data =>{
+    const first = data.Search[0]
+        console.log(`Title: ${first.Title}`)
+        console.log(`Year: ${first.Year}`)
+    const second = data.Search[1]
+        console.log(`Title: ${second.Title}`)
+        console.log(`Year: ${second.Year}`)
+    const third = data.Search[2]
+         console.log(`Title: ${third.Title}`)
+         console.log(`Year: ${third.Year}`)
+    const fourth = data.Search[3]
+         console.log(`Title: ${fourth.Title}`)
+         console.log(`Year: ${fourth.Year}`)
+    const five = data.Search[4]
+         console.log(`Title: ${five.Title}`)
+         console.log(`Year: ${five.Year}`)
+})
+.catch(error => console.log(error))
