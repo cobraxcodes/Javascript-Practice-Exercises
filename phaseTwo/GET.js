@@ -74,14 +74,14 @@
 // API URL: https://pokeapi.co/api/v2/pokemon/pikachu
 // Task: Log Pikachu's name, base experience, and types.
 
-fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
-.then(res => res.json())
-.then(data =>{
-    console.log(data.name)
-    console.log(data.base_experience)
-    console.log(data.types)
-})
-.catch(error => console.log(error))
+// fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+// .then(res => res.json())
+// .then(data =>{
+//     console.log(data.name)
+//     console.log(data.base_experience)
+//     console.log(data.types)
+// })
+// .catch(error => console.log(error))
 
 // Challenge #6
 // 4️⃣ Fetch a List of Countries 🌍
@@ -89,7 +89,17 @@ fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
 // API URL: https://restcountries.com/v3.1/all
 // Task: Log the name, capital, and population of the first country in the list.
 
+fetch("https://restcountries.com/v3.1/all")
+.then(result => result.json())
+.then(data =>{
+    const firstCountry = data[0]
+    console.log(firstCountry.name.common)
+    console.log(firstCountry.capital)
+    console.log(firstCountry.population)
+})
 
+
+.catch(error => console.log(error))
 // Challenge #7
 // 5️⃣ Fetch a Joke 🤣
 // Use the JokeAPI to get a random programming-related joke.
