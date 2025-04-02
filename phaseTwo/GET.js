@@ -89,19 +89,26 @@
 // API URL: https://restcountries.com/v3.1/all
 // Task: Log the name, capital, and population of the first country in the list.
 
-fetch("https://restcountries.com/v3.1/all")
-.then(result => result.json())
-.then(data =>{
-    const firstCountry = data[0]
-    console.log(firstCountry.name.common)
-    console.log(firstCountry.capital)
-    console.log(firstCountry.population)
-})
-
-
-.catch(error => console.log(error))
+// fetch("https://restcountries.com/v3.1/all")
+// .then(result => result.json())
+// .then(data =>{
+//     const firstCountry = data[0]
+//     console.log(firstCountry.name.common)
+//     console.log(firstCountry.capital)
+//     console.log(firstCountry.population)
+// })
+// .catch(error => console.log(error))
 // Challenge #7
 // 5️⃣ Fetch a Joke 🤣
 // Use the JokeAPI to get a random programming-related joke.
 // API URL: https://v2.jokeapi.dev/joke/Programming
 // Task: If it's a single-part joke, log it. If it's a two-part joke, log the setup and punchline separately.
+
+fetch("https://v2.jokeapi.dev/joke/Programming")
+.then(res => res.json())
+.then(data =>{
+    console.log(data.setup)
+    console.log(data.delivery)
+
+})
+.catch(error => console.log(error))
