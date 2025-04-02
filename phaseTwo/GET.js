@@ -62,6 +62,11 @@
 // API URL: https://catfact.ninja/fact
 // Task: Log the fact from the response.
 
+fetch("https://catfact.ninja/fact")
+.then(result => result.json())
+.then(data => console.log(data.fact))
+.catch(error => console.log(`Error occured:${error}`))
+
 // 2️⃣ Fetch Random Quotes 📜
 // Use the Quotable API to get a random inspirational quote.
 // API URL: https://api.quotable.io/random
