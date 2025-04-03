@@ -184,12 +184,12 @@
 // API: News API
 // 📌 Why? News sites & dashboards need to display multiple articles.
 // 🔹 Task: Fetch the latest 5 headlines from BBC News and log the title & description.
-fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=a0b828bf5efd449b9980f7b20f9f8b59")
-.then(res => res.json())
-.then(data =>{
-    data.articles.slice(0,5).forEach(news => console.log(`Title: ${news.title} Description: ${news.description}`))
-})
-.catch(error => console.log(error))
+// fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=a0b828bf5efd449b9980f7b20f9f8b59")
+// .then(res => res.json())
+// .then(data =>{
+//     data.articles.slice(0,5).forEach(news => console.log(`Title: ${news.title} Description: ${news.description}`))
+// })
+// .catch(error => console.log(error))
 
 
 
@@ -197,16 +197,20 @@ fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=a0b828bf5efd449b99
 // API: SpaceX API
 // 📌 Why? Useful for space-related apps & tracking launches.
 // 🔹 Task: Fetch the last 5 SpaceX launches and log the mission name & launch year.
-
-
-
+// // fetch("https://api.spacexdata.com/v5/launches")
+// // .then(res => res.json())
+// // // .then(data => console.log(data))
+// // .then(data =>{
+// //     data.slice(-5).forEach(launch => console.log(`Launch Name: ${launch.name} Launch Date: ${launch.date_utc}`))
+// })
 
 // 3️⃣ Fetch Top Trending Movies 🎬
 // API: TMDb API
 // 📌 Why? Movie apps need real-time trending lists.
 // 🔹 Task: Fetch the top 5 trending movies today and log title & release date.
-
-
+fetch(" http://www.omdbapi.com/?i=tt3896198&apikey=c0527436")
+.then(res => res.json())
+.then(data => console.log(data))
 
 // 4️⃣ Fetch Random Chuck Norris Jokes 🤣
 // API: Chuck Norris Jokes
