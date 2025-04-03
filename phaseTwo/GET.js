@@ -228,10 +228,18 @@
 // API: Chuck Norris Jokes
 // 📌 Why? Fun apps use APIs for random jokes & entertainment.
 // 🔹 Task: Fetch and log 5 different Chuck Norris jokes.
-fetch("https://api.chucknorris.io/jokes/random")
-.then(res => res.json())
-.then(res => console.log(res))
+const chuck = async () =>{
+        for(let i=0; i<5; i++){
+            try{
+                const result = await fetch("https://api.chucknorris.io/jokes/random")
+                const data = await result.json()
+                console.log(data.value)
+            }catch(error) {
+                console.log(error)
+            }
+}}
 
+chuck()
 
 // 5️⃣ Fetch Cryptocurrency Prices 💰
 // API: CoinGecko
