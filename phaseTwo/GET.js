@@ -208,15 +208,29 @@
 // API: TMDb API
 // 📌 Why? Movie apps need real-time trending lists.
 // 🔹 Task: Fetch the top 5 trending movies today and log title & release date.
-fetch(" http://www.omdbapi.com/?i=tt3896198&apikey=c0527436")
-.then(res => res.json())
-.then(data => console.log(data))
+// const options = {
+//     method: 'GET',
+//     headers: {
+//       accept: 'application/json',
+//       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMDEzZDNjMWU3ZDQ1OGYyZjQ1OWFmOTJkNjgzNzhkYiIsIm5iZiI6MTc0MzY1NTE5Mi4zOCwic3ViIjoiNjdlZTExMTg0OTA5ZTI1YjA3YTc5NzAxIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.hy6V-Aah7jJW0BYDUMivqIE80-rh8sGeQa-FpjfT2nY'
+//     }
+//   };
+  
+//   fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US', options)
+//     .then(res => res.json())
+//     // .then(data => console.log(data))
+//     .then(data =>{
+//         data.results.slice(0,5).forEach(movie => console.log(`Movie Title: ${movie.title}   Release Date: ${movie.release_date}`))
+//     })
+//     .catch(err => console.error(err));
 
 // 4️⃣ Fetch Random Chuck Norris Jokes 🤣
 // API: Chuck Norris Jokes
 // 📌 Why? Fun apps use APIs for random jokes & entertainment.
 // 🔹 Task: Fetch and log 5 different Chuck Norris jokes.
-
+fetch("https://api.chucknorris.io/jokes/random")
+.then(res => res.json())
+.then(res => console.log(res))
 
 
 // 5️⃣ Fetch Cryptocurrency Prices 💰
