@@ -228,23 +228,36 @@
 // API: Chuck Norris Jokes
 // 📌 Why? Fun apps use APIs for random jokes & entertainment.
 // 🔹 Task: Fetch and log 5 different Chuck Norris jokes.
-const chuck = async () =>{
-        for(let i=0; i<5; i++){
-            try{
-                const result = await fetch("https://api.chucknorris.io/jokes/random")
-                const data = await result.json()
-                console.log(data.value)
-            }catch(error) {
-                console.log(error)
-            }
-}}
+// const chuck = async () =>{
+//         for(let i=0; i<5; i++){
+//             try{
+//                 const result = await fetch("https://api.chucknorris.io/jokes/random")
+//                 const data = await result.json()
+//                 console.log(data.value)
+//             }catch(error) {
+//                 console.log(error)
+//             }
+// }}
 
-chuck()
+// chuck()
 
-// 5️⃣ Fetch Cryptocurrency Prices 💰
-// API: CoinGecko
-// 📌 Why? Crypto apps show real-time prices.
-// 🔹 Task: Fetch and log the prices of Bitcoin, Ethereum, Solana, Dogecoin, and Cardano.
+
+// 9️⃣ Fetch 5 Random Cat Images 🐱
+// API: The Cat API
+// 📌 Why? Used in pet adoption & entertainment apps.
+// 🔹 Task: Fetch and display 5 random cat images.
+fetch("https://api.thecatapi.com/v1/images/search?limit=5")
+.then(res => res.json())
+.then(res=>{
+    res.slice(0,5).forEach(pic => console.log(pic.url))
+})
+.catch(error => console.log(error))
+
+
+// 8️⃣ Fetch 5 Random Countries 🌍
+// API: REST Countries
+// 📌 Why? Geography & travel apps need country data.
+// 🔹 Task: Fetch and display 5 country names & their capital cities.\
 
 
 
@@ -256,27 +269,10 @@ chuck()
 
 
 
-
 // 7️⃣ Fetch 5 Remote Job Listings 💼
 // API: Remotive API
 // 📌 Why? Used for job search sites & career platforms.
 // 🔹 Task: Fetch and display 5 remote job titles and company names.
-
-
-
-
-// 8️⃣ Fetch 5 Random Countries 🌍
-// API: REST Countries
-// 📌 Why? Geography & travel apps need country data.
-// 🔹 Task: Fetch and display 5 country names & their capital cities.
-
-
-
-
-// 9️⃣ Fetch 5 Random Cat Images 🐱
-// API: The Cat API
-// 📌 Why? Used in pet adoption & entertainment apps.
-// 🔹 Task: Fetch and display 5 random cat images.
 
 
 
@@ -285,3 +281,9 @@ chuck()
 // 📌 Why? Sports apps use this for event schedules.
 // 🔹 Task: Fetch and log 5 upcoming events for the English Premier League.
 
+
+
+// // 5️⃣ Fetch Cryptocurrency Prices 💰
+// // API: CoinGecko
+// // 📌 Why? Crypto apps show real-time prices.
+// // 🔹 Task: Fetch and log the prices of Bitcoin, Ethereum, Solana, Dogecoin, and Cardano.
