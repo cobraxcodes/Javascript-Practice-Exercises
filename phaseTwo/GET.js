@@ -258,17 +258,25 @@
 // API: Google Books API
 // 📌 Why? Useful for book review sites & recommendation engines.
 // 🔹 Task: Search for “JavaScript” books and log the titles & authors of 5 books.
-fetch("https://www.googleapis.com/books/v1/volumes?q=javascript")
-.then(res => res.json())
-.then(res =>{
-    res.items.slice(0,5).forEach(book => console.log(`Author: ${book.volumeInfo.authors}  Title:${book.volumeInfo.title}`))
-})
-.catch(error => console.log(error))
+// fetch("https://www.googleapis.com/books/v1/volumes?q=javascript")
+// .then(res => res.json())
+// .then(res =>{
+//     res.items.slice(0,5).forEach(book => console.log(`Author: ${book.volumeInfo.authors}  Title:${book.volumeInfo.title}`))
+// })
+// .catch(error => console.log(error))
 
-// 8️⃣ Fetch 5 Random Countries 🌍
-// API: REST Countries
-// 📌 Why? Geography & travel apps need country data.
-// 🔹 Task: Fetch and display 5 country names & their capital cities.
+// 🔟 Fetch 5 Upcoming Sports Events ⚽
+// API: The SportsDB
+// 📌 Why? Sports apps use this for event schedules.
+// 🔹 Task: Fetch and log 5 upcoming events for the English Premier League.
+
+// fetch("https://www.thesportsdb.com/api/v1/json/3/searchfilename.php?e=English_Premier_League")
+// .then(res => res.json())
+// .then(res => {
+//     // console.log(Object.keys(res)) // gets the root 
+//     res.event.slice(0,5).forEach(match => console.log(match.strEvent))
+// })
+// .catch(error => console.log(error))
 
 
 // 7️⃣ Fetch 5 Remote Job Listings 💼
@@ -276,12 +284,12 @@ fetch("https://www.googleapis.com/books/v1/volumes?q=javascript")
 // 📌 Why? Used for job search sites & career platforms.
 // 🔹 Task: Fetch and display 5 remote job titles and company names.
 
+fetch("https://remotive.com/api/remote-jobs")
+.then(res => res.json())
+.then(res => console.log(res))
+.catch(error => console.log(error))
 
 
-// 🔟 Fetch 5 Upcoming Sports Events ⚽
-// API: The SportsDB
-// 📌 Why? Sports apps use this for event schedules.
-// 🔹 Task: Fetch and log 5 upcoming events for the English Premier League.
 
 
 
