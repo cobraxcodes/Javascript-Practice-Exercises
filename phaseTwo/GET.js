@@ -286,11 +286,10 @@
 
 fetch("https://remotive.com/api/remote-jobs")
 .then(res => res.json())
-.then(res => console.log(res))
+.then(res => {
+    res.jobs.slice(0,5).forEach(job => console.log(`Job Title: ${job.title} Company: ${job.company_name}`))
+})
 .catch(error => console.log(error))
-
-
-
 
 
 // // 5️⃣ Fetch Cryptocurrency Prices 💰
