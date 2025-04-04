@@ -284,15 +284,26 @@
 // 📌 Why? Used for job search sites & career platforms.
 // 🔹 Task: Fetch and display 5 remote job titles and company names.
 
-fetch("https://remotive.com/api/remote-jobs")
-.then(res => res.json())
-.then(res => {
-    res.jobs.slice(0,5).forEach(job => console.log(`Job Title: ${job.title} Company: ${job.company_name}`))
-})
-.catch(error => console.log(error))
+// fetch("https://remotive.com/api/remote-jobs")
+// .then(res => res.json())
+// .then(res => {
+//     res.jobs.slice(0,5).forEach(job => console.log(`Job Title: ${job.title} Company: ${job.company_name}`))
+// })
+// .catch(error => console.log(error))
 
 
 // // 5️⃣ Fetch Cryptocurrency Prices 💰
 // // API: CoinGecko
 // // 📌 Why? Crypto apps show real-time prices.
 // // 🔹 Task: Fetch and log the prices of Bitcoin, Ethereum, Solana, Dogecoin, and Cardano.
+
+fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,dogecoin,cardano&vs_currencies=usd")
+.then(res => res.json())
+.then(res => {
+    console.log(`Coin: Bitcoin Price: $${res.bitcoin.usd}`)
+    console.log(`Coin: Ethereum Price: $${res.ethereum.usd}`)
+    console.log(`Coin: Solana Price: $${res.solana.usd}`)
+    console.log(`Coin: Do Price: $${res.dogecoin.usd}`)
+    console.log(`Coin: Bitcoin Price: $${res.cardano.usd}`)
+})
+.catch(error => console.log(error))
