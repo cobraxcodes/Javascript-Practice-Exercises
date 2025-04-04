@@ -246,27 +246,29 @@
 // API: The Cat API
 // 📌 Why? Used in pet adoption & entertainment apps.
 // 🔹 Task: Fetch and display 5 random cat images.
-fetch("https://api.thecatapi.com/v1/images/search?limit=5")
-.then(res => res.json())
-.then(res=>{
-    res.slice(0,5).forEach(pic => console.log(pic.url))
-})
-.catch(error => console.log(error))
-
-
-// 8️⃣ Fetch 5 Random Countries 🌍
-// API: REST Countries
-// 📌 Why? Geography & travel apps need country data.
-// 🔹 Task: Fetch and display 5 country names & their capital cities.\
-
-
+// fetch("https://api.thecatapi.com/v1/images/search?limit=5")
+// .then(res => res.json())
+// .then(res=>{
+//     res.slice(0,5).forEach(pic => console.log(pic.url))
+// })
+// .catch(error => console.log(error))
 
 
 // 6️⃣ Fetch Popular JavaScript Books 📚
 // API: Google Books API
 // 📌 Why? Useful for book review sites & recommendation engines.
 // 🔹 Task: Search for “JavaScript” books and log the titles & authors of 5 books.
+fetch("https://www.googleapis.com/books/v1/volumes?q=javascript")
+.then(res => res.json())
+.then(res =>{
+    res.items.slice(0,5).forEach(book => console.log(`Author: ${book.volumeInfo.authors}  Title:${book.volumeInfo.title}`))
+})
+.catch(error => console.log(error))
 
+// 8️⃣ Fetch 5 Random Countries 🌍
+// API: REST Countries
+// 📌 Why? Geography & travel apps need country data.
+// 🔹 Task: Fetch and display 5 country names & their capital cities.
 
 
 // 7️⃣ Fetch 5 Remote Job Listings 💼
