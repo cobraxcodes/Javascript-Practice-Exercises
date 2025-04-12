@@ -297,13 +297,13 @@
 // // 📌 Why? Crypto apps show real-time prices.
 // // 🔹 Task: Fetch and log the prices of Bitcoin, Ethereum, Solana, Dogecoin, and Cardano.
 
-fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,dogecoin,cardano&vs_currencies=usd")
-.then(res => res.json())
-.then(res => {
-    console.log(`Coin: Bitcoin Price: $${res.bitcoin.usd}`)
-    console.log(`Coin: Ethereum Price: $${res.ethereum.usd}`)
-    console.log(`Coin: Solana Price: $${res.solana.usd}`)
-    console.log(`Coin: Do Price: $${res.dogecoin.usd}`)
-    console.log(`Coin: Bitcoin Price: $${res.cardano.usd}`)
-})
-.catch(error => console.log(error))
+// fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,dogecoin,cardano&vs_currencies=usd")
+// .then(res => res.json())
+// .then(res => {
+//     console.log(`Coin: Bitcoin Price: $${res.bitcoin.usd}`)
+//     console.log(`Coin: Ethereum Price: $${res.ethereum.usd}`)
+//     console.log(`Coin: Solana Price: $${res.solana.usd}`)
+//     console.log(`Coin: Do Price: $${res.dogecoin.usd}`)
+//     console.log(`Coin: Bitcoin Price: $${res.cardano.usd}`)
+// })
+// .catch(error => console.log(error))
