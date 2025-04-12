@@ -1,0 +1,19 @@
+*{
+    background-color: black;
+    color: beige;
+}
+h1{
+    text-align: center;
+}
+#matchInfoContainer{
+    display: flex;
+    border: solid;
+    border-color: wheat;
+
+}
+#matches{
+    border: solid;
+    border-color: red;
+    justify-content: space-between;
+    color: whitesmoke;
+}
