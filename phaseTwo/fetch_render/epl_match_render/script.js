@@ -20,7 +20,15 @@ fetch("https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4328&r=1&s=2
  home.forEach(scoring => {
     const scoreDocument = document.createElement('p')
     scoreDocument.textContent = scoring
+    scoreDocument.id = "homeScoreDocument"
     homeScore.appendChild(scoreDocument)
  })
 })
 .catch(error => console.log(error))
+
+// AWAY SCORE
+fetch("https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4328&r=1&s=2023-2024")
+.then(res => res.json())
+.then(res => {
+    console.log(res)
+})

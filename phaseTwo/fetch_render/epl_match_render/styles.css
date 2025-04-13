@@ -32,14 +32,20 @@ h1{
     width: 40rem;
 }
 #homeScore{
-    border: solid;
-    border-color: orange;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 }
-#awayScore{
+#homeScoreDocument {
+    background-color: gray;
+    color: wheat;
+    font-size: 24px;
+}
+#awayScoreDiv{
     border: solid;
     border-color: yellow;
 }
-#matchDate{
+#matchDateDiv{
     border: solid;
     border-color: green;
 }
