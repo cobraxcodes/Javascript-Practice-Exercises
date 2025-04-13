@@ -8,7 +8,9 @@ h1{
 #matchInfoContainer{
     display: flex;
     border: solid;
-    border-color: wheat;
+    height: 50vh;
+    justify-content: space-evenly;
+    
 
 }
 #matches{
@@ -16,4 +18,28 @@ h1{
     border-color: red;
     justify-content: space-between;
     color: whitesmoke;
+}
+
+#teamNamesDiv{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#dynamicName{
+    background-color: gray;
+    color: wheat;
+    font-size: 24px;
+    width: 40rem;
+}
+#homeScore{
+    border: solid;
+    border-color: orange;
+}
+#awayScore{
+    border: solid;
+    border-color: yellow;
+}
+#matchDate{
+    border: solid;
+    border-color: green;
 }
