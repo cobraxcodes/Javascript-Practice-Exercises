@@ -26,7 +26,7 @@ h1{
     text-align: center;
 }
 #dynamicName{
-    background-color: gray;
+
     color: wheat;
     font-size: 24px;
     width: 40rem;
@@ -37,13 +37,17 @@ h1{
     text-align: center;
 }
 #homeScoreDocument {
-    background-color: gray;
+ 
     color: wheat;
     font-size: 24px;
 }
 #awayScoreDiv{
-    border: solid;
-    border-color: yellow;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#awayTeamScore{
+   font-size: 24px;
 }
 #matchDateDiv{
     border: solid;
