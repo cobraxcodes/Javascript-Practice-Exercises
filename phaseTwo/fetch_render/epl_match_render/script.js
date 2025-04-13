@@ -39,3 +39,18 @@ fetch("https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4328&r=1&s=2
     })
 })
 .catch(error => console.log(error))
+
+// Match Dates
+fetch("https://www.thesportsdb.com/api/v1/json/3/eventsround.php?id=4328&r=1&s=2023-2024")
+.then(res => res.json())
+.then(res =>{
+   const date = res.events.slice(0,5).map(matchDate => (matchDate.dateEvent))
+    date.forEach(matchDate =>{
+        const dateDocument = document.createElement("p")
+        dateDocument.textContent = matchDate
+        dateDocument.id = "matchDate"
+        matchDateDiv.appendChild(dateDocument)
+
+    })
+})
+.catch(error => console.log(error))
