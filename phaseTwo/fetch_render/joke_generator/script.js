@@ -8,6 +8,8 @@ fetch("https://official-joke-api.appspot.com/random_joke")
 
     //JOKE SETUP
      const createJoke = () =>{
+        // clear previous joke
+        jokeContainer.innerHTML = '';
         let setUpJoke = res.setup
         let jokeDocument = document.createElement('h2')
         jokeDocument.textContent= setUpJoke
@@ -21,8 +23,32 @@ fetch("https://official-joke-api.appspot.com/random_joke")
         punchDocument.id= 'punchDocument'
         jokeDocument.appendChild(punchDocument)
 
+        
+
      }
      document.getElementById('jokeButton').addEventListener('click', createJoke)
    
   
 })
+
+// GIVES A JOKE EVERY CLICK AND NOT ONLY
+// WHEN JOKE IS ALREADY FETCHED
+
+// document.getElementById('jokeButton').addEventListener('click', () => {
+//     fetch("https://official-joke-api.appspot.com/random_joke")
+//         .then(res => res.json())
+//         .then(res => {
+//             const jokeContainer = document.getElementById('jokeContainer'); // Assuming jokeContainer is defined in your HTML
+//             jokeContainer.innerHTML = ''; // Clear the previous joke
+
+//             // Joke Setup
+//             const jokeDocument = document.createElement('h2');
+//             jokeDocument.textContent = res.setup;
+//             jokeContainer.appendChild(jokeDocument);
+
+//             // Punchline Setup
+//             const punchDocument = document.createElement('p');
+//             punchDocument.textContent = res.punchline;
+//             jokeContainer.appendChild(punchDocument);
+//         });
+// });
