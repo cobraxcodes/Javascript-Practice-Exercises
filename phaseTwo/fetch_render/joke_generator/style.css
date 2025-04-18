@@ -1,0 +1,28 @@
+h1{
+    text-align: center;
+    margin-top: 20vh;
+    font-size: 5rem ;
+}
+#btnContainer{
+    margin: 0 auto;
+    text-align: center;
+}
+
+#jokeContainer{
+    margin: 0 auto;
+    border: solid;
+    border-color: blue;
+    width: 50rem;
+    height: 20rem;
+}
+
+#jokeButton{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    font-size: 2rem;
+    color: white;
+    background-color: darkred;
+    border-style: dotted;
+    margin-top: 2rem;
+}
