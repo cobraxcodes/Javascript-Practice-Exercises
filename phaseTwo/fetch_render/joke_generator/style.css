@@ -10,12 +10,19 @@ h1{
 
 #jokeContainer{
     margin: 0 auto;
-    border: solid;
-    border-color: blue;
+    border: double;
+    border-color: red;
     width: 50rem;
     height: 20rem;
 }
+#jokeDocument{
+    text-align: center;
+    font-size: 3rem;
+}
 
+#punchDocument{
+    color: darkgoldenrod;
+}
 #jokeButton{
     height: 10rem;
     width: 10rem;
