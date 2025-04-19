@@ -1,0 +1,33 @@
+*{
+    background-color: beige;
+}
+.head{
+    text-align: center;
+    font-size: 4rem;
+}
+#dogContainer{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+#dogImages{
+    margin: 0 auto;
+    height: 30vh;
+    border: double;
+    border-color: darkcyan;
+}
+
+#btnContainer{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+#dogsBtn{
+    height: 8vh;
+    width: 5vw;
+    border-radius: 50%;
+    color: red;
+}
