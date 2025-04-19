@@ -5,7 +5,21 @@
 h1{
     text-align: center;
 }
-#name{
-    border: solid ;
-    border-color: red;
+h3{
+    font-size: 1.7rem;
+}
+#name {
+    display: flex; /* Enable flexbox layout */
+    flex-wrap: wrap; /* Allows items to wrap to the next line if needed */
+    gap: 1rem; /* Space between items */
+    border: solid 2px darkblue; /* Keeps the border styling */
+    padding: 1rem; /* Adds padding inside the container */
+    align-items: center; /* Align items vertically within the row */
+    justify-content: space-evenly; /* Distribute items evenly across the row */
+    background-color: black; /* Match your global background color */
+    color: white; /* Ensure text visibility on dark background */
+}
+img {
+    width: 50px; /* Adjust size for the logo */
+    height: auto; /* Maintain aspect ratio */
 }
