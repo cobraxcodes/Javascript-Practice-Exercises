@@ -24,8 +24,31 @@ fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd")
        document.body.appendChild(nameDocument)
         console.log(coin.name)
 
-        //current price
+        //current price & price change percentage
+        const price = coin.current_price
+        const percentage = coin.price_change_percentage_24h
+
+        const priceDoc = document.createElement('p')
+        const percentageDoc = document.createElement('span')
+
+        priceDoc.textContent = `$${price}`
+        percentageDoc.textContent = ` ${percentage.toFixed(3)} %`
+
+        nameDocument.appendChild(priceDoc)
+        priceDoc.appendChild(percentageDoc)
+        if(percentage > 0){
+            percentageDoc.style.color = 'green'
+        }else{
+            percentageDoc.style.color = 'red'
+        }
         
+        
+
+        // logo
+        const logo = coin.image
+        const logoImg = document.createElement('img')
+        logoImg.src = logo
+        nameDocument.appendChild(logoImg)
     })
 
     // p for price and price change percentage
