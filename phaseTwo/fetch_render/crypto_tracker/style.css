@@ -1,0 +1,11 @@
+*{
+    background-color: black;
+    color: white;
+}
+h1{
+    text-align: center;
+}
+#name{
+    border: solid ;
+    border-color: red;
+}
