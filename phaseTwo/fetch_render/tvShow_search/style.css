@@ -11,7 +11,7 @@
 }
 input{
     height: 4vh;
-    width: 18vw;
+    width: 18rem;
     color: white;
     font-size: 24px;
     
@@ -20,7 +20,29 @@ input::placeholder{
     color: white;
     font-size: 24px
 }
-#moviesContainer{
-    border: solid;
-    border-color: red;
+#movieDiv{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem; 
+    justify-content: center; 
+}
+#movieImg{
+    height: 40vh;
+    width: 17rem;
+}
+#movieItem{
+   border: solid;
+   border-color: black;
+   flex-wrap: wrap;
+   margin-left: 3rem;
+   margin-top: 3vh;
+   text-align: center;
+   font-size: 24px;
+   background-color: black;
+  
+}
+h3{
+    background-color: black;
+    color: orangered;
 }

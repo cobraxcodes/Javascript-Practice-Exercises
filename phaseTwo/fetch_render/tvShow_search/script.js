@@ -15,12 +15,27 @@ document.getElementById('searchBtn').addEventListener('click', () =>{
         
         //dynamically show
         result.forEach(movie =>{
-            moviesContainer.innerHtml = ''
-            const movieDoc = document.createElement('p')
+
+            //creating a div for each
+            const movieItem = document.createElement('div')
+            movieItem.id="movieItem"
+
+            // movie title
+            const movieDoc = document.createElement('h3')
             movieDoc.textContent = movie.show.name
-            moviesContainer.appendChild(movieDoc)
-            
+            movieItem.appendChild(movieDoc)
+
+            // movie image
+            const movieImage = document.createElement('img')
+            movieImage.src= movie.show.image.original
+            movieImage.id='movieImg'
+            movieItem.appendChild(movieImage)
+
+            movieDiv.appendChild(movieItem)
+           
             
         })
-
+    })
+})
 .catch(error => console.log(error))
+
