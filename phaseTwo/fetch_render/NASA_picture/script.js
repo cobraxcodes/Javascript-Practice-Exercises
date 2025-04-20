@@ -12,6 +12,7 @@ fetch("https://api.nasa.gov/planetary/apod?api_key=M8BARK7p4Dke7weFzONxDkFC7eeeD
      // IMAGE
    const imageDoc = document.createElement('img')
    imageDoc.src = res.url
+   imageDoc.id = 'img'
    apodContainer.appendChild(imageDoc)
      // TITLE
    const titleDoc = document.createElement('h3')
@@ -26,6 +27,7 @@ fetch("https://api.nasa.gov/planetary/apod?api_key=M8BARK7p4Dke7weFzONxDkFC7eeeD
     const des = res.explanation
     const desDoc = document.createElement('p')
     desDoc.textContent = des
+    desDoc.id = 'description'
     apodContainer.appendChild(desDoc)
 
 })
