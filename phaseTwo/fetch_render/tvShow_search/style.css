@@ -1,0 +1,22 @@
+*{
+    background-color: rgb(253, 138, 96);
+}
+.header{
+    text-align: center;
+    margin-top: 10vh;
+}
+.input{
+    margin: 0 auto;
+    text-align: center;
+}
+input{
+    height: 4vh;
+    width: 18vw;
+    color: white;
+    font-size: 24px;
+    
+}
+input::placeholder{
+    color: white;
+    font-size: 24px
+}
