@@ -1,8 +1,21 @@
 *{
     background-color: #159d49;
-    color: #1ef116;
+
 }
 .header{
     text-align: center;
     font-size: 50px;
+    color: #1ef116;
+}
+
+#cardContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#characterDiv{
+    margin: 0 auto;
+    border: solid;
+    text-align: center;
+    margin-top: 1rem;
 }
