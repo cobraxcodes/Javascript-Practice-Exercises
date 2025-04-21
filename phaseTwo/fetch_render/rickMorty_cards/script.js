@@ -8,38 +8,51 @@
 // Species - done
 // Bonus: Add a filter by status.
 
-let currentPage = 1
-fetch("https://rickandmortyapi.com/api/character/?page=1")
-.then(res => res.json())
-.then(res => {
-    res.results.forEach(character =>{
-        const characterDiv = document.createElement('div')
-        characterDiv.id= 'characterDiv'
-        const mainContainer = document.getElementById('cardContainer')
-        mainContainer.appendChild(characterDiv)
+let page = 1
+function rickMortyCharacters (page){
+    fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
+    .then(res => res.json())
+    .then(res => {
 
-        //Name
-        const characterName = document.createElement('h3')
-        characterName.textContent = character.name
-        characterDiv.appendChild(characterName)
+        // clears out page for next
+        cardContainer.innerHTML = ' ';
 
-        //Status
-        const characterStat = document.createElement('p')
-        characterStat.textContent = ` Status: ${character.status}`
-        characterDiv.appendChild(characterStat)
-        
-        //species
-        const characterSpecies = document.createElement('span')
-        characterSpecies.textContent = ` | Species: ${character.species}`
-        characterStat.appendChild(characterSpecies)
-
-        //Image
-        const characterImg = document.createElement('img')
-        characterImg.src= character.image
-        characterDiv.appendChild(characterImg)
-
-        console.log(res)
-
+        res.results.forEach(character =>{
+            const characterDiv = document.createElement('div')
+            characterDiv.id= 'characterDiv'
+            const mainContainer = document.getElementById('cardContainer')
+            mainContainer.appendChild(characterDiv)
+    
+            //Name
+            const characterName = document.createElement('h3')
+            characterName.textContent = character.name
+            characterDiv.appendChild(characterName)
+    
+            //Status
+            const characterStat = document.createElement('p')
+            characterStat.textContent = ` Status: ${character.status}`
+            characterDiv.appendChild(characterStat)
+            
+            //species
+            const characterSpecies = document.createElement('span')
+            characterSpecies.textContent = ` | Species: ${character.species}`
+            characterStat.appendChild(characterSpecies)
+    
+            //Image
+            const characterImg = document.createElement('img')
+            characterImg.src= character.image
+            characterDiv.appendChild(characterImg)
+          
+    
+        })
     })
+    .catch(error => console.log(error))
+}
+
+rickMortyCharacters(page)
+
+// next button
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+    page++
+    rickMortyCharacters(page)
 })
-.catch(error => console.log(error))
