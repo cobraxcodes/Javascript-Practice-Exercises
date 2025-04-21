@@ -51,6 +51,12 @@ function rickMortyCharacters (page){
 
 rickMortyCharacters(page)
 
+// previous button
+document.getElementById('previousBtn').addEventListener('click', ()=>{
+    page--
+    rickMortyCharacters(page)
+})
+
 // next button
 document.getElementById('nextBtn').addEventListener('click', ()=>{
     page++
