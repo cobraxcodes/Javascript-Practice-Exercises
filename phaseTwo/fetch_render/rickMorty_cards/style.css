@@ -8,6 +8,27 @@
     color: #1ef116;
 }
 
+#searchDiv{
+    text-align: center;
+}
+
+#searchBar{
+    height: 5vh;
+    width: 20rem;
+    color: #1ef116;
+    font-size: 24px;
+}
+
+#searchBar::placeholder{
+    font-size: 24px;
+    color: #1ef116;
+}
+
+#searchBtn{
+    height: 3vh;
+    width: 10rem;
+    color: #03f05e;
+}
 #cardContainer{
     display: flex;
     flex-wrap: wrap;
