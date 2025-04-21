@@ -8,7 +8,10 @@
 // Species - done
 // Bonus: Add a filter by status.
 
+// setting starter page 
 let page = 1
+
+// wrapping it in a function so reusable for next / previous button
 function rickMortyCharacters (page){
     fetch(`https://rickandmortyapi.com/api/character/?page=${page}`)
     .then(res => res.json())
@@ -48,17 +51,21 @@ function rickMortyCharacters (page){
     })
     .catch(error => console.log(error))
 }
-
+// calling the function here
 rickMortyCharacters(page)
 
 // previous button
 document.getElementById('previousBtn').addEventListener('click', ()=>{
+    // this just decreases page number
     page--
+    // calling it again here so that the fetch initatiates
     rickMortyCharacters(page)
 })
 
 // next button
 document.getElementById('nextBtn').addEventListener('click', ()=>{
+    // this just increases page number 
     page++
+    // this actually calls the fetch thing to happen again
     rickMortyCharacters(page)
 })
