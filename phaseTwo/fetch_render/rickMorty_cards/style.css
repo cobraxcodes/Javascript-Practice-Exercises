@@ -19,3 +19,13 @@
     text-align: center;
     margin-top: 1rem;
 }
+
+#paginationContainer{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 3vh;
+}
+
+.paginationBtn{
+    width: 6rem;
+}

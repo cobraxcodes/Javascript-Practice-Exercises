@@ -8,7 +8,8 @@
 // Species - done
 // Bonus: Add a filter by status.
 
-fetch("https://rickandmortyapi.com/api/character")
+let currentPage = 1
+fetch("https://rickandmortyapi.com/api/character/?page=1")
 .then(res => res.json())
 .then(res => {
     res.results.forEach(character =>{
@@ -37,6 +38,7 @@ fetch("https://rickandmortyapi.com/api/character")
         characterImg.src= character.image
         characterDiv.appendChild(characterImg)
 
+        console.log(res)
 
     })
 })
