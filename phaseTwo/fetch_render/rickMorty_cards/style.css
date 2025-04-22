@@ -8,10 +8,24 @@
     color: #1ef116;
 }
 
+/** sort/search **/
+#sortSearchDiv{
+    display: flex;
+    justify-content: space-evenly;
+}
 #searchDiv{
+    margin: 0 auto;
     text-align: center;
+    border-color: yellow;
 }
 
+#characterSearch{
+    margin: 0 auto;
+    border: solid;
+    border-color: black;
+    text-align: center;
+    margin-top: 1rem;
+}
 #searchBar{
     height: 5vh;
     width: 20rem;
@@ -29,6 +43,9 @@
     width: 10rem;
     color: #03f05e;
 }
+
+
+/** CARDS **/
 #cardContainer{
     display: flex;
     flex-wrap: wrap;
@@ -36,10 +53,13 @@
 
 #characterDiv{
     margin: 0 auto;
-    border: solid;
+    border: double;
     text-align: center;
     margin-top: 1rem;
 }
+
+
+/** PAGINATION **/
 
 #paginationContainer{
     margin: 0 auto;
@@ -50,3 +70,4 @@
 .paginationBtn{
     width: 6rem;
 }
+

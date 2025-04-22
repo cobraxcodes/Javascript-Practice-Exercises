@@ -10,9 +10,19 @@
     <h1 class="header">Rick <span id="and">And</span> Morty<br>Characters</h1>
 
     <!-- search bar-->
-     <div id="searchDiv">
-      <input type="text" placeholder="Search ..." id="searchBar">
+     <div id="sortSearchDiv">
+      <div id="sortDiv">
+        <p>Sort By:</p>
+        <span><input type="radio">Name</span>
+        <span><input type="radio">Status</span>
+        <span><input type="radio">Species</span>
+        <span><input type="radio">Gender</span>
+      </div>
+
+      <div id="searchDiv">
+    <input type="text" placeholder="Search ..." id="searchBar">
       <button id="searchBtn">Wubba Lubba Dub Dub</button>
+    </div>
      </div>
    
     <!-- CONTAINER FOR CHARACTER CARDS-->
