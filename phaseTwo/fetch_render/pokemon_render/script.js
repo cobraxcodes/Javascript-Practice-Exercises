@@ -42,6 +42,15 @@
             const pokemonDiv = document.createElement('div')
             container.appendChild(pokemonDiv)
 
+                    // name
+                    const pokemonName = document.createElement('h3')
+                    pokemonName.textContent = res.forms.name
+                    pokemonDiv.appendChild(pokemonName)
+
+                    //image
+                    const pokemonImage = document.createElement('img')
+                    pokemonImage.src = res.sprites.front_shiny
+                    pokemonDiv.appendChild(pokemonImage)
               
         }catch(Error){
             console.error('Error')
