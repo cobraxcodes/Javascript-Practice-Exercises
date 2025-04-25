@@ -46,7 +46,7 @@ document.getElementById('searchBtn').addEventListener('click', ()=>{
     .catch(error => console.log(error))
 })
 
-
+// SPECIES SORT
 // display sort choices
 document.getElementById('species').addEventListener('click', ()=>{
     // displays list after clicking "Species"
@@ -55,6 +55,39 @@ document.getElementById('species').addEventListener('click', ()=>{
 document.getElementById('species').addEventListener('dblclick', ()=>{
     // returns to hiding list after double clicking it
     document.getElementById('speciesList').style.display='none'
+})
+
+// human sort
+document.getElementById('humanSelect').addEventListener('click', ()=>{
+    document.getElementById('cardContainer').innerHTML = ''
+    fetch('https://rickandmortyapi.com/api/character/?species=human')
+    .then(res => res.json())
+    .then(res =>{
+        res.results.forEach(human => {
+       // creating div for each character
+       const characterDiv = document.createElement('div')
+       characterDiv.id= 'characterDiv'
+       document.getElementById('cardContainer').appendChild(characterDiv)
+
+       //name 
+       const nameDoc = document.createElement('h3')
+       nameDoc.textContent = human.name
+       characterDiv.appendChild(nameDoc)
+       //status
+       const statusDoc = document.createElement('p')
+       statusDoc.textContent = ` Status: ${human.status}`
+       characterDiv.appendChild(statusDoc)
+       //Species
+       const speciesDoc = document.createElement('span')
+       speciesDoc.textContent =  ` | Species: ${human.species}`
+       statusDoc.appendChild(speciesDoc)
+       //image
+       const imageDoc = document.createElement('img')
+       imageDoc.src = human.image
+       characterDiv.appendChild(imageDoc)
+        })
+
+    })
 })
 
 // PAGINATION FUNCTION
