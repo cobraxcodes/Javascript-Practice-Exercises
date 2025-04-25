@@ -47,13 +47,15 @@ document.getElementById('searchBtn').addEventListener('click', ()=>{
 })
 
 
-
-// sort function
-
-
-
-
-
+// display sort choices
+document.getElementById('species').addEventListener('click', ()=>{
+    // displays list after clicking "Species"
+    document.getElementById('speciesList').style.display='block'
+})
+document.getElementById('species').addEventListener('dblclick', ()=>{
+    // returns to hiding list after double clicking it
+    document.getElementById('speciesList').style.display='none'
+})
 
 // PAGINATION FUNCTION
 // setting starter page 
