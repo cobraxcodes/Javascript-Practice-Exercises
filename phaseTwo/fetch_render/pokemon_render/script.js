@@ -36,31 +36,37 @@
 
                // loop through (if there's any) and create a div for each and display anything required
             const pokemonDiv = document.createElement('div')
+            pokemonDiv.id = "pokemonDiv"
             container.appendChild(pokemonDiv)
 
                     // name
                     const pokemonName = document.createElement('h3')
                     pokemonName.textContent = res.name
+                    pokemonName.id = "pokemonName"
                     pokemonDiv.appendChild(pokemonName)
 
                     //image
                     const pokemonImage = document.createElement('img')
                     pokemonImage.src = res.sprites.front_shiny
+                    pokemonImage.id = "pokemonImg"
                     pokemonDiv.appendChild(pokemonImage)
 
                     //type
                     const pokemonType = document.createElement('p')
                     pokemonType.textContent = `Type: ${res.types.map(type => type.type.name)}`
+                    pokemonType.id = "pokemonType"
                     pokemonDiv.appendChild(pokemonType)
 
                     //weight
                     const pokemonWeight = document.createElement('p')
                     pokemonWeight.textContent = `Weight: ${res.weight}`
+                    pokemonWeight.id = "pokemonWeight"
                     pokemonDiv.appendChild(pokemonWeight)
 
                     //base experience
                     const pokemonExperience = document.createElement('p')
-                    pokemonExperience.textContent = res.base_experience
+                    pokemonExperience.textContent = `Base: ${res.base_experience}`
+                    pokemonExperience.id = "pokemonExp"
                     pokemonDiv.appendChild(pokemonExperience)
 
                     
