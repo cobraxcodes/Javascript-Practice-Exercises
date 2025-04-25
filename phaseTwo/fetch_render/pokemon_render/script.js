@@ -20,11 +20,7 @@
         const input = document.getElementById('search').value.toLowerCase()
         const container = document.getElementById('pokemonContainer')
           // make sure to have inner html as empty
-        pokemonContainer.innerHTML = ' '
-
-        // if user doesn't enter anything, it doesnt render anything
-        if(input === ' ') return;
-
+        container.innerHTML = ' '
 
           // fetch the data using async
       const fetchData = async(URL) =>{
@@ -36,7 +32,7 @@
             if(!fetching.ok) throw new Error("Unable to fetch data")
 
                 // if able render response into json
-              const res = await res.json()
+              const res = await fetching.json()
 
                // loop through (if there's any) and create a div for each and display anything required
             const pokemonDiv = document.createElement('div')
@@ -44,13 +40,30 @@
 
                     // name
                     const pokemonName = document.createElement('h3')
-                    pokemonName.textContent = res.forms.name
+                    pokemonName.textContent = res.name
                     pokemonDiv.appendChild(pokemonName)
 
                     //image
                     const pokemonImage = document.createElement('img')
                     pokemonImage.src = res.sprites.front_shiny
                     pokemonDiv.appendChild(pokemonImage)
+
+                    //type
+                    const pokemonType = document.createElement('p')
+                    pokemonType.textContent = `Type: ${res.types.map(type => type.type.name)}`
+                    pokemonDiv.appendChild(pokemonType)
+
+                    //weight
+                    const pokemonWeight = document.createElement('p')
+                    pokemonWeight.textContent = `Weight: ${res.weight}`
+                    pokemonDiv.appendChild(pokemonWeight)
+
+                    //base experience
+                    const pokemonExperience = document.createElement('p')
+                    pokemonExperience.textContent = res.base_experience
+                    pokemonDiv.appendChild(pokemonExperience)
+
+                    
               
         }catch(Error){
             console.error('Error')
