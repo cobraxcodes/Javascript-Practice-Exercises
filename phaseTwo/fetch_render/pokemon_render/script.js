@@ -116,3 +116,41 @@ displayAll()
       fetchData(`https://pokeapi.co/api/v2/pokemon/${input}`)
   })
 
+
+
+  // PAGINATION
+document.getElementById('nextBtn').addEventListener('click', ()=>{
+  function nextPage () {
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=21&offset=21")
+    .then(res => res.json())
+    .then(res => {
+      const container = document.getElementById('pokemonContainer')
+      container.innerHTML = ''
+      res.results.forEach(pokemon =>{
+        fetch(pokemon.url)
+        .then(res => res.json())
+        .then(res => {
+          
+          const div = document.createElement('div')
+          div.className= 'pokemonCard'
+          container.appendChild(div)
+  
+           // name
+           const namePokemon = document.createElement('h3')
+           namePokemon.textContent = res.name.toUpperCase()
+           namePokemon.className = "namePokemon"
+           div.appendChild(namePokemon)
+   
+           //image
+           const imagePokemon = document.createElement('img')
+           imagePokemon.src = res.sprites.front_default
+           imagePokemon.className = 'imgPokemon'
+           div.appendChild(imagePokemon)
+   
+        })
+       
+      })
+    })
+  }
+  nextPage()
+})
