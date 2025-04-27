@@ -67,23 +67,27 @@ const book = {
 
   // ARRAY DESTRUCTURING // 
 const cities = ["New York", "Los Angeles", "Chicago", "Houston", "Phoenix"];
-const [firstCity, secondCity] = cities;
-console.log(firstCity, secondCity); // Expected: "New York", "Los Angeles"
+const [firstCity, secondCity] = cities
+console.log(firstCity,secondCity)
+// Expected: "New York", "Los Angeles"
 
 
 const colors = ["red", "blue", "green", "yellow"];
-const [firstColor, , thirdColor] = colors;
-console.log(firstColor, thirdColor); // Expected: "red", "green"
+ // Expected: "red", "green"
+ const [firstColor, , thirdColor]=colors
+ console.log(firstColor, thirdColor)
 
 const numbers = [10, 20, 30, 40, 50];
-const [firstNumber, ...remainingNumbers] = numbers;
-console.log(remainingNumbers); // Expected: [20, 30, 40, 50]
+// Expected: [20, 30, 40, 50]
+const [first, ...rest] = numbers
+console.log(rest)
 
 const fruits = ["apple"];
-const [favoriteFruit, secondFruit = "banana"] = fruits;
-console.log(favoriteFruit, secondFruit); // Expected: "apple", "banana"
+const [firstFruit, secondFruit="banana"] = fruits
+console.log(firstFruit,secondFruit)
+ // Expected: "apple", "banana"
 
 const userInfo = ["John", "Doe", 30];
-const [firstName, lastName, age] = userInfo;
-console.log(`My name is ${firstName} ${lastName}, and I am ${age} years old.`);
 // Expected: "My name is John Doe, and I am 30 years old."
+const[firstName, lastName, age] = userInfo
+console.log(`My name is ${firstName} ${lastName}, and I am ${age} years old.`)
