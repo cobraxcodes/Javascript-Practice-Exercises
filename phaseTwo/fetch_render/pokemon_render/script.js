@@ -1,4 +1,4 @@
-//    https://pokeapi.co/api/v2/pokemon?limit=5
+//    https://pokeapi.co/api/v2/pokemon?limit=21
 //    This will give you a list of the first 5 Pokémon with their names and URLs to get more info.
 // 3. For **each Pokémon**, fetch its **detailed data** from its URL (in the `.url` property).
 // 4. Render the following for each Pokémon:
@@ -12,6 +12,41 @@
 // - Add loading text/spinner while fetching.ol
 
 
+  // DISPLAY ALL POKEMON
+  const displayAll = () =>{
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=21')
+    .then(res => res.json())
+    .then(res => {
+      res.results.forEach(pokemon =>{
+        fetch(pokemon.url)
+        .then(res => res.json())
+        .then(res => {
+          const container = document.getElementById('pokemonContainer')
+          const div = document.createElement('div')
+          div.className= 'pokemonCard'
+          container.appendChild(div)
+  
+          // name
+          const namePokemon = document.createElement('h3')
+          namePokemon.textContent = res.name.toUpperCase()
+          namePokemon.className = "namePokemon"
+          div.appendChild(namePokemon)
+  
+          //image
+          const imagePokemon = document.createElement('img')
+          imagePokemon.src = res.sprites.front_default
+          imagePokemon.className = 'imgPokemon'
+          div.appendChild(imagePokemon)
+  
+  
+        })
+      })
+    .catch(error => console.log(error))
+    });
+  
+  }
+displayAll()  
+
 
 // SEARCH FUNCTION
   // getElement searchbar and create event listener with keyup
@@ -19,9 +54,12 @@
         // get input from search bar
         const input = document.getElementById('search').value.toLowerCase()
         const container = document.getElementById('pokemonContainer')
-          // make sure to have inner html as empty
         container.innerHTML = ' '
-
+          // make sure to have inner html as empty
+        if(input === ''){
+          displayAll()
+          return;
+        }
           // fetch the data using async
       const fetchData = async(URL) =>{
         try{
@@ -40,7 +78,7 @@
             container.appendChild(pokemonDiv)
 
                     // name
-                    const pokemonName = document.createElement('h3')
+                    const pokemonName = document.createElement('h2')
                     pokemonName.textContent = res.name
                     pokemonName.id = "pokemonName"
                     pokemonDiv.appendChild(pokemonName)
@@ -78,8 +116,3 @@
       fetchData(`https://pokeapi.co/api/v2/pokemon/${input}`)
   })
 
-
-  
-
-  
- 
