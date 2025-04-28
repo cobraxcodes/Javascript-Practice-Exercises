@@ -123,3 +123,39 @@ const userInfo = ["John", "Doe", 30];
 // Expected: "My name is John Doe, and I am 30 years old."
 const[nameFirst, lastName, age] = userInfo
 console.log(`My name is ${nameFirst} ${lastName}, and I am ${age} years old.`)
+
+
+// Nested Destructuring with Default Values & Rest Syntax
+// Task:
+// Destructure name, email, and theme from the userProfile object.
+// Assign default values:
+// If email is missing, default to "notfound@example.com".
+// If theme is missing, default to "light".
+// Also, use the rest operator to capture the remaining properties in contact, preferences, and address into their own variables.
+// What should the output be?
+
+// Print the following:
+// The name and email values
+// The theme value
+// The remaining contact, preferences, and address objects
+const userProfile = {
+    name: 'Jane Doe',
+    contact: {
+      email: 'jane@example.com',
+      phone: '123-456-7890'
+    },
+    preferences: {
+      theme: 'dark',
+      language: 'en',
+      notifications: true
+    },
+    address: {
+      street: '123 Elm St',
+      city: 'Springfield'
+    }
+  };
+
+  const {name, contact:{email}, preferences:{theme}} = userProfile
+  console.log(name, email, theme)
+  
+  
