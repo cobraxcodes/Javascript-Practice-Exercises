@@ -15,11 +15,14 @@
         <!-- ORIGINAL CURRENCY-->
         <div class="currencyDiv" id="originalCurrencyDiv">
             <form action="./script.js"></form>
-            <label for="originalCurrency">Original Currency</label>
+            <label for="originalCurrency"  class="originalCurrencyForm">Original Currency</label>
             <br>
-            <select id="originalCurrency">
+            <select id="originalCurrency" class="originalCurrencyForm">
                 <option value="Philippines Peso">Philippine Peso</option>
             </select>
+            <br>
+            <br>
+            <input type="number" placeholder="Enter amount" min="1" max="1000000" id="originalCurrencyInput">
         </div>
 
         <!-- filler -->
@@ -35,6 +38,8 @@
                 <select id="foreignCurrency">
                     <option value="usDollar">US Dollar</option>
                 </select>
+                <br>
+                <br>
          </div>
 
          <!-- CONVERT RESULT-->

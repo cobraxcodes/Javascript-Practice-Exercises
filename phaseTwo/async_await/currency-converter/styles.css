@@ -7,7 +7,7 @@
     margin-top: 30vh;
 }
 
-/** CONTAINER SET TO FLEX */
+/** CONTAINER */
 .currencyContainer{
     margin: 0 auto;
     display: flex;
@@ -21,4 +21,17 @@
 /** MAIN CLASS FOR CURRENCY DIVS */
 .currencyDiv{
     margin-top: 5vh;
+}
+
+/** ORIGINAL CURRENCY */
+.originalCurrencyForm{
+    margin-left: 2vw;
+}
+#originalCurrencyInput{
+    text-align: center;
+    height: 10vh;
+    width: 11vw;
+}
+#originalCurrencyInput::placeholder{
+    text-align: center;
 }
