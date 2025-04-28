@@ -53,3 +53,6 @@ const fetchData = async (URL) =>{
   }
 }
   fetchData(`https://api.fxratesapi.com/convert?from=USD&to=PHP&date=2025-04-27&amount=1&format=json`);
+
+
+
