@@ -47,6 +47,9 @@ const fetchData = async (URL) =>{
 
 
     // AMOUNT INPUT BOX
+    // event listener "keyup"
+    // create a function that converts rates
+    // GET rates from API
         const amountInput = document.getElementById("amount").value
         console.log(amountInput)
     })
