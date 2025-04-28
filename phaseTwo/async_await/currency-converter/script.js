@@ -22,3 +22,5 @@
 // Fallback Data: If the data is not available, consider displaying fallback information, such as a message like "We couldn't fetch the data at the moment, please try again later."
 // Network Errors: Handle network errors gracefully (e.g., the user is offline, or the server is down).
 // Loading States: Consider adding a loading spinner or message while the data is being fetched asynchronously.
+
+

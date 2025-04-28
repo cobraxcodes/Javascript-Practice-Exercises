@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1 class="header">Currency Converter</h1>
+
+    <!-- CURRENCY BOX-->
+    <div class="currencyContainer">
+
+        <!-- ORIGINAL CURRENCY-->
+        <div class="currencyDiv" id="originalCurrencyDiv">
+            <form action="./script.js"></form>
+            <label for="originalCurrency">Original Currency</label>
+            <br>
+            <select id="originalCurrency">
+                <option value="Philippines Peso">Philippine Peso</option>
+            </select>
+        </div>
+
+        <!-- filler -->
+         <div class="currencyDiv">
+            <h3>To</h3>
+         </div>
+
+         <!--FOREIGN CURRENCY-->
+         <div class="currencyDiv" id="foreignCurrencyDiv">
+            <form action="./script.js">
+                <label for="foreignCurrency">Foreign Currency</label>
+                <br>
+                <select id="foreignCurrency">
+                    <option value="usDollar">US Dollar</option>
+                </select>
+         </div>
+
+         <!-- CONVERT RESULT-->
+          <div class="currencyDiv" id="conversionResult">
+            <h3> =</h3>
+          </div>
+
+    </div>
+    <!-- SCRIPT-->
+     <script src="script.js"></script>
+</body>
+</html>

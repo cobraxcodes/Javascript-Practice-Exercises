@@ -1,0 +1,24 @@
+*{
+    background-color: black;
+    color: white;
+}
+.header{
+    text-align: center;
+    margin-top: 30vh;
+}
+
+/** CONTAINER SET TO FLEX */
+.currencyContainer{
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4vw;
+    width: 50vw;
+    height: 30vh;
+}
+
+/** MAIN CLASS FOR CURRENCY DIVS */
+.currencyDiv{
+    margin-top: 5vh;
+}
