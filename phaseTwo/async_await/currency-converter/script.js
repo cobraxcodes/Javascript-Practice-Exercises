@@ -31,6 +31,7 @@ const fetchData = async (URL) =>{
         throw new Error (`fetch failed, Status:${data.status}`)
     }
     const res = await data.json()
+
      // add event listener for any changes
      document.getElementById('originalCurrency').addEventListener('change', ()=>{
         // event listener for when user changes selection
@@ -43,6 +44,11 @@ const fetchData = async (URL) =>{
     document.getElementById("foreignCurrency").addEventListener("change", ()=>{
         let foreignInput = document.getElementById("foreignCurrency").value
         console.log(foreignInput)
+
+
+    // AMOUNT INPUT BOX
+        const amountInput = document.getElementById("amount").value
+        console.log(amountInput)
     })
 
     // set date into current data variable
