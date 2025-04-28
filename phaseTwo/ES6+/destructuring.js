@@ -63,6 +63,38 @@ const book = {
   ✅ Task: Destructure all three properties and create a sentence:
   "I drive a 2020 Toyota Corolla." */
 
+
+//   Destructure firstName and city from the user object.
+//   Destructure manufacturer and battery from the product object.
+
+  const user = {
+    id: 1,
+    personalInfo: {
+      firstName: "Jane",
+      lastName: "Doe",
+      address: {
+        city: "New York",
+        zip: "10001"
+      }
+    }
+  };
+  
+  const product = {
+    name: "Smartphone",
+    details: {
+      manufacturer: "TechCorp",
+      specs: {
+        screen: "6.1 inch",
+        battery: "4000mAh"
+      }
+    }
+  };
+  
+
+const {personalInfo: {firstName, address:{city}}} = user
+const {details: {manufacturer, specs:{battery}}}=product
+console.log(firstName,city,manufacturer,battery)
+
   
 
   // ARRAY DESTRUCTURING // 
@@ -89,5 +121,5 @@ console.log(firstFruit,secondFruit)
 
 const userInfo = ["John", "Doe", 30];
 // Expected: "My name is John Doe, and I am 30 years old."
-const[firstName, lastName, age] = userInfo
-console.log(`My name is ${firstName} ${lastName}, and I am ${age} years old.`)
+const[nameFirst, lastName, age] = userInfo
+console.log(`My name is ${nameFirst} ${lastName}, and I am ${age} years old.`)
