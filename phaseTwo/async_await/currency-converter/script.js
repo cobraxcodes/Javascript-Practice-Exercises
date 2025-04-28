@@ -24,23 +24,32 @@
 
 
 const fetchData = async (URL) =>{
-  try{
+      try{
     const data = await fetch(URL)
     // error message if fetching doesn't work
     if(!data.ok){
-        throw new Error (`Error, data fetch failed: ${data.status}`)
+        throw new Error (`fetch failed, Status:${data.status}`)
     }
     const res = await data.json()
-    // get original option (USD or PHP)
-    // set option value into originalInput variable
+     // add event listener for any changes
+     document.getElementById('originalCurrency').addEventListener('change', ()=>{
+        // event listener for when user changes selection
+        // use originalInput as a variable in the fetch 
+        let originalInput = document.getElementById("originalCurrency").value
+        console.log(originalInput)
+     })
+
     // get foreign option - set option value into foreignInput
+    document.getElementById("foreignCurrency").addEventListener("change", ()=>{
+        let foreignInput = document.getElementById("foreignCurrency").value
+        console.log(foreignInput)
+    })
+
     // set date into current data variable
     // create "keyup" function into input to create conversion
     // use destructuring to access conversion values
-    console.log(res)
   }catch(error){
     console.error(`Error ${error.message}`)
   }
-
 }
-fetchData(`https://api.fxratesapi.com/convert?from=${originalInput}&to=${foreignInput}&date=${currentDate}&amount=${numberInput}&format=json`)
+  fetchData(`https://api.fxratesapi.com/convert?from=USD&to=PHP&date=2025-04-27&amount=1&format=json`);
