@@ -31,25 +31,39 @@
         let inputAmount = document.getElementById("amount").value
         // date
         let date = new Date().toISOString().split('T')[0]
-        console.log(date)
 
-         const fetchData = async () =>{
+        // fetching data here
+         const fetchData = async (URL) =>{
           try{
             const data = await fetch (URL)
             if(!data.ok){
-                throw new Error (error.status)
+                throw new Error (data.status)
             }
             const res = await data.json()
-            console.log(res)
+        
+            let result = document.getElementById('resultDiv')
+            if(result){
+                result.innerHTML = ''
+            }else{
+                //creating div here
+                result = document.createElement('div')
+                result.id = 'resultDiv'
+                result.className = 'currencyDiv'
+                container.appendChild(result)
+             }
+           
+
+            // creating result here
+            const resultDoc = document.createElement('p')
+            resultDoc.id = 'resultDoc'
+            resultDoc.textContent = res.result
+            resultDiv.appendChild(resultDoc)
+            
         
           }catch(error){
-            console.error(error.message)
+            console.error("Error", error)
           }
          }
-         fetchData("https://api.fxratesapi.com/convert?from=USD&to=USD&date=2012-06-24&amount=234.12&format=json")
+         fetchData(`https://api.fxratesapi.com/convert?from=${originalCurrency}&to=${foreignCurrency}&date=${date}&amount=${inputAmount}&format=json`)
 
     })
-    
-    // create a function that converts the values from original currency to foreign currency based on today's conversions
-    // call the function
-

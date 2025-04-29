@@ -10,11 +10,10 @@
     <h1 class="header">Currency Converter</h1>
 
     <!-- CURRENCY BOX-->
-    <div class="currencyContainer">
+    <div class="currencyContainer" id="container">
 
         <!-- ORIGINAL CURRENCY-->
         <div class="currencyDiv" id="originalCurrencyDiv">
-            <form action="./script.js"></form>
             <label for="originalCurrency"  class="originalCurrencyForm">Original Currency</label>
             <br>
             <select id="originalCurrency" class="originalCurrencyForm">
@@ -23,7 +22,7 @@
             </select>
             <br>
             <br>
-            <input type="number" placeholder="Enter amount" min="1" max="1000000" id="amount">
+            <input type="number" placeholder="Enter amount" min="1" max="1000000" id="amount" value="1">
         </div>
 
         <!-- filler -->
@@ -33,8 +32,7 @@
 
          <!--FOREIGN CURRENCY-->
          <div class="currencyDiv" id="foreignCurrencyDiv">
-            <form action="./script.js">
-                <label for="foreignCurrency">Foreign Currency</label>
+              <label for="foreignCurrency">Foreign Currency</label>
                 <br>
                 <select id="foreignCurrency">
                     <option value="USD" selected>US Dollar</option>
@@ -47,7 +45,7 @@
 
          <!-- CONVERT RESULT-->
           <div class="currencyDiv" id="conversionResult">
-            <button id="convertBtn"> Convert </button>
+            <button id="convertBtn">Convert</button>
           </div>
 
     </div>

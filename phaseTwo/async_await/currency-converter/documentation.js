@@ -5,3 +5,13 @@
 
 // solution: for every change in the currencies, store the values in a variable. only create a fetch function when the user
 // enters an amount in the input box and create a fetch with `` and variables. 
+
+// solution #2: created a button for one event listener and defined values for currencies inside and using api to do the conversions instead of creating a function for it 
+
+// final solution 
+// create a button to tie the event listener 'CLICK'
+// defined variables inside event listener before fetching API
+// changed API to string literal
+// use API to convert , no need to create a function
+// show results dynamically
+// created if statement to make sure inner html is cleared when user converts again
