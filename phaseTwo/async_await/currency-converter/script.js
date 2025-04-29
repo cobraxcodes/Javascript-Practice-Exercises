@@ -39,7 +39,8 @@
             const data = await fetch (URL)
             // throws an error if data fetchin fails
             if(!data.ok){
-                throw new Error (data.status)
+                // shows network error
+                throw new Error (`Fetching data. Status: ${data.status}`)
             }
             // waits for data confirmation and parses information into json
             const res = await data.json()
@@ -56,7 +57,6 @@
                 result.className = 'currencyDiv'
                 container.appendChild(result)
              }
-           
 
             // creating result here
             const resultDoc = document.createElement('p')
@@ -67,7 +67,7 @@
         // throws the error if there's a problem with code
         // after being parsed in json
           }catch(error){
-            console.error("Error", error)
+            console.error(`Error fetching conversion data, ${error.message}`)
           }
          }
          fetchData(`https://api.fxratesapi.com/convert?from=${originalCurrency}&to=${foreignCurrency}&date=${date}&amount=${inputAmount}&format=json`)
