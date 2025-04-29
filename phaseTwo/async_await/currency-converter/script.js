@@ -35,12 +35,17 @@
         // fetching data here
          const fetchData = async (URL) =>{
           try{
+            // waits for data to fetch
             const data = await fetch (URL)
+            // throws an error if data fetchin fails
             if(!data.ok){
                 throw new Error (data.status)
             }
+            // waits for data confirmation and parses information into json
             const res = await data.json()
         
+            // this part checks if there's already a result rendered
+            // if not it creates the div that the result is tied into
             let result = document.getElementById('resultDiv')
             if(result){
                 result.innerHTML = ''
@@ -57,9 +62,10 @@
             const resultDoc = document.createElement('p')
             resultDoc.id = 'resultDoc'
             resultDoc.textContent = res.result
-            resultDiv.appendChild(resultDoc)
+            result.appendChild(resultDoc)
             
-        
+        // throws the error if there's a problem with code
+        // after being parsed in json
           }catch(error){
             console.error("Error", error)
           }
