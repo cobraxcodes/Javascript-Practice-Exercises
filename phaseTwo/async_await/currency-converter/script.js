@@ -22,6 +22,33 @@
 
 
 
+   // add event listener original currency and store change in variable
+   document.getElementById('originalCurrency').addEventListener("input", ()=>{
+    // storing new value if changed in originalCurrencyChange variable
+    let originalCurrencyChange = document.getElementById("originalCurrency").value
+    console.log(originalCurrencyChange)
+})
+
+      
+    // get foreign option - set option value2 into foreignInput
+    document.getElementById("foreignCurrency").addEventListener("input", ()=>{
+        // storing new value (if changed) in foreignCurrencyChange variable
+        let foreignCurrencyChange = document.getElementById("foreignCurrency").value
+        console.log(foreignCurrencyChange)
+    })
+
+   // get amount from input box
+   document.getElementById('amount').addEventListener("input", ()=>{
+    let inputAmount = document.getElementById('amount').value
+    console.log(inputAmount)
+   })
+    
+
+   // storing date into a variable for fetching
+   const date = new Date().toISOString().split('T')[0];
+   console.log(date)
+
+
 const fetchData = async (URL) =>{
       try{
     const data = await fetch(URL)
@@ -30,34 +57,6 @@ const fetchData = async (URL) =>{
         throw new Error (`fetch failed, Status:${data.status}`)
     }
     const res = await data.json()
-
-     // add event listener for any changes
-     document.getElementById('originalCurrency').addEventListener('change', ()=>{
-        // event listener for when user changes selection
-        // use originalInput as a variable in the fetch 
-        let originalInput = document.getElementById("originalCurrency").value
-        console.log(originalInput)
-     })
-
-    // get foreign option - set option value into foreignInput
-    document.getElementById("foreignCurrency").addEventListener("change", ()=>{
-        let foreignInput = document.getElementById("foreignCurrency").value
-        console.log(foreignInput)
-
-
-    // AMOUNT INPUT BOX
-    // event listener "keyup"
-    // create a function that converts rates
-    // GET rates from API
-    // make sure to create an error if user enters letters instead of numbers
-
-        const amountInput = document.getElementById("amount").value
-        console.log(amountInput)
-    })
-
-    // set date into current data variable
-    // create "keyup" function into input to create conversion
-    // use destructuring to access conversion values
   }catch(error){
     console.error(`Error ${error.message}`)
   }
