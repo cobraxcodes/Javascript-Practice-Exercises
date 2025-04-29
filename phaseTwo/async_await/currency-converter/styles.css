@@ -27,6 +27,8 @@
 .originalCurrencyForm{
     margin-left: 2vw;
 }
+
+/** AMOUNT BOX **/
 #amount{
     text-align: center;
     height: 10vh;
@@ -34,4 +36,7 @@
 }
 #amount::placeholder{
     text-align: center;
+}
+#amount::-webkit-inner-spin-button{
+    -webkit-appearance: none;
 }

@@ -1,5 +1,4 @@
 // // Objective: Fetch live exchange rates using an API to convert currencies.
-
 // // Requirements:
 // // Use async/await to fetch the latest exchange rates from a currency conversion API.
 // // Display the exchange rate between two selected currencies.
@@ -50,6 +49,8 @@ const fetchData = async (URL) =>{
     // event listener "keyup"
     // create a function that converts rates
     // GET rates from API
+    // make sure to create an error if user enters letters instead of numbers
+
         const amountInput = document.getElementById("amount").value
         console.log(amountInput)
     })
