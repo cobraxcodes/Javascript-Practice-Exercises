@@ -21,3 +21,35 @@
     // Loading States: Consider adding a loading spinner or message while the data is being fetched asynchronously.
 
     
+    // create an event listener for a button
+    document.getElementById("convertBtn").addEventListener('click', ()=>{
+         
+    // declare values for the selects
+        let originalCurrency = document.getElementById("originalCurrency").value
+        let foreignCurrency = document.getElementById("foreignCurrency").value
+  // and input box 
+        let inputAmount = document.getElementById("amount").value
+        // date
+        let date = new Date().toISOString().split('T')[0]
+        console.log(date)
+
+         const fetchData = async () =>{
+          try{
+            const data = await fetch (URL)
+            if(!data.ok){
+                throw new Error (error.status)
+            }
+            const res = await data.json()
+            console.log(res)
+        
+          }catch(error){
+            console.error(error.message)
+          }
+         }
+         fetchData("https://api.fxratesapi.com/convert?from=USD&to=USD&date=2012-06-24&amount=234.12&format=json")
+
+    })
+    
+    // create a function that converts the values from original currency to foreign currency based on today's conversions
+    // call the function
+
