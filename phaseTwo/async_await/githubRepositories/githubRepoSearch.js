@@ -33,10 +33,13 @@
 // create a button and add an event listener "click"
 document.getElementById("searchBtn").addEventListener("click", ()=>{
 const input = document.getElementById("search").value
+const container = document.getElementById('repoContainer')
+
     // inside the event listener define input value and fetch url with str literal 
 
     // create async function
     const fetchData = async (URL) =>{
+        container.innerHTML = '';
         try{
             const data = await fetch (URL)
             if(!data.ok){
@@ -47,7 +50,6 @@ const input = document.getElementById("search").value
                 // create a div for each repo (name, description, and link)
                 const repoDiv = document.createElement('div')
                 repoDiv.className = 'repoDiv'
-                const container = document.getElementById('repoContainer')
                 container.appendChild(repoDiv)
 
                 //name
@@ -69,9 +71,13 @@ const input = document.getElementById("search").value
             })
         }catch(error){
             console.error(`There has been error: ${error.message} ${error.stack}`)
+            const noUser = document.createElement('p')
+            noUser.id = 'usernameError'
+            noUser.textContent = "Username does not exist!"
+            container.appendChild(noUser)
         }
     }
-    fetchData(`https://api.github.com/users/cobraxcodes/repos`)
+    fetchData(`https://api.github.com/users/${input}/repos`)
 
 })
 
