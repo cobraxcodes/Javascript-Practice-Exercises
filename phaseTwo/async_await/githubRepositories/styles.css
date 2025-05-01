@@ -9,9 +9,15 @@
 }
 #repoContainer{
     margin: 0 auto;
+    display: flex;
+    gap: 1rem;
     margin-top: 3vh;
-    border: solid;
-    border-color: aqua;
     height: 40vh;
     width: 50vw;
+}
+.repoDiv{
+    border: solid;
+    border-color:  red;
+    text-align: center;
+    height: 20vh;
 }

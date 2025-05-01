@@ -30,28 +30,50 @@
 // Loading States: Consider adding a loading spinner or message while the data is being fetched asynchronously.
 
 
-
 // create a button and add an event listener "click"
 document.getElementById("searchBtn").addEventListener("click", ()=>{
+const input = document.getElementById("search").value
     // inside the event listener define input value and fetch url with str literal 
-    const input = document.getElementById("search").value
 
     // create async function
     const fetchData = async (URL) =>{
         try{
             const data = await fetch (URL)
             if(!data.ok){
-                throw new Error (`Fetching failed, status: ${error.status}`)
+                throw new Error (`Fetching failed, status: ${data.status}`)
             }
             const res = await data.json()
-            console.log(res)
+            res.forEach(repo =>{
+                // create a div for each repo (name, description, and link)
+                const repoDiv = document.createElement('div')
+                repoDiv.className = 'repoDiv'
+                const container = document.getElementById('repoContainer')
+                container.appendChild(repoDiv)
+
+                //name
+                const repoName = document.createElement('h3')
+                repoName.textContent = repo.full_name
+                repoDiv.appendChild(repoName)
+
+                //create description html and adding text content
+                const description= document.createElement('p')
+                description.textContent = repo.description
+                repoDiv.appendChild(description)
+
+                //create link html, add href, and append to repoDiv
+                const link = document.createElement('a')
+                link.href = repo.html_url
+                link.target = "_blank"
+                link.textContent = "Link to repository"
+                repoDiv.appendChild(link)
+            })
         }catch(error){
             console.error(`There has been error: ${error.message} ${error.stack}`)
         }
     }
-    
+    fetchData(`https://api.github.com/users/cobraxcodes/repos`)
+
 })
 
 
-// create a div for each repo (name, description, and link)
 // call async function
