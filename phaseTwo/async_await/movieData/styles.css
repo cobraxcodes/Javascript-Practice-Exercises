@@ -1,0 +1,22 @@
+*{
+    background-color: darkcyan;
+    color: wheat;
+}
+h1{
+    text-align: center;
+    margin-top: 10vh;
+    font-size: 70px;
+}
+
+/* search css */
+#searchContainer{
+    margin: 0 auto;
+    text-align: center;
+}
+#search{
+    height: 3vh;
+    width: 15vw;
+}
+#searchBtn{
+    width: 5vw;
+}
