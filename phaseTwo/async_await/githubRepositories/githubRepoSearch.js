@@ -47,6 +47,11 @@ const container = document.getElementById('repoContainer')
             }
             const res = await data.json()
             res.forEach(repo =>{
+               if(res.length === 0){
+                const noRepo = document.createElement('p')
+                noRepo.textContent = "This user has no repositories available"
+                container.appendChild(noRepo)
+               }
                 // create a div for each repo (name, description, and link)
                 const repoDiv = document.createElement('div')
                 repoDiv.className = 'repoDiv'
