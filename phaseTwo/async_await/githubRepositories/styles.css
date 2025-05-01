@@ -2,3 +2,16 @@
     background-color: rgb(23, 4, 33);
     color: aqua;
 }
+#searchDiv{
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20vh;
+}
+#repoContainer{
+    margin: 0 auto;
+    margin-top: 3vh;
+    border: solid;
+    border-color: aqua;
+    height: 40vh;
+    width: 50vw;
+}
