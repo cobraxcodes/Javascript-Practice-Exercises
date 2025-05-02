@@ -20,3 +20,22 @@ h1{
 #searchBtn{
     width: 5vw;
 }
+
+/** movies **/
+#moviesContainer{
+    margin: 0 auto;
+    margin-top: 4vh;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    gap: 1rem;
+    width: 80vw;
+  
+}
+#movieDiv{
+    border: solid;
+    border-color: green;
+    height: 20vh;
+    width: 10vw;
+    text-align: center;
+}
