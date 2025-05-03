@@ -369,29 +369,128 @@
 //   "x-powered-by": "Melrose Fetch Practice"
 // }
 // Goal: Practice header customization.
-        const post = async (URL) =>{
-                try{
-                        const data = await fetch (URL, {
-                                method: 'POST',
-                                headers:{
-                                        'Content-type': 'application/json',
-                                        'x-powered-by': 'cobrax fetch practice'
-                                },
-                                body: JSON.stringify({
-                                        name: 'test'
-                                })
-                        })
-                        if(!data.ok){
-                                throw new Error (`Fetch failed! ${data.status}`)
-                        }
-                        const res = await data.json()
-                        console.log(res)
-                }catch(error){
-                        console.error(`Please try again!
-                                Error here: ${error.message} ${error.stack}`)
-                }
-        }
-post ('URLGOESHERE')
+//         const post = async (URL) =>{
+//                 try{
+//                         const data = await fetch (URL, {
+//                                 method: 'POST',
+//                                 headers:{
+//                                         'Content-type': 'application/json',
+//                                         'x-powered-by': 'cobrax fetch practice'
+//                                 },
+//                                 body: JSON.stringify({
+//                                         name: 'test'
+//                                 })
+//                         })
+//                         if(!data.ok){
+//                                 throw new Error (`Fetch failed! ${data.status}`)
+//                         }
+//                         const res = await data.json()
+//                         console.log(res)
+//                 }catch(error){
+//                         console.error(`Please try again!
+//                                 Error here: ${error.message} ${error.stack}`)
+//                 }
+//         }
+// post ('URLGOESHERE')
+
+
+
+
 // 10. POST and render on screen
 // After posting a comment, render the returned name, email, and body in a styled card using document.createElement.
 // Goal: Combine POST, JSON handling, and DOM manipulation.
+
+// used jsfiddle environment
+//       <!DOCTYPE html>
+// <html lang="en">
+//   <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+//     <title>Post Test</title>
+//     <link rel="stylesheet" href="style.css">
+//   </head>
+//   <body>
+//   <input type='text' id='name' placeholder='Name'>
+//   <input type='text' id='email' placeholder='email'>
+//   <input type='text' id='comment' placeholder='comment...'>
+//   <br>
+//   <button id='submitBtn'>
+//   Submit
+//   </button>
+  
+//   <!-- container -->
+//   <div id='container'>
+ 
+//   </div>
+  
+//   <!-- script -->
+//     <script src="index.js"></script>
+//   </body>
+// </html>
+
+// //document.getElementById('submitBtn').addEventListener('click' , ()=>{
+// let nameValue = document.getElementById('name').value
+// let emailValue = document.getElementById('email').value
+// let commentValue = document.getElementById('comment').value
+// const commentContainer = document.getElementById ('container')
+
+// // check if all boxes are filled
+// if(!nameValue || !emailValue || !commentValue){
+//           const fillError = document.createElement('p')
+//           fillError.textContent = "Please fill all boxes!"
+//           commentContainer.appendChild(fillError)
+//           return
+//           }
+
+// 	const post = async (URL) =>{
+//   	try{
+//     			const data = await fetch(URL, {
+//           	method: 'POST',
+//             headers:{
+//             	'Content-type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//             name: nameValue,
+//             email: emailValue,
+//             comment: commentValue
+//             })
+//           })
+//           if(!data.ok){
+//           	throw new Error (`Failed to fetch data, status: ${data.status}`)
+//           }
+          
+//           const res = await data.json()
+//           console.log(res)
+//           const {name,email,comment} = res
+          
+//           // div
+//           const resDiv = document.createElement('div')
+//           commentContainer.appendChild(resDiv)
+          
+//           //name
+//           const nameDoc = document.createElement('h3')
+//           nameDoc.textContent = name;
+//           console.log(name)
+//           resDiv.appendChild(nameDoc)
+          
+//           //email
+//           const emailDoc = document.createElement('h4')
+//           emailDoc.textContent = email;
+//           console.log(email)
+//           resDiv.appendChild(emailDoc)
+          
+//           //comment
+//           const commentDoc = document.createElement('p')
+//           commentDoc.textContent = comment;
+//           console.log(comment)
+//           resDiv.appendChild(commentDoc)
+    
+//     }catch(error){
+//     console.error(`Post failed! 
+//     Error here: ${error.message} ${error.stack}`)
+//     }
+//   }
+//   post("https://jsonplaceholder.typicode.com/comments")
+// })
+
