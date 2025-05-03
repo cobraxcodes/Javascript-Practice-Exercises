@@ -98,7 +98,7 @@
 // URL: https://jsonplaceholder.typicode.com/users
 // Body: { name: "Alice", username: "alice123", email: "alice@example.com" }
 // Goal: Post the user and log the returned user ID.
-        //Solution:
+        //SOLUTION
 // const post = async (URL) =>{
 //     try{   
 //         const data = await fetch(URL, {
@@ -132,6 +132,7 @@
 // URL: https://jsonplaceholder.typicode.com/todos
 // Body: { title: "Learn fetch POST", completed: false, userId: 3 }
 // Goal: Log the id and title from the response.
+        //SOLUTION
 // const post = async (URL) =>{
 //     try{
 //         const data = await fetch(URL, {
@@ -166,46 +167,47 @@
 // https://jsonplaceholder.typicode.com/comments
 // Body should include a different name and email each time.
 // Goal: Log success messages for each post.
-const example = [{
-    name: "Kate",
-    email: "kate1234@email.com"
-},
-{
-    name: "Amy",
-    email: "amy1234@email.com"
-},
-{
-    name: "Anna",
-    email: "anna123@email.com"
-}
-]
 
-example.forEach(sample =>{
-    const post = async (URL) =>{
-        try{
-            const data = await fetch (URL, {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json'
-                },
-              body: JSON.stringify({
-                name: sample.name,
-                email: sample.email
-              })
-            })
-            if(!data.ok){
-                throw new Error (`Fetch failed, status: ${data.status}`)
-            }
-            const res = await data.json()
-            console.log(res)
+        // SOLUTION
+// const example = [{
+//     name: "Kate",
+//     email: "kate1234@email.com"
+// },
+// {
+//     name: "Amy",
+//     email: "amy1234@email.com"
+// },
+// {
+//     name: "Anna",
+//     email: "anna123@email.com"
+// }
+// ]
+
+// example.forEach(sample =>{
+//     const post = async (URL) =>{
+//         try{
+//             const data = await fetch (URL, {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-type': 'application/json'
+//                 },
+//               body: JSON.stringify({
+//                 name: sample.name,
+//                 email: sample.email
+//               })
+//             })
+//             if(!data.ok){
+//                 throw new Error (`Fetch failed, status: ${data.status}`)
+//             }
+//             const res = await data.json()
+//             console.log(res)
             
-        }catch(error){
-            console.error(`POST failed, message: ${error.message} ${error.stack}`)
-        }
-    }
-    post("https://jsonplaceholder.typicode.com/comments")
-})
-
+//         }catch(error){
+//             console.error(`POST failed, message: ${error.message} ${error.stack}`)
+//         }
+//     }
+//     post("https://jsonplaceholder.typicode.com/comments")
+// })
 
 
 
@@ -213,8 +215,33 @@ example.forEach(sample =>{
 // Change the URL slightly (like adding /badendpoint)
 // Ensure your catch block handles it gracefully.
 // Goal: Practice robust error handling and show a fallback message in the DOM.
+    // SOLUTION
+    const post = async (URL) =>{
+        try{
+            const data = await fetch(URL, {
+                method: 'POST',
+                headers:{
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify ({
+                    name: "Miss Helen",
+                    message: "They stole me"
+                })
+            })
+            if(!data.ok){
+                throw new Error (`Failed to reach server ${data.status}`)
+            }
+            const res = await data.json()
+            console.log(res.name)
+            console.log(res.message)
 
+        }catch(error){
+            console.error(`Post failed! ${error.message} 
+                 Error Here: ${error.stack}`)
+        }
+    }
 
+post("https://jsonplaceholder.typicode.com/commentz")
 // 5. Send an empty body
 // URL: https://jsonplaceholder.typicode.com/posts
 // Body: {}
