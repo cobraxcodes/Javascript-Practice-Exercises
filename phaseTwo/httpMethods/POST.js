@@ -215,37 +215,65 @@
 // Change the URL slightly (like adding /badendpoint)
 // Ensure your catch block handles it gracefully.
 // Goal: Practice robust error handling and show a fallback message in the DOM.
-    // SOLUTION
-    const post = async (URL) =>{
-        try{
-            const data = await fetch(URL, {
-                method: 'POST',
-                headers:{
-                    'Content-type': 'application/json'
-                },
-                body: JSON.stringify ({
-                    name: "Miss Helen",
-                    message: "They stole me"
-                })
-            })
-            if(!data.ok){
-                throw new Error (`Failed to reach server ${data.status}`)
-            }
-            const res = await data.json()
-            console.log(res.name)
-            console.log(res.message)
+//     // SOLUTION
+//     const post = async (URL) =>{
+//         try{
+//             const data = await fetch(URL, {
+//                 method: 'POST',
+//                 headers:{
+//                     'Content-type': 'application/json'
+//                 },
+//                 body: JSON.stringify ({
+//                     name: "Miss Helen",
+//                     message: "They stole me"
+//                 })
+//             })
+//             if(!data.ok){
+//                 throw new Error (`Failed to reach server ${data.status}`)
+//             }
+//             const res = await data.json()
+//             console.log(res.name)
+//             console.log(res.message)
 
-        }catch(error){
-            console.error(`Post failed! ${error.message} 
-                 Error Here: ${error.stack}`)
-        }
-    }
+//         }catch(error){
+//             console.error(`Post failed! ${error.message} 
+//                  Error Here: ${error.stack}`)
+//         }
+//     }
 
-post("https://jsonplaceholder.typicode.com/commentz")
+// post("https://jsonplaceholder.typicode.com/commentz")
+
+
+
+
 // 5. Send an empty body
 // URL: https://jsonplaceholder.typicode.com/posts
 // Body: {}
 // Goal: Observe how the server responds and handle it properly.
+//     const post = async(URL) =>{
+//         try{
+//             const data = await fetch(URL, {
+//                 method: 'POST',
+//                 headers:{
+//                     'Content-type': 'application/json'
+//                 },
+//                 body: JSON.stringify({
+
+//                 })
+//             })
+//             if(!data.ok){
+//                 throw new Error (`Fetch failed, ${data.status}`)
+//             }
+//             const res = await data.json()
+//             console.log(res)
+//         }catch(error){
+//             console.error(`Post failed! ${error.message} 
+//                 Error here: ${error.stack}`)
+//         }
+//     }
+
+// post("https://jsonplaceholder.typicode.com/posts")
+
 
 
 
