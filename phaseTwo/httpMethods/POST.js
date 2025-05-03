@@ -33,3 +33,58 @@
 // }
 
 // // calling the function  - of course :)
+// post()
+
+
+
+
+
+
+
+
+// Practice Challenge: Create a New Comment via POST
+// You're going to send a POST request to the following API endpoint:
+// https://jsonplaceholder.typicode.com/comments
+
+// 📝 Your task:
+// Send a comment that includes:
+// name: "Melrose"
+// email: "melrose@example.com"
+// body: "This is my practice comment!"
+// postId: 1
+
+// ✅ Requirements:
+// Use fetch() with POST method
+// Include headers and JSON.stringify the body
+// Handle any errors (log the HTTP status if it's not OK)
+// Log the returned data from the API
+// 💡 Bonus:
+// Try breaking the URL on purpose to test your catch block (e.g., change comments to commentz).
+
+
+const post = async (URL) =>{
+    try{
+        const data = await fetch ('https://jsonplaceholder.typicode.com/comments', {
+            method: 'POST',
+           headers:{
+            'Content-type': 'application/JSON'
+           },
+           body: JSON.stringify ({
+            name: "Melrose",
+            email: "melrose@example.com",
+            body: "This is my practice comment",
+            postId: 1
+           })
+        })
+        if(!data.ok){
+            throw new Error (`Fetch failed, Status: ${data.status}`)
+        }
+        const res = await data.json()
+        console.log(res)
+    }catch(error){
+        console.error(`Error: ${error.message} ${error.stack}`)
+    }
+
+}
+
+post()
