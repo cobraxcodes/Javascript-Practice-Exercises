@@ -64,7 +64,7 @@
 
 const post = async (URL) =>{
     try{
-        const data = await fetch ('https://jsonplaceholder.typicode.com/comments', {
+        const data = await fetch (URL, {
             method: 'POST',
            headers:{
             'Content-type': 'application/JSON'
@@ -87,4 +87,4 @@ const post = async (URL) =>{
 
 }
 
-post()
+post('https://jsonplaceholder.typicode.com/comments')
