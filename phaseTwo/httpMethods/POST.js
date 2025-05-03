@@ -98,7 +98,31 @@
 // URL: https://jsonplaceholder.typicode.com/users
 // Body: { name: "Alice", username: "alice123", email: "alice@example.com" }
 // Goal: Post the user and log the returned user ID.
+const post = async (URL) =>{
+    try{   
+        const data = await fetch(URL, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: "Alice",
+                username: "alice1234",
+                email: "alice@example.com"
+                
+            })
+        })
 
+        if(!data.ok) {
+            throw new Error (`${data.status}`)
+        }
+        const res = await data.json()
+        console.log(res.id)
+    }catch(error){
+        console.error(`${error.message}`)
+    }
+}
+post("https://jsonplaceholder.typicode.com/users")
 
 // 2. Post a to-do
 // URL: https://jsonplaceholder.typicode.com/todos
