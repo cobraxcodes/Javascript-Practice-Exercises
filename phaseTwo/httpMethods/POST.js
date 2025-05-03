@@ -132,36 +132,82 @@
 // URL: https://jsonplaceholder.typicode.com/todos
 // Body: { title: "Learn fetch POST", completed: false, userId: 3 }
 // Goal: Log the id and title from the response.
-const post = async (URL) =>{
-    try{
-        const data = await fetch(URL, {
-            method: 'POST',
-            headers:{
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                title: "Learn fetch POST",
-                completed: false,
-                userId: 3
-            })
-        })
-        if(!data.ok){
-            throw new Error (`Fetch failed,Status: ${data.status}`)
-        }
-        const res = await data.json()
-        console.log(`Title: ${res.title}`)
-        console.log(`Id: ${res.id}`)
-    }catch(error){
-        console.error(`Post unsucessful! ${error.message}`)
-    }
-}
+// const post = async (URL) =>{
+//     try{
+//         const data = await fetch(URL, {
+//             method: 'POST',
+//             headers:{
+//                 'Content-type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 title: "Learn fetch POST",
+//                 completed: false,
+//                 userId: 3
+//             })
+//         })
+//         if(!data.ok){
+//             throw new Error (`Fetch failed,Status: ${data.status}`)
+//         }
+//         const res = await data.json()
+//         console.log(`Title: ${res.title}`)
+//         console.log(`Id: ${res.id}`)
+//     }catch(error){
+//         console.error(`Post unsucessful! ${error.message}`)
+//     }
+// }
 
-post("https://jsonplaceholder.typicode.com/todos")
+// post("https://jsonplaceholder.typicode.com/todos")
+
+
+
+
 // 3. Post multiple comments
 // Post 3 different comments (in a loop or 3 calls) to:
 // https://jsonplaceholder.typicode.com/comments
 // Body should include a different name and email each time.
 // Goal: Log success messages for each post.
+const example = [{
+    name: "Kate",
+    email: "kate1234@email.com"
+},
+{
+    name: "Amy",
+    email: "amy1234@email.com"
+},
+{
+    name: "Anna",
+    email: "anna123@email.com"
+}
+]
+
+example.forEach(sample =>{
+    const post = async (URL) =>{
+        try{
+            const data = await fetch (URL, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+              body: JSON.stringify({
+                name: sample.name,
+                email: sample.email
+              })
+            })
+            if(!data.ok){
+                throw new Error (`Fetch failed, status: ${data.status}`)
+            }
+            const res = await data.json()
+            console.log(res)
+            
+        }catch(error){
+            console.error(`POST failed, message: ${error.message} ${error.stack}`)
+        }
+    }
+    post("https://jsonplaceholder.typicode.com/comments")
+})
+
+
+
 
 // 4. Handle a fake failed POST
 // Change the URL slightly (like adding /badendpoint)
