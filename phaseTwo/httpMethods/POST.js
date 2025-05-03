@@ -334,6 +334,33 @@
 // Make a POST and destructure the returned data to log only:
 // id, name, and email
 // Goal: Practice destructuring POST response data.
+const post = async (URL) =>{
+        try{
+                const data = await fetch (URL, {
+                        method: 'POST',
+                        headers:{
+                                'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                                id: 1,
+                                name: 'Test',
+                                email: 'test123@email.com'      
+                        })
+                })
+                        if(!data.ok) {
+                         throw new Error (`Data fetching failed! ${data.status}`)
+                        }
+
+                        const res = await data.json()
+                        const {id, name, email} = res
+                        console.log(id,name,email)
+
+        }catch(error){
+                console.error(`Post failed! Please try again!
+                        Error Here: ${error.message} ${error.stack}`)
+        }
+}
+post("https://jsonplaceholder.typicode.com/posts")
 
 // 9. Post with additional headers
 // Send a POST and include custom headers:
