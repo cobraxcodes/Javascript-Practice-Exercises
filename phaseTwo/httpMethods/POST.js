@@ -334,33 +334,33 @@
 // Make a POST and destructure the returned data to log only:
 // id, name, and email
 // Goal: Practice destructuring POST response data.
-const post = async (URL) =>{
-        try{
-                const data = await fetch (URL, {
-                        method: 'POST',
-                        headers:{
-                                'Content-type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                                id: 1,
-                                name: 'Test',
-                                email: 'test123@email.com'      
-                        })
-                })
-                        if(!data.ok) {
-                         throw new Error (`Data fetching failed! ${data.status}`)
-                        }
+// const post = async (URL) =>{
+//         try{
+//                 const data = await fetch (URL, {
+//                         method: 'POST',
+//                         headers:{
+//                                 'Content-type': 'application/json'
+//                         },
+//                         body: JSON.stringify({
+//                                 id: 1,
+//                                 name: 'Test',
+//                                 email: 'test123@email.com'      
+//                         })
+//                 })
+//                         if(!data.ok) {
+//                          throw new Error (`Data fetching failed! ${data.status}`)
+//                         }
 
-                        const res = await data.json()
-                        const {id, name, email} = res
-                        console.log(id,name,email)
+//                         const res = await data.json()
+//                         const {id, name, email} = res
+//                         console.log(id,name,email)
 
-        }catch(error){
-                console.error(`Post failed! Please try again!
-                        Error Here: ${error.message} ${error.stack}`)
-        }
-}
-post("https://jsonplaceholder.typicode.com/posts")
+//         }catch(error){
+//                 console.error(`Post failed! Please try again!
+//                         Error Here: ${error.message} ${error.stack}`)
+//         }
+// }
+// post("https://jsonplaceholder.typicode.com/posts")
 
 // 9. Post with additional headers
 // Send a POST and include custom headers:
@@ -369,8 +369,29 @@ post("https://jsonplaceholder.typicode.com/posts")
 //   "x-powered-by": "Melrose Fetch Practice"
 // }
 // Goal: Practice header customization.
-
-
+        const post = async (URL) =>{
+                try{
+                        const data = await fetch (URL, {
+                                method: 'POST',
+                                headers:{
+                                        'Content-type': 'application/json',
+                                        'x-powered-by': 'cobrax fetch practice'
+                                },
+                                body: JSON.stringify({
+                                        name: 'test'
+                                })
+                        })
+                        if(!data.ok){
+                                throw new Error (`Fetch failed! ${data.status}`)
+                        }
+                        const res = await data.json()
+                        console.log(res)
+                }catch(error){
+                        console.error(`Please try again!
+                                Error here: ${error.message} ${error.stack}`)
+                }
+        }
+post ('URLGOESHERE')
 // 10. POST and render on screen
 // After posting a comment, render the returned name, email, and body in a styled card using document.createElement.
 // Goal: Combine POST, JSON handling, and DOM manipulation.
