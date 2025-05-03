@@ -279,8 +279,48 @@
 
 // 6. Dynamic user input POST
 // Prompt the user using prompt() (in the browser) for a name, email, and comment.
-// Use those to form a POST to /comments.
+// Use those to form a POST to /comments. https://jsonplaceholder.typicode.com/comments
 // Goal: Practice turning input into request data.
+
+    // solution : HTML CREATED THROUGH JSFIDDLE
+// document.getElementById('postBtn').addEventListener('click', ()=>{
+//     const nameInput = document.getElementById('name').value
+//     const emailInput = document.getElementById('email').value
+//     const commentInput = document.getElementById('comment').value
+    
+    
+//     if(!nameInput|| !emailInput|| !commentInput){
+//     return alert ("Must fill each box")
+//     }
+//     const post = async (URL) =>{
+//     try{
+//         const data = await fetch(URL, {
+//                       method: 'POST',
+//               headers:{
+//               'Content-type': 'application/json'
+//               }, 
+//               body: JSON.stringify({
+//               name: nameInput,
+//               email: emailInput,
+//               comment: commentInput
+//               })
+//       })
+      
+//       if(!data.ok){
+//               throw new Error (`Post failed: ${data.status}`)
+//               }
+//        const res= await data.json()
+//        console.log(res)
+//     }catch(error){
+//     console.error(`Comment failed to post! ${error.message}
+//     Error Here: ${error.stack}`)
+//     }
+//     }
+//     post("https://jsonplaceholder.typicode.com/comments")
+//     })
+    
+    
+    
 
 
 // 7. Show loader + message
