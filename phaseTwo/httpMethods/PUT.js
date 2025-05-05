@@ -129,31 +129,31 @@
 //   userId: 1
 // });
 
-const put = async (URL, updatedData) =>{
-    let response
-    try{
-        response = await fetch(URL, {
-            method: 'PUT',
-            headers:{
-                'Content-type': 'application/json'
-            }, 
-            body: JSON.stringify(updatedData)
-        })
-        if(!response.ok){
-            throw new Error (`Failed to contact server! ${response.status}`);
-        }
-    }catch(error){
-        console.error(`Post failed! ${error.message} \n Error Here: ${error.stack}`)
-        return;
-    }
-   try{
-    const data = await response.json()
-    console.log(data)
+// const put = async (URL, updatedData) =>{
+//     let response
+//     try{
+//         response = await fetch(URL, {
+//             method: 'PUT',
+//             headers:{
+//                 'Content-type': 'application/json'
+//             }, 
+//             body: JSON.stringify(updatedData)
+//         })
+//         if(!response.ok){
+//             throw new Error (`Failed to contact server! ${response.status}`);
+//         }
+//     }catch(error){
+//         console.error(`Post failed! ${error.message} \n Error Here: ${error.stack}`)
+//         return;
+//     }
+//    try{
+//     const data = await response.json()
+//     console.log(data)
 
-   }catch(error){
-    console.error(`Failed to parse response into json. ${error.message} \n Error Here: ${error.stack}`)
-   }
-}
+//    }catch(error){
+//     console.error(`Failed to parse response into json. ${error.message} \n Error Here: ${error.stack}`)
+//    }
+// }
 
 
 
@@ -164,7 +164,48 @@ const put = async (URL, updatedData) =>{
 // 404: ❌ Resource not found
 // 500: 🔥 Server error
 // Use data.status to handle these.
+const put = async (URL) =>{
+    let res;
+    try{
+        res = await fetch(URL, {
+            method: 'PUT',
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: 1,
+                email: "test123@email.com"
+            })
+        }) 
+        switch(res.status){
+            case 200:
+                console.log("Update successful!")
+                break;
+            case 404:
+                console.log("Resource not found!")
+                break;
+            case 500:
+                console.log("Server error!")
+                break;
+            default:
+                if(!res.ok){
+                    throw new Error (`Failed to reach server! ${res.status}`)
+                }
+        }
 
+    }catch(error){
+        console.error(`Update failed! \n Error here: ${error.message}`)
+        return;
+    }
+
+    try{
+        const data = await res.json()
+        console.log(data)
+    }catch(error){
+        console.error(`Please try again! \n Error Here: ${error.stack} `)
+    }
+}
+put("https://jsonplaceholder.typicode.com/invalidpath/1")
 
 
 // 🔧 Challenge 5: Update Multiple Users in a Loop
