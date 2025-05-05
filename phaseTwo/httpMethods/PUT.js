@@ -164,54 +164,96 @@
 // 404: ❌ Resource not found
 // 500: 🔥 Server error
 // Use data.status to handle these.
-const put = async (URL) =>{
-    let res;
-    try{
-        res = await fetch(URL, {
-            method: 'PUT',
-            headers:{
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                id: 1,
-                email: "test123@email.com"
-            })
-        }) 
-        switch(res.status){
-            case 200:
-                console.log("Update successful!")
-                break;
-            case 404:
-                console.log("Resource not found!")
-                break;
-            case 500:
-                console.log("Server error!")
-                break;
-            default:
-                if(!res.ok){
-                    throw new Error (`Failed to reach server! ${res.status}`)
-                }
-        }
+    //solution:
+// const put = async (URL) =>{
+//     let res;
+//     try{
+//         res = await fetch(URL, {
+//             method: 'PUT',
+//             headers:{
+//                 'Content-type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 id: 1,
+//                 email: "test123@email.com"
+//             })
+//         }) 
+//         switch(res.status){
+//             case 200:
+//                 console.log("Update successful!")
+//                 break;
+//             case 404:
+//                 console.log("Resource not found!")
+//                 break;
+//             case 500:
+//                 console.log("Server error!")
+//                 break;
+//             default:
+//                 if(!res.ok){
+//                     throw new Error (`Failed to reach server! ${res.status}`)
+//                 }
+//         }
 
-    }catch(error){
-        console.error(`Update failed! \n Error here: ${error.message}`)
-        return;
-    }
+//     }catch(error){
+//         console.error(`Update failed! \n Error here: ${error.message}`)
+//         return;
+//     }
 
-    try{
-        const data = await res.json()
-        console.log(data)
-    }catch(error){
-        console.error(`Please try again! \n Error Here: ${error.stack} `)
-    }
-}
-put("https://jsonplaceholder.typicode.com/invalidpath/1")
+//     try{
+//         const data = await res.json()
+//         console.log(data)
+//     }catch(error){
+//         console.error(`Please try again! \n Error Here: ${error.stack} `)
+//     }
+// }
+// put("https://jsonplaceholder.typicode.com/invalidpath/1")
 
 
 // 🔧 Challenge 5: Update Multiple Users in a Loop
 // Goal: Given an array of user objects, loop through them and send a PUT request to update each user’s name to "Updated Name".
 // Example array:
-// const users = [
-//   { id: 1, name: "Old Name 1", email: "user1@example.com" },
-//   { id: 2, name: "Old Name 2", email: "user2@example.com" }
-// ];
+const users = [
+  { id: 1, name: "Old Name 1", email: "user1@example.com" },
+  { id: 2, name: "Old Name 2", email: "user2@example.com" }
+];
+    const put = async(URL) =>{
+       for(const user of users){
+        try{
+            const res = await fetch(URL, {
+                method: 'PUT',
+                headers:{
+                    'Content-type': 'application/json'
+                }, body: JSON.stringify({
+                    id: user.id,
+                    name: "Updated Name",
+                    email: user.email
+                })
+            })
+            
+            switch(res.status){
+                case 200:
+                    console.log("Update Successful!")
+                    break;
+                case 404:
+                    console.log("Resources not found")
+                    break;
+                case 500:
+                    console.log("Server Error")
+                    break;
+                default:
+                    if(!res.ok){
+                        throw new Error(`Please try again! ${error.status}`)
+                    }
+            }
+
+            const data = await res.json()
+            console.log(data)
+        }catch(error){
+            console.error(`Update failed! ${error.message} \nError Here: ${error.stack}`)
+            return;
+        }     
+    }
+       }
+      
+    put("https://jsonplaceholder.typicode.com/users/1")
+
