@@ -39,7 +39,7 @@
 //   "name": "Leanne Graham",
 //   "email": "updated_email@example.com"
 // // }
-
+    // solution:
 // const put = async (URL) =>{
 //     try{
 //         const data = await fetch(URL, {
@@ -80,42 +80,42 @@
 //   "title": "Study HTTP",
 //   "completed": true
 // }
+        // solution:
+// const put = async (URL) =>{
+//     let res;
+//     try{
+//          res = await fetch (URL, {
+//             method: 'PUT',
+//             headers:{
+//                 'Content-type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 userId: 1,
+//                 id: 5,
+//                 title: "Study HTTP",
+//                 completed: true
+//             })
+//         })
+//         if(!res.ok){
+//             console.error(`No response from server, please try again! ${res.status}`)
+//             return;
+//         }
 
-const put = async (URL) =>{
-    let res;
-    try{
-         res = await fetch (URL, {
-            method: 'PUT',
-            headers:{
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                userId: 1,
-                id: 5,
-                title: "Study HTTP",
-                completed: true
-            })
-        })
-        if(!res.ok){
-            console.error(`No response from server, please try again! ${res.status}`)
-            return;
-        }
-
-    }catch(error){
-        console.error (`Failed to update \n${error.message}`)
-        return
-    }
-    try{
-        const data = await res.json()
-        console.log(data)
-    }catch(error){
-        console.error (`Failed to parse response into json, ${error.message} \n${error.stack}`)
-    }
+//     }catch(error){
+//         console.error (`Failed to update \n${error.message}`)
+//         return
+//     }
+//     try{
+//         const data = await res.json()
+//         console.log(data)
+//     }catch(error){
+//         console.error (`Failed to parse response into json, ${error.message} \n${error.stack}`)
+//     }
     
-}
+// }
 
 
-put("https://jsonplaceholder.typicode.com/todos/5")
+// put("https://jsonplaceholder.typicode.com/todos/5")
 
 // 🔧 Challenge 3: Create a Reusable put() Function
 // Goal: Refactor your function so it accepts:
@@ -128,6 +128,33 @@ put("https://jsonplaceholder.typicode.com/todos/5")
 //   body: "New content here",
 //   userId: 1
 // });
+
+const put = async (URL, updatedData) =>{
+    let response
+    try{
+        response = await fetch(URL, {
+            method: 'PUT',
+            headers:{
+                'Content-type': 'application/json'
+            }, 
+            body: JSON.stringify(updatedData)
+        })
+        if(!response.ok){
+            throw new Error (`Failed to contact server! ${response.status}`);
+        }
+    }catch(error){
+        console.error(`Post failed! ${error.message} \n Error Here: ${error.stack}`)
+        return;
+    }
+   try{
+    const data = await response.json()
+    console.log(data)
+
+   }catch(error){
+    console.error(`Failed to parse response into json. ${error.message} \n Error Here: ${error.stack}`)
+   }
+}
+
 
 
 
