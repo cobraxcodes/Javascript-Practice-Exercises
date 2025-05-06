@@ -30,6 +30,45 @@
 // 🛠️ PATCH Challenge 1: Update a User’s Email
 // Goal: Send a PATCH request to update a user's email at endpoint:
 // 📍 https://api.example.com/users/10
+    const patch = async (URL) =>{
+        let res;
+        try{
+            res = await fetch (URL, {
+                method: 'PATCH',
+                headers:{
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: 'updatedEmail@email.com'
+                })
+            })
+           switch(res.status){
+            case 200:
+                console.log(`Update successful`)
+                break;
+            case 404:
+                console.log(`Resource Not Found!`)
+                break;
+            case 500:
+                console.log(`Server Error!`)
+                break;
+            default: 
+                if(!res.ok){
+                    throw new Error (`Please try again! ${res.status}`)
+                }
+           }
+
+           const data = await res.json()
+           console.log(data)
+
+        }catch(error){
+            console.error(`Error here ${error.stack}`)
+            return
+        }
+    }
+patch("https://api.example.com/users/10")
+
+
 
 // 🛠️ PATCH Challenge 2: Change a Product’s Price
 // Goal: Update only the price of a product with ID 3 at:
