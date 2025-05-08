@@ -13,18 +13,22 @@ import axios from "../../axios/axiosInstance.js"
 // const fetchSecond = fetch ("https://jsonplaceholder.typicode.com/posts/2").then(res => res.json())
 // const fetchThird =  fetch("https://jsonplaceholder.typicode.com/posts/3").then(res => res.json())
 
-// Promise.all([fetchFirst,fetchSecond,fetchThird])
-// .then(([data1,data2,data3]) =>{
-//     console.log(data1),
-//     console.log(data2),
-//     console.log(data3)
-// }) 
-// .catch(error =>{
-//     console.error(`${error.message}`)
-// })
+const fetch = async () =>{
+    try{
+        const [first,second,third ] = await Promise.all([
+            axios.get("https://jsonplaceholder.typicode.com/posts/1"),
+            axios.get("https://jsonplaceholder.typicode.com/posts/2"),
+            axios.get("https://jsonplaceholder.typicode.com/posts/3")
+        ])
 
+        console.log(first.data, second.data, third.data)
+        
+    }catch(error){
+        console.error(`Fetch invalid ${error.message} \n Stack Trace: ${error.stack}`)
+    }
+}
 
-
+fetch()
 // 2. Challenge: Handling Rejections with Multiple Promises
 // You are fetching multiple resources, but one of the URLs might fail. Write code that uses Promise.all() to fetch three URLs.
 //  If any of them fail, catch the error and log it. Make sure to log whether the other promises have succeeded or not.
