@@ -131,9 +131,6 @@ const getRequest = async (URL) =>{
 
 
 
-
-
-
 // // 🚀 Axios Challenge Set #2 – Intermediate
 // // 🔵 Challenge 4: Use Query Parameters
 // // Fetch only posts from user with userId=3.
@@ -141,6 +138,17 @@ const getRequest = async (URL) =>{
 // // ✅ Task:
 // // Fetch the posts
 // // Log all the post titles from that user
+const params = async (url, userId) =>{
+  try{
+    const res = await axios.get(url,{
+      params: {userId}
+    })
+    res.data.forEach(post => console.log(`POST TITLES: ${post.title}`))
+  }catch(error){
+    console.error(`Unable to fetch post ${error.message} \nStack Trace: ${error.stack}`)
+  }
+}
+params("https://jsonplaceholder.typicode.com/posts", 3)
 
 
 
