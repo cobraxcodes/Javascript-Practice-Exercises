@@ -1,3 +1,6 @@
+//importing axios
+import axios from "./axiosInstance.js"
+
 // axios try/catch GET syntax
 // const axios = require('axios');
 
@@ -12,11 +15,13 @@
 
 // getUser();
 
+
+
 // // 🟢 Challenge 1: Make a GET Request
 // // Use the jsonplaceholder API to fetch posts.
 // // // GET https://jsonplaceholder.typicode.com/posts
 // // ✅ Task:
-import axios from './axiosInstance'
+
 
 const getUser = async(URL) =>{
   try{
@@ -28,12 +33,52 @@ const getUser = async(URL) =>{
 }
 
 getUser("https://jsonplaceholder.typicode.com/posts")
+
+
 // // Fetch posts
 // // Log only the title of the first 5 posts
 // // 🟢 Challenge 2: Make a POST Request
 // // Send a new post to the same API.
 // // // POST https://jsonplaceholder.typicode.com/posts
 // // ✅ Task:
+
+const postRequest = async (URL) =>{
+  try{
+    const res = await axios.post(URL, {
+      method: 'POST',
+      Headers:{
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: "test",
+        comments: "this is a test"
+      })
+    })
+    switch(res.status){
+      case 200:
+        console.log(`Post successful!`)
+      case 500:
+        console.log(`Unable to reach server ${error.response}`)
+        break;
+      case 404:
+        console.log(`Unable to fetch resources ${error.response}`)
+        break;
+      default:
+        if(!res.ok){
+          console.log(`Please try again ${res.status}`)
+        }
+
+      console.log(res.data)
+     
+    }
+  }catch(error){
+    console.error(`Unable to send post ${error.message} \nStack Trace: ${error.stack}`)
+  }
+}
+
+postRequest("https://jsonplaceholder.typicode.com/posts")
+
+
 
 // // Send a post with:
 // // {
