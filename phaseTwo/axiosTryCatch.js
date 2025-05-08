@@ -220,7 +220,7 @@ const parallel = async () =>{
   }
 }
 
-parallel()
+// parallel()
 
 
 
@@ -232,3 +232,23 @@ parallel()
 // // /posts
 // // /comments
 // // Log total items from each call
+
+const reuse  = async(endpoint) =>{
+  try{
+    const res = await axiosInstance.get(endpoint)
+    return res.data
+  }catch(error){
+    console.error(`Unable to fetch, ${error.message} \nStack Trace: ${error.stack}`)
+  }
+}
+
+const reusable = async () =>{
+  const posts = await reuse('/posts');
+  console.log(posts.length)
+  const comments = await reuse('/comments')
+  console.log(comments.length)
+  
+  console.log(posts.length + comments.length)
+
+}
+reusable()
