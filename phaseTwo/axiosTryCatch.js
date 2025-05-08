@@ -1,4 +1,5 @@
 //importing axios
+import axiosInstance from "./axiosInstance.js"
 import axios from "./axiosInstance.js"
 
 // axios try/catch GET syntax
@@ -148,7 +149,7 @@ const params = async (url, userId) =>{
     console.error(`Unable to fetch post ${error.message} \nStack Trace: ${error.stack}`)
   }
 }
-params("https://jsonplaceholder.typicode.com/posts", 3)
+// params("https://jsonplaceholder.typicode.com/posts", 3)
 
 
 
@@ -162,10 +163,22 @@ params("https://jsonplaceholder.typicode.com/posts", 3)
 // // 'x-my-token': 'abc123'
 // // Log the full response
 
+const customHeader = async(url) =>{
+  try{
+    const res = await axios.post(url,{}, {
+      headers:{
+       'x-my-token': 'abc123'
+      }
+    })
 
+    console.log(res.data)
 
+  }catch(error){
+    console.error(`Unable to fetch post, ${error.message} \nStack Trace:${error.stack}`)
+  }
+}
 
-
+// customHeader()
 
 // // 🔵 Challenge 6: Axios Instance + Base URL
 // // Create an axiosInstance with a base URL and use it to get /comments.
@@ -174,8 +187,16 @@ params("https://jsonplaceholder.typicode.com/posts", 3)
 // // Fetch /comments
 // // Log the email of the first 5 comments
 
+const getComments = async () =>{
+  try{
+    const res = await axiosInstance.get('/comments')
+   res.data.slice(0,5).forEach(emails => console.log(`Emails: ${emails.email}`))
+  }catch(error){
+    console.error(`unable to fetch comments ${error.message} \nStack Trace: ${error.stack}`)
+  }
+}
 
-
+getComments()
 
 
 // // 🔵 Challenge 7: Use Promise.all() to Fetch in Parallel
