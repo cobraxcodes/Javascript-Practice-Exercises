@@ -21,27 +21,31 @@ import axios from "./axiosInstance.js"
 // // Use the jsonplaceholder API to fetch posts.
 // // // GET https://jsonplaceholder.typicode.com/posts
 // // ✅ Task:
+// // Fetch posts
+// // Log only the title of the first 5 posts
+
+    // solution
 
 
 const getUser = async(URL) =>{
   try{
     const res = await axios.get(URL)
-    console.log(res.data)
+    res.data.slice(0,5).forEach(titles => console.log(titles.title))
   }catch(error){
     console.error(`Unable to fetch posts. ${error.message} \n Stack Trace: ${error.stack}`)
   }
 }
 
-getUser("https://jsonplaceholder.typicode.com/posts")
+// getUser("https://jsonplaceholder.typicode.com/posts")
 
 
-// // Fetch posts
-// // Log only the title of the first 5 posts
+
 // // 🟢 Challenge 2: Make a POST Request
 // // Send a new post to the same API.
 // // // POST https://jsonplaceholder.typicode.com/posts
 // // ✅ Task:
 
+  // SOLUTION
 const postRequest = async (URL) =>{
   try{
     const res = await axios.post(URL, {
@@ -65,7 +69,7 @@ const postRequest = async (URL) =>{
         break;
       default:
         if(!res.ok){
-          console.log(`Please try again ${res.status}`)
+          console.log(`${res.status}`)
         }
 
       console.log(res.data)
@@ -76,7 +80,7 @@ const postRequest = async (URL) =>{
   }
 }
 
-postRequest("https://jsonplaceholder.typicode.com/posts")
+// postRequest("https://jsonplaceholder.typicode.com/posts")
 
 
 
