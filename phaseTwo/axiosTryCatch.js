@@ -196,7 +196,7 @@ const getComments = async () =>{
   }
 }
 
-getComments()
+// getComments()
 
 
 // // 🔵 Challenge 7: Use Promise.all() to Fetch in Parallel
@@ -205,7 +205,22 @@ getComments()
 // // Use Promise.all() with two Axios calls
 // // Log how many users and posts were returned
 
+const parallel = async () =>{
+  try{
+    const [users, posts] = await Promise.all([
+      axiosInstance.get('/users'),
+      axiosInstance.get('/posts')
+    ]);
 
+    console.log(users.data.length)
+    console.log(posts.data.length)
+
+  }catch(error){
+    console.error(`Unable to fetch link, ${error.message} \nStack Trace: ${error.stack}`)
+  }
+}
+
+parallel()
 
 
 
