@@ -1,35 +1,37 @@
-// // basic set up for importing axios
-import axios from 'axios';
+// axios try/catch GET syntax
+// const axios = require('axios');
 
-const axiosInstance = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
-  timeout: 5000,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+// async function getUser() {
+//   try {
+//     const response = await axios.get('https://jsonplaceholder.typicode.com/users/1');
+//     console.log(response.data);
+//   } catch (error) {
+//     console.error('Error fetching user:', error.message);
+//   }
+// }
 
-export default axiosInstance;
-
+// getUser();
 
 // // 🟢 Challenge 1: Make a GET Request
 // // Use the jsonplaceholder API to fetch posts.
 // // // GET https://jsonplaceholder.typicode.com/posts
 // // ✅ Task:
+import axios from './axiosInstance'
 
-axios.get("https://jsonplaceholder.typicode.com/posts")
-.then(response =>{
-    console.log(response.data)
-})
-.catch(error =>{
-    console.error(`Error: ${error.message}`)
-}) 
+const getUser = async(URL) =>{
+  try{
+    const res = await axios.get(URL)
+    console.log(res.data)
+  }catch(error){
+    console.error(`Unable to fetch posts. ${error.message} \n Stack Trace: ${error.stack}`)
+  }
+}
+
+getUser("https://jsonplaceholder.typicode.com/posts")
 // // Fetch posts
 // // Log only the title of the first 5 posts
 // // 🟢 Challenge 2: Make a POST Request
-
 // // Send a new post to the same API.
-
 // // // POST https://jsonplaceholder.typicode.com/posts
 // // ✅ Task:
 
