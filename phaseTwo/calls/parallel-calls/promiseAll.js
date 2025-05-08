@@ -13,6 +13,7 @@ import axios from "../../axios/axiosInstance.js"
 // const fetchSecond = fetch ("https://jsonplaceholder.typicode.com/posts/2").then(res => res.json())
 // const fetchThird =  fetch("https://jsonplaceholder.typicode.com/posts/3").then(res => res.json())
 
+    // SOLUTION
 const fetch = async () =>{
     try{
         const [first,second,third ] = await Promise.all([
@@ -28,7 +29,10 @@ const fetch = async () =>{
     }
 }
 
-fetch()
+// fetch()
+
+
+
 // 2. Challenge: Handling Rejections with Multiple Promises
 // You are fetching multiple resources, but one of the URLs might fail. Write code that uses Promise.all() to fetch three URLs.
 //  If any of them fail, catch the error and log it. Make sure to log whether the other promises have succeeded or not.
@@ -58,12 +62,34 @@ const parallel = async () =>{
 
 
 // 3. Challenge: Convert Multiple Promises into an Object
-// You are fetching multiple user profiles, and each user has a unique ID. Fetch their data in parallel and transform the results into an object with user IDs as keys and user data as values.
+// You are fetching multiple user profiles, and each user has a unique ID. Fetch their data in parallel 
+// and transform the results into an object with user IDs as keys and user data as values.
 // const userIds = [1, 2, 3, 4, 5];
 // // Fetch user profiles and map the results to an object where keys are user IDs
 // // Example output should look like:
 // // { 1: { ...userData }, 2: { ...userData }, 3: { ...userData }, 4: { ...userData }, 5: { ...userData } }
 
+        //SOLUTION
+const multiple = async () =>{
+    try{
+        const[user1, user2, user3] = await Promise.all([
+            axios.get("https://jsonplaceholder.typicode.com/posts/1"),
+            axios.get("https://jsonplaceholder.typicode.com/posts/2"),
+            axios.get("https://jsonplaceholder.typicode.com/posts/3")
+        ])
+       const myMap = new Map ([
+        [user1.data.userId , user1.data],
+        [user2.data.userId, user2.data],
+        [user3.data.userId, user3.data]
+       ])
+
+       const obj = Object.fromEntries(myMap)
+       console.log(obj)
+    }catch(error){
+        console.error(`Promise failed ${error.message} \nStack Trace: ${error.stack}`)
+    }
+}
+multiple()
 
 
 
