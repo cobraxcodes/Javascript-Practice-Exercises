@@ -29,7 +29,7 @@ import axios from "./axiosInstance.js"
 
 const getUser = async(URL) =>{
   try{
-    const res = await axios.get(URL)
+    const res = await axios.get(URL) 
     res.data.slice(0,5).forEach(titles => console.log(titles.title))
   }catch(error){
     console.error(`Unable to fetch posts. ${error.message} \n Stack Trace: ${error.stack}`)
@@ -103,35 +103,31 @@ const postRequest = async (URL) =>{
 const getRequest = async (URL) =>{
   try{
     const res = await axios.get(URL, {
-      method: 'GET', 
       headers:{
         'Content-type': 'application/json'
-      },
-      body: JSON.stringify()
-    })
-
-    switch(res.status){
+      }
+        })
+    console.log(res.data)
+  }catch(error){
+    switch(error.status){
       case 200:
         console.log(`Fetch successful`)
         break;
       case 500:
-        console.log(`Network Error! ${error.response}`)
+        console.log(`Network Error! ${error.status}`)
         break;
       case 404:
-         console.log(`Resource unavailable ${error.response}`)
+         console.log(`Resource unavailable ${error.status}`)
          break;
       default:
-        if(!res.ok){
+        if(error.status){
           console.log(`Error please try! ${error.message}`)
         }
     }
-
-    console.log(res.data)
-  }catch(error){
-    console.error(`Unable to retrieve url ${error.message} \nStack Trace: ${error.stack}`)
+    console.error(`Unable to retrieve url, ${error.message} \nStack Trace: ${error.stack}`)
   }
 }
-getRequest("https://jsonplaceholder.typicode.com/posts")
+// getRequest("https://jsonplaceholder.typicode.com/invalidURl")
 
 
 
