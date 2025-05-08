@@ -1,3 +1,5 @@
+import axios from "../../axios/axiosInstance.js"
+
 // 1. Challenge: Parallel Data Fetching
 // You have three URLs for fetching JSON data, but you need to make sure they all resolve before proceeding. Use Promise.all() to fetch data from these URLs and log the results.
 // const url1 = 'https://jsonplaceholder.typicode.com/posts/1';
@@ -6,12 +8,26 @@
 // // Fetch all three posts using Promise.all
 // // Log the results once all are resolved
 
+    // SOLUTION
+// const fetchFirst = fetch("https://jsonplaceholder.typicode.com/posts/1").then(res => res.json())
+// const fetchSecond = fetch ("https://jsonplaceholder.typicode.com/posts/2").then(res => res.json())
+// const fetchThird =  fetch("https://jsonplaceholder.typicode.com/posts/3").then(res => res.json())
 
+// Promise.all([fetchFirst,fetchSecond,fetchThird])
+// .then(([data1,data2,data3]) =>{
+//     console.log(data1),
+//     console.log(data2),
+//     console.log(data3)
+// }) 
+// .catch(error =>{
+//     console.error(`${error.message}`)
+// })
 
 
 
 // 2. Challenge: Handling Rejections with Multiple Promises
-// You are fetching multiple resources, but one of the URLs might fail. Write code that uses Promise.all() to fetch three URLs. If any of them fail, catch the error and log it. Make sure to log whether the other promises have succeeded or not.
+// You are fetching multiple resources, but one of the URLs might fail. Write code that uses Promise.all() to fetch three URLs.
+//  If any of them fail, catch the error and log it. Make sure to log whether the other promises have succeeded or not.
 // const url1 = 'https://jsonplaceholder.typicode.com/posts/1'; // Valid
 // const url2 = 'https://jsonplaceholder.typicode.com/posts/999'; // Invalid
 // const url3 = 'https://jsonplaceholder.typicode.com/posts/3'; // Valid
@@ -20,7 +36,21 @@
 // // Make sure you log whether the other promises succeeded
 
 
+        // SOLUTION
+const parallel = async () =>{
+    try{
+        const [url1,url2,url3] = await Promise.all([
+            axios.get("https://jsonplaceholder.typicode.com/posts/1"),
+            axios.get("https://jsonplaceholder.typicode.com/posts/999"),
+            axios.get("https://jsonplaceholder.typicode.com/posts/3")
+        ]);
+        console.log(url1.data,url2.data,url3.data)
+    }catch(error){
+        console.error(`Unable to fetch link ${error.message} \nStack Trace: ${error.stack}`)
+    }
+}
 
+// parallel()
 
 
 // 3. Challenge: Convert Multiple Promises into an Object
