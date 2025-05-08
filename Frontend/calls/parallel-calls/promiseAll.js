@@ -124,6 +124,8 @@ const complete = async() =>{
 // 5. Challenge: Simulate Delayed Responses
 // You are simulating a set of delayed responses (e.g., API requests). Create five promises that resolve after different delays (e.g., 1, 2, 3, 4, and 5 seconds). 
 // Use Promise.all() to resolve them and log how long it took to get all responses.
+
+        //SOLUTION
 let startTime, endTime;
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const promise1 = delay(1000).then(() => 'Response 1');
@@ -150,18 +152,3 @@ const race = async() =>{
 }
 
 race()
-
-
-
-// 6. Challenge: Combine Promises and Handling Timeouts
-// You have a function that fetches data from multiple sources, but if any of the requests take longer than 3 seconds, they should be aborted. Use Promise.all() with a timeout mechanism.
-// const timeout = ms => new Promise((_, reject) => setTimeout(() => reject('Timeout!'), ms));
-// const fetchData = (url) => {
-//   return new Promise((resolve, reject) => {
-//     // Simulate data fetching with a random timeout
-//     setTimeout(() => resolve(`Fetched data from ${url}`), Math.random() * 5000);
-//   });
-// };
-// const urls = ['url1', 'url2', 'url3'];
-// // Create a timeout-based function that fetches data but rejects if it takes longer than 3 seconds
-// // Use Promise.all to handle the multiple fetch requests and timeouts together
