@@ -115,23 +115,41 @@ const complete = async() =>{
         console.error(`An error has occured ${error.message} \nStack Trace: ${error.stack}`)
     }
 }
-complete()
+// complete()
 
 
 
 
 
 // 5. Challenge: Simulate Delayed Responses
-// You are simulating a set of delayed responses (e.g., API requests). Create five promises that resolve after different delays (e.g., 1, 2, 3, 4, and 5 seconds). Use Promise.all() to resolve them and log how long it took to get all responses.
-// const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-// const promise1 = delay(1000).then(() => 'Response 1');
-// const promise2 = delay(2000).then(() => 'Response 2');
-// const promise3 = delay(3000).then(() => 'Response 3');
-// const promise4 = delay(4000).then(() => 'Response 4');
-// const promise5 = delay(5000).then(() => 'Response 5');
+// You are simulating a set of delayed responses (e.g., API requests). Create five promises that resolve after different delays (e.g., 1, 2, 3, 4, and 5 seconds). 
+// Use Promise.all() to resolve them and log how long it took to get all responses.
+let startTime, endTime;
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const promise1 = delay(1000).then(() => 'Response 1');
+const promise2 = delay(2000).then(() => 'Response 2');
+const promise3 = delay(3000).then(() => 'Response 3');
+const promise4 = delay(4000).then(() => 'Response 4');
+const promise5 = delay(5000).then(() => 'Response 5');
 // // Use Promise.all to get all responses and log how long it took for all to resolve
 
+const race = async() =>{
+    startTime = performance.now()
+    try{
+        const [race1,race2,race3,race4,race5] = await Promise.all([
+            promise1,promise2,promise3,promise4,promise5
+        ])
+        endTime = performance.now()
+        let responseTime = endTime - startTime
+        console.log(responseTime)
+        console.log(race1,race2,race3,race4,race5)
 
+    }catch(error){
+        console.error(`An error has occured ${error.message} \nStack Trace:${error.stack}`)
+    }
+}
+
+race()
 
 
 
