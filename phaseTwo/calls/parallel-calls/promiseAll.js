@@ -89,18 +89,33 @@ const multiple = async () =>{
         console.error(`Promise failed ${error.message} \nStack Trace: ${error.stack}`)
     }
 }
-multiple()
-
-
+// multiple()
 
 
 // 4. Challenge: Track Multiple Download Tasks
-// Imagine you have multiple file download tasks (represented as promises) that return their progress as values (like 50%, 75%, etc.). Use Promise.all() to track the progress of all tasks and log the completion percentage.
+// Imagine you have multiple file download tasks (represented as promises) that return their progress as values (like 50%, 75%, etc.). Use Promise.all() 
+// to track the progress of all tasks and log the completion percentage.
 // const download1 = new Promise((resolve, reject) => setTimeout(() => resolve('50%'), 2000));
 // const download2 = new Promise((resolve, reject) => setTimeout(() => resolve('75%'), 3000));
 // const download3 = new Promise((resolve, reject) => setTimeout(() => resolve('100%'), 4000));
 // // Use Promise.all to track progress of the three downloads
 // // Log the final download status once all are done
+
+const download1 = new Promise((resolve) => setTimeout(() => resolve('50%'), 2000));
+const download2 = new Promise((resolve) => setTimeout(() => resolve('75%'), 3000));
+const download3 = new Promise((resolve) => setTimeout(() => resolve('100%'), 4000));
+
+const complete = async() =>{
+    try{
+        const [x, y, z] = await Promise.all ([
+           download1,download2,download3
+        ])
+        console.log(x,y,z)
+    }catch(error){
+        console.error(`An error has occured ${error.message} \nStack Trace: ${error.stack}`)
+    }
+}
+complete()
 
 
 
