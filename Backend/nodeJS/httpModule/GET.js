@@ -30,17 +30,17 @@
 // Task: Modify the / route to send a different message in the JSON response. For example, "message": "Hello, Express!".
 
         // SOLUTION
-const express = require ('express')
-const app = express()
-const port = 3000
+// const express = require ('express')
+// const app = express()
+// const port = 3000
 
-app.get('/' , (req, res) =>{
-    res.json({message: "Hello Express"})
-})
+// app.get('/' , (req, res) =>{
+//     res.json({message: "Hello Express"})
+// })
 
-app.listen(port, ()=>{
-    console.log(`Server is running at http://localhost:${port}`)
-})
+// app.listen(port, ()=>{
+//     console.log(`Server is running at http://localhost:${port}`)
+// })
 
 
 // 🛠 Mini Challenge 2: Add Multiple Routes
@@ -49,6 +49,27 @@ app.listen(port, ()=>{
 //   "info": "This is an Express app!"
 // }
 
+
+const express = require ('express')
+const app = express()
+const port = 3000
+
+        // SOLUTION
+// GET route for http GET request
+app.get('/' , (req,res) =>{
+    // message whenever the request is succesful
+    res.json({message: "This is the homepage"})
+})
+// about route for http GET request just on a different "page"
+app.get('/about', (req,res) =>{
+    // message whenver the about route is success
+    res.json({info: "This is an Express app"})
+})
+
+// only one app.listen to avoid errors and multiple ports opening           
+app.listen(port, ()=>{
+    console.log(`Server is running at port ${port}`)
+})
 
 
 
