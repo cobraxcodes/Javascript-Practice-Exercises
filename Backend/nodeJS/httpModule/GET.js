@@ -14,9 +14,9 @@ const app = express();
 // // });
 
 // // // start the server
-// // app.listen(port, () =>{
-// //     console.log(`Server is running at http://localhost:${port}`)
-// // })
+app.listen(port, () =>{     
+    console.log(`Server is running at http://localhost:${port}`)
+ })
 
 
 
@@ -47,21 +47,16 @@ const app = express();
 
 
 //         // SOLUTION
-// // GET route for http GET request
-// app.get('/' , (req,res) =>{
-//     // message whenever the request is succesful
-//     res.json({message: "This is the homepage"})
-// })
-// // about route for http GET request just on a different "page"
-// app.get('/about', (req,res) =>{
-//     // message whenver the about route is success
-//     res.json({info: "This is an Express app"})
-// })
-
-// // only one app.listen to avoid errors and multiple ports opening           
-// app.listen(port, ()=>{
-//     console.log(`Server is running at port ${port}`)
-// })
+// GET route for http GET request
+app.get('/' , (req,res) =>{
+    // message whenever the request is succesful
+    res.json({message: "This is the homepage"})
+})
+// about route for http GET request just on a different "page"
+app.get('/about', (req,res) =>{
+    // message whenver the about route is success
+    res.json({info: "This is an Express app"})
+})
 
 
 
@@ -72,6 +67,9 @@ const app = express();
 //   "greeting": "Hello, Alice!"
 // }
 
+app.get('/users/:name', (req,res) =>{
+    res.json({greeting: `Hello ${req.params.name}`})
+})
 
 
 
@@ -82,8 +80,15 @@ const app = express();
 //   "message": "Hello, John!"
 // }
 
+app.get('/greet', (req,res) =>{
+    const name = req.query.name
 
-
+    if(name){
+        res.json({message: `Hello, ${name}`})
+    }else{
+        res.json({message: "Hello, Guest!"})
+    }
+})
 
 // 🛠 Mini Challenge 5: Handle Multiple HTTP Methods
 // Task: Add a POST route to the / URL where users can send data to the server. The response should simply echo back the data they send (e.g., if the user sends { "name": "John" }, the response should be { "name": "John" }).
