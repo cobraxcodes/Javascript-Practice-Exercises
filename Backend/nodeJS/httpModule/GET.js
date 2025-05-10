@@ -53,10 +53,10 @@ app.get('/' , (req,res) =>{
     res.json({message: "This is the homepage"})
 })
 // about route for http GET request just on a different "page"
-app.get('/about', (req,res) =>{
-    // message whenver the about route is success
-    res.json({info: "This is an Express app"})
-})
+// app.get('/about', (req,res) =>{
+//     // message whenver the about route is success
+//     res.json({info: "This is an Express app"})
+// })
 
 
 
@@ -81,31 +81,34 @@ app.get('/users/:name', (req,res) =>{
 // }
 
 app.get('/greet', (req,res) =>{
+    // declaring variable here using query
     const name = req.query.name
 
+    // if the route has a query on it, then it will return this message
     if(name){
         res.json({message: `Hello, ${name}`})
+        // if not it will just call the user  a guest
     }else{
         res.json({message: "Hello, Guest!"})
     }
 })
 
-// 🛠 Mini Challenge 5: Handle Multiple HTTP Methods
-// Task: Add a POST route to the / URL where users can send data to the server. The response should simply echo back the data they send (e.g., if the user sends { "name": "John" }, the response should be { "name": "John" }).
-// 🛠 Mini Challenge 6: Handling Non-Existent Routes (404)
-// Task: Add a catch-all route at the bottom of your routes to handle requests to undefined URLs (404). This should respond with a 404 status and a message:
-// {
-//   "error": "Page not found!"
-// }
 
 
-
-
-// 🛠 Mini Challenge 7: Customize Status Codes
+// 🛠 Mini Challenge 6: Customize Status Codes
 // Task: For the /about route, modify the response to send back a 200 OK status code explicitly, even though it's the default for a successful GET request. You can do this using res.status(200).
 
+app.get('/about', (req,res) =>{
+    res.status(200).json({message: "This is an express app!"})
+    console.log("Response sent with status: ", 200)
+})
 
-
-// 🛠 Mini Challenge 8: Sending HTML and JSON
+// 🛠 Mini Challenge 7: Sending HTML and JSON
 // Task: Set up a new route /html that sends back an HTML string instead of JSON, like:
 // <h1>Welcome to the Express App!</h1>
+app.get('/html', (req,res) =>{
+   res.header({
+    'Content-type': 'text/html'
+   })
+   res.send("<h1>Welcome to the Express App!</h1>")
+})
