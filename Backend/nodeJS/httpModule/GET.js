@@ -20,11 +20,27 @@
 
 
 
-// // CHALLENGES
+
+
+
+
+
+                                                                                // CHALLENGES
 // 🛠 Mini Challenge 1: Return a Different Message
 // Task: Modify the / route to send a different message in the JSON response. For example, "message": "Hello, Express!".
 
+        // SOLUTION
+const express = require ('express')
+const app = express()
+const port = 3000
 
+app.get('/' , (req, res) =>{
+    res.json({message: "Hello Express"})
+})
+
+app.listen(port, ()=>{
+    console.log(`Server is running at http://localhost:${port}`)
+})
 
 
 // 🛠 Mini Challenge 2: Add Multiple Routes
