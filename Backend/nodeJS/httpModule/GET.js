@@ -1,11 +1,11 @@
 // // // basic syntax
 
 // // // importing express framework
-// // const express = require ('express');
+const express = require ('express');
 // // // telling the app to use express
-// // const app = express();
+const app = express();
 // // // setting the port to 3000
-// // const port = 3000;
+ const port = 3000;
 
 // // // GET REQUEST FOR ROOT URL
 // // app.get('/', (req,res) =>{
@@ -30,10 +30,6 @@
 // Task: Modify the / route to send a different message in the JSON response. For example, "message": "Hello, Express!".
 
         // SOLUTION
-// const express = require ('express')
-// const app = express()
-// const port = 3000
-
 // app.get('/' , (req, res) =>{
 //     res.json({message: "Hello Express"})
 // })
@@ -50,26 +46,22 @@
 // }
 
 
-const express = require ('express')
-const app = express()
-const port = 3000
+//         // SOLUTION
+// // GET route for http GET request
+// app.get('/' , (req,res) =>{
+//     // message whenever the request is succesful
+//     res.json({message: "This is the homepage"})
+// })
+// // about route for http GET request just on a different "page"
+// app.get('/about', (req,res) =>{
+//     // message whenver the about route is success
+//     res.json({info: "This is an Express app"})
+// })
 
-        // SOLUTION
-// GET route for http GET request
-app.get('/' , (req,res) =>{
-    // message whenever the request is succesful
-    res.json({message: "This is the homepage"})
-})
-// about route for http GET request just on a different "page"
-app.get('/about', (req,res) =>{
-    // message whenver the about route is success
-    res.json({info: "This is an Express app"})
-})
-
-// only one app.listen to avoid errors and multiple ports opening           
-app.listen(port, ()=>{
-    console.log(`Server is running at port ${port}`)
-})
+// // only one app.listen to avoid errors and multiple ports opening           
+// app.listen(port, ()=>{
+//     console.log(`Server is running at port ${port}`)
+// })
 
 
 
