@@ -65,7 +65,7 @@ app.get('/greet/:name', (req,res) =>{
 
 
 // 📌 Challenge 3: Serve Static Files
-// Create a public folder.
+// Create a public folder
 // Put an index.html file inside it.
 // Use express.static() middleware to serve files from that folder.
 // When visiting http://localhost:3000/index.html, it should display your HTML page.
