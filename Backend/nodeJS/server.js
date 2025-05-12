@@ -90,6 +90,10 @@ app.use(express.static('public'))
 //   next();
 // });
 
+app.use((req,res,next) =>{
+    console.log(`${req.method} ${req.url}`)
+    next()
+})
 
 
 
@@ -105,3 +109,9 @@ app.use(express.static('public'))
 // Copy
 // Edit
 // { "received": "Hello Server" }
+
+app.use(express.json())
+
+app.post('/api/data', (req,res) =>{
+    res.json({recieved: req.body.message})
+})
