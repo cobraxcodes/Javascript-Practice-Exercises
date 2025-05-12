@@ -36,6 +36,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.use(express.static('public'))
+
 
 app.get('/' , (req,res) =>{
     res.send("This is the homepage")
@@ -70,6 +72,8 @@ app.get('/greet/:name', (req,res) =>{
 // Use express.static() middleware to serve files from that folder.
 // When visiting http://localhost:3000/index.html, it should display your HTML page.
 
+// this is the middleware
+app.use(express.static('public'))
 
 
 
