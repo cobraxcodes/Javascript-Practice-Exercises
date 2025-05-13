@@ -27,7 +27,7 @@ app.use(express.static('public')) // no static files
 //route
 app.get('/userProfiles', users.userList)
 
-// listen
+// listena
 app.listen(port, () =>{
     console.log (`Listening to port ${port}`)
 })
