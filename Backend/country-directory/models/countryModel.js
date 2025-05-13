@@ -11,4 +11,4 @@ const countries = [{
 }
 ]
 
-module.exports.countriesModel = () => countries
+module.exports.countriesModel = () => countries;
