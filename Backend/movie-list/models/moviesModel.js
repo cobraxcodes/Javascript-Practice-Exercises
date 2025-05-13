@@ -9,4 +9,7 @@ const movies = [{
 }
 ]
 
+
+//exports this function to be used inside the controller
+// whenever called, it returns the movies object above
 module.exports.moviesModel = () => movies
