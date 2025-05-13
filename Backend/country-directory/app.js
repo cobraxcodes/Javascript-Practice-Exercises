@@ -15,7 +15,7 @@ const port = 3000
 
 // templating engine
 app.set('views', path.join(__dirname, 'views'))
-app.set('views engine', 'ejs')
+app.set('view engine', 'ejs')
 
 // middleware
 app.use(express.static('public')) // no static files tho :)
