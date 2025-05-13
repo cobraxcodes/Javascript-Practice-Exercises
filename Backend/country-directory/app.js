@@ -7,3 +7,23 @@
 // Controller: Get the countries and render a countries.ejs view
 // View: Show each country’s name and capital in a table.
 
+const express = require('express')
+const path = require('path')
+const countries = require('./controllers/countriesController.js')
+const app = express()
+const port = 3000
+
+// templating engine
+app.set('views', path.join(__dirname, 'views'))
+app.set('views engine', 'ejs')
+
+// middleware
+app.use(express.static('public')) // no static files tho :)
+
+// country list route
+app.get('/countryList', countries.countryListController)
+
+// listen
+app.listen(port, () =>{
+    console.log(`Server is running at port ${port}`)
+})
