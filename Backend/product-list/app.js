@@ -7,3 +7,4 @@
 // Controller: Fetch the products and render a products.ejs view
 // View: Loop through the products and display each name and price.
 
+
