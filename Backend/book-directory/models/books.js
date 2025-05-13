@@ -6,6 +6,9 @@ const books =[{
 },
 {
  title: "A Game of Thrones" , author: "George Martin"
+},
+{
+    title: "The Wheel of Time", author: "Robert Jordan"
 }
    
 ]
