@@ -13,4 +13,4 @@ const books =[{
    
 ]
 
-module.exports(booksModel) = () => books;
+module.exports.booksModel = () => books;
