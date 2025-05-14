@@ -17,6 +17,19 @@ app.use(express.json()) // middleware to use for parsing response into JSON to c
 // get all route
 app.get('/users', users.getUsersController)
 
+// post route (create a user)
+app.post('/users', (req,res) =>{
+   const newUser = req.body
+   users.createUserController(newUser)
+   res.json({
+    status: 200,
+    message: "User creation successful",
+    user: {newUser}
+   })
+})
+
+
+
 
 // // post route (create a user)
 // app.post('/users', (req,res) => {  

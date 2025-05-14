@@ -9,12 +9,6 @@ const users = [{
 
 module.exports.getUsersModel = () => users
 
-// // post function here to create a new user
-// module.exports.createUser = (newUser) =>{ 
-//     users.push(newUser) // after response has been received, the new user will pushed inside the users object
-//     return newUser // and their information will be returned back to them
-// }
-
 
 // // get user by id function here
 // module.exports.getUserId = (id) =>{
