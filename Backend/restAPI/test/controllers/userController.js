@@ -22,3 +22,21 @@ exports.createUserController = (newUser) =>{ // new User is the variable that wi
     return newUser;
 }
 
+
+// put route logic
+exports.updateUserController = (id, requestBody) => {
+    const user = users.getUsersModel().find(x => x.id === parseInt(id))
+    if(!user){return undefined}
+    user.name = requestBody.name || user.name
+    user.email = requestBody.email || user.email
+}
+
+
+//delete route logic
+exports.deleteUserController = (id) =>{
+    const userArray = users.getUsersModel()
+    const userIndex = users.getUsersModel().findIndex(x => x.id === parseInt(id))
+    if(userIndex === -1){return undefined}
+    const removedUser = userArray.splice(userIndex, 1)
+    return removedUser
+}
