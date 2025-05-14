@@ -3,7 +3,7 @@ const app = express()
 const port = 3001
 
 // importing users
-const {getUsers, createUser, getUserId} = require('./models/usersModel.js')
+const {getUsers, createUser, getUserId, updateUser} = require('./models/usersModel.js')
 
 // templating engine
 app.set('view engine', 'ejs' )
@@ -42,6 +42,20 @@ app.get('/users/:id', (req,res) =>{
     }
     res.json(user) // if the user is found, it will send the object back
 })
+
+// put route for updating user data with user id
+app.put('/users/:id', (req,res)=>{
+    const userUpdate = updateUser(req.params.id, req.body); // using parameter here for id and request body to access updated information from request
+    if(!userUpdate){
+        return res.status(404).send(`User not found`)
+    }
+    res.json({ 
+        message: `User update successful`,
+        status: res.status,
+        user: {userUpdate}
+    })
+})
+
 
 // listen
 app.listen(port, () =>{

@@ -19,3 +19,13 @@ module.exports.createUser = (newUser) =>{
 // get user by id function here
 module.exports.getUserId = (id) =>{
    return users.find(x => x.id === parseInt(id))}
+
+
+// update user information by id
+module.exports.updateUser = (id, requestBody) =>{ // uses id (included in url) and request body (holds the updated information) parameter
+    const user = users.find(x => x.id === parseInt(id)) // searches for user through id
+    if(!user){return undefined} // if id is not found,  returns undefined
+        user.name = requestBody.name || user.name; // if found and the requestbody has a different name than the current user.name , it updates it to the new name
+        user.email = requestBody.email || user.email; // ^^^ same for email
+return user // return the new update
+}
