@@ -29,6 +29,13 @@ app.post('/users', (req,res) =>{
 })
 
 
+// getUser by id route
+app.get('/users/:id', (req,res) =>{
+    const user = users.getUserIdController(req.params.id) // getting user that has the same id
+    if(!user){return res.status(404).send(`User ${req.params.id} not found`)} // sends this if not found
+    res.status(200).json(user)// sends the object back if found
+})
+
 
 
 // // post route (create a user)
