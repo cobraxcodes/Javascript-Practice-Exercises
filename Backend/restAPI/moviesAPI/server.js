@@ -26,6 +26,9 @@ app.post('/movies', movies.createMovie)
 // update movie
 app.put('/movies/:title', movies.updateMovie)
 
+// delete movie route
+app.delete('/movies/:title', movies.delete)
+
 // port
 app.listen(port, ()=>{
     console.log(`Server is listening on port ${port}`)

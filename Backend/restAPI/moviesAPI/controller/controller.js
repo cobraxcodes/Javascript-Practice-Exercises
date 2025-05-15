@@ -41,3 +41,14 @@ exports.updateMovie = (req,res) =>{
     })
 }
 
+//DELETE MOVIE LOGIC
+exports.delete = (req,res) =>{
+    const index = movies.moviesModel().findIndex(x => x.title.toLowerCase() === req.params.title.toLowerCase())
+    if(index < 0 ){return res.status(404).send("No movie found!")}
+    movies.moviesModel().slice(index, 1)
+    res.json({
+        status: 200,
+        message: `Movie ${req.params.title} deleted` ,
+    })
+}
+
