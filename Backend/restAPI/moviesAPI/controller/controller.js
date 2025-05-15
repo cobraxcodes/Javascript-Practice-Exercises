@@ -51,4 +51,3 @@ exports.delete = (req,res) =>{
         message: `Movie ${req.params.title} deleted` ,
     })
 }
-
