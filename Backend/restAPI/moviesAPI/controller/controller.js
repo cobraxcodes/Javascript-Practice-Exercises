@@ -16,6 +16,18 @@ exports.getTitle = (req,res) =>{
     })
 }
 
+// CREATE MOVIE
+exports.createMovie = (req,res) =>{
+    const newMovie = req.body
+    const movieHolder = movies.moviesModel()
+    movieHolder.push(newMovie)
+    res.json({
+        status: 200,
+        message: "Movie Added!",
+        movie: newMovie
+    })
+}
+
 //UPDATE MOVIE
 exports.updateMovie = (req,res) =>{
     const foundMovie = movies.moviesModel().find(x => x.title.toLowerCase() === req.params.title.toLowerCase())
@@ -28,3 +40,4 @@ exports.updateMovie = (req,res) =>{
         movie: foundMovie
     })
 }
+

@@ -20,6 +20,9 @@ app.get('/movies', movies.getAll)
 // get movie by title
 app.get('/movies/:title', movies.getTitle)
 
+// create a movie
+app.post('/movies', movies.createMovie)
+
 // update movie
 app.put('/movies/:title', movies.updateMovie)
 
