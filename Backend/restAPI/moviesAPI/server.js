@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const movies = require('./controller/controller.js')
 const port = 4001;
 
 
@@ -11,8 +12,10 @@ const port = 4001;
 app.use(express.json())
 
 
-// route
+        // ROUTES
 
+//getall route
+app.get('/movies', movies.getAll)
 
 
 
