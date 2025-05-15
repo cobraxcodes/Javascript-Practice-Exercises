@@ -56,7 +56,7 @@ exports.deleteProduct = (req, res) =>{
     const products = product.productsModel()
     products.slice(index,1)
     res.json({
-        status:200,
+        status:200, 
         message: `Successfully deleted product ${req.params.id}`
     })
 }
