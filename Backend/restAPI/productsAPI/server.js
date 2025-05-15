@@ -20,6 +20,12 @@ app.get('/products/:id', product.getId)
     // create a new product
 app.post('/products', product.postProduct)
 
+    // change product (patch)
+app.patch('/products/:id', product.changeProduct)
+
+
+
+
         // PORT
 app.listen(port, () =>{
     console.log(`Server is listening on port ${port} ${__dirname}`)

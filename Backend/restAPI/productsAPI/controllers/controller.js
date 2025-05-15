@@ -32,3 +32,19 @@ exports.postProduct = (req,res) =>{
     })
 
 }
+
+// CHANGE A PRODUCT
+exports.changeProduct = (req,res) =>{
+    const findProduct = product.productsModel().find(x => x.id === parseInt(req.params.id))
+    if(!findProduct){return res.status(404).send(`Product Not Found!`)}
+   findProduct.id = req.body.id || findProduct.id
+    findProduct.name = req.body.name || findProduct.name
+    findProduct.price = req.body.price || findProduct.price
+    findProduct.stock = req.body.stock || findProduct.stock
+    
+    res.json({
+        status: 200,
+        message: `Product ${req.params.id} updated`,
+        product: findProduct
+    })
+}
