@@ -20,6 +20,7 @@ exports.createBlog = (newBlog) =>{
    blogs.push(newBlog)
 }
 
+
 // PUT/PATCH ROUTE
 exports.updateBlog = (id, requestBody) =>{
     const blogSelect = blog.blogsModel.find(x => x === parseInt(id))
@@ -29,4 +30,13 @@ exports.updateBlog = (id, requestBody) =>{
     blogSelect.author = requestBody.author || blogSelect.author
     blogSelect.datePublished = requestBody.datePublished || blogSelect.datePublished
     res.json(blogSelect)
+}
+
+// DELETE ROUTE
+exports.deleteBlog = (id) =>{
+    const blogArray = blog.blogsModel()
+    const index = blogArray.findIndex(x => x === parseInt(id))
+    if(index < 0){return undefined}
+    const removedBlog = blogArray.splice(index, 1)
+    return removedBlog
 }

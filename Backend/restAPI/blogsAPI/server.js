@@ -47,6 +47,19 @@ app.put('/blogs/:id', (req,res)=>{
     })
 })
 
+
+
+// DELETE
+app.delete('/blogs/:id', (req,res) =>{
+    const removedBlog = blogs.deleteBlog(req.params.id)
+    if(!removedBlog){return undefined}
+    res.json({
+        status:200,
+        message: `Successfully deleted blog id: ${req.params.id}`
+    })
+})
+
+
 // port
 app.listen(port, ()=>[
     console.log(`Server is listening on port ${port}`)
