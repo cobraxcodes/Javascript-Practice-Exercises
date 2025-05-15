@@ -23,7 +23,8 @@ app.post('/products', product.postProduct)
     // change product (patch)
 app.patch('/products/:id', product.changeProduct)
 
-
+    //delete a product (delete)
+app.delete('/products/:id', product.deleteProduct)
 
 
         // PORT

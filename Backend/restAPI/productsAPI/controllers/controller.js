@@ -48,3 +48,15 @@ exports.changeProduct = (req,res) =>{
         product: findProduct
     })
 }
+
+//DELETE A PRODUCT
+exports.deleteProduct = (req, res) =>{
+    const index = product.productsModel().findIndex(x => x.id === parseInt(req.params.id))
+    if(index < 0){return res.status(404).send(`Movie Not Found!`)}
+    const products = product.productsModel()
+    products.slice(index,1)
+    res.json({
+        status:200,
+        message: `Successfully deleted product ${req.params.id}`
+    })
+}
