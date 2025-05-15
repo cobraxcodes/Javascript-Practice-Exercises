@@ -12,3 +12,10 @@ exports.getBlogById = (id) =>{
   return foundBlog = blog.blogsModel().find(x => x.id === parseInt(id));
   
 }
+
+
+// POST ROUTE (Create a post)
+exports.createBlog = (newBlog) =>{
+   const blogs = blog.blogsModel()
+   blogs.push(newBlog)
+}

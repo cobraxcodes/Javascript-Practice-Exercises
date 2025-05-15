@@ -21,8 +21,19 @@ app.get('/blogs', blogs.getAllBlogs)
 //GET a blog by id
 app.get('/blogs/:id', (req,res) =>{
     const foundBlog = blogs.getBlogById(req.params.id)
-    if(!foundBlog){res.status(404).send(`User Not Found`)}
+    if(!foundBlog){res.status(404).send(`Blog Not Found`)}
    res.status(200).json(foundBlog)
+})
+
+// POST Route (to create a new user)
+app.post('/blogs', (req,res) =>{
+    const newBlog = req.body
+    blogs.createBlog(newBlog)
+    res.json({
+        status: 200,
+        message: `Successfully created new blog`,
+        blog: {newBlog}       
+    })
 })
 
 
