@@ -36,7 +36,16 @@ app.post('/blogs', (req,res) =>{
     })
 })
 
-
+// PUT Route (update a user) // STILL UNCLEAR HOW THIS WORKS
+app.put('/blogs/:id', (req,res)=>{ 
+    const blog = (req.params.id, req.body)
+    if(!blog){res.status(404).send(`Resource not found`)}
+    res.json({
+        status: 200,
+        message: `Blog ${req.params.id}'s information has been updated`,
+        blog: {blog}
+    })
+})
 
 // port
 app.listen(port, ()=>[

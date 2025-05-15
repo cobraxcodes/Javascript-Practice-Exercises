@@ -19,3 +19,14 @@ exports.createBlog = (newBlog) =>{
    const blogs = blog.blogsModel()
    blogs.push(newBlog)
 }
+
+// PUT/PATCH ROUTE
+exports.updateBlog = (id, requestBody) =>{
+    const blogSelect = blog.blogsModel.find(x => x === parseInt(id))
+    if(!blogSelect){return undefined}
+    blogSelect.title = requestBody.title || blogSelect.title
+    blogSelect.content = requestBody.content || blogSelect.content
+    blogSelect.author = requestBody.author || blogSelect.author
+    blogSelect.datePublished = requestBody.datePublished || blogSelect.datePublished
+    res.json(blogSelect)
+}
