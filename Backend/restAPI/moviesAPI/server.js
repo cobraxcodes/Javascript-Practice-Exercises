@@ -17,6 +17,8 @@ app.use(express.json())
 //getall route
 app.get('/movies', movies.getAll)
 
+// get movie by title
+app.get('/movies/:title', movies.getTitle)
 
 
 
