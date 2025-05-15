@@ -15,3 +15,16 @@ exports.getTitle = (req,res) =>{
         movie: movieTitle
     })
 }
+
+//UPDATE MOVIE
+exports.updateMovie = (req,res) =>{
+    const foundMovie = movies.moviesModel().find(x => x.title.toLowerCase() === req.params.title.toLowerCase())
+    if(!foundMovie){return res.status(404).send(`No Movie Found!`)}
+    foundMovie.title = req.body.title || foundMovie.title
+    foundMovie.year = req.body.year || foundMovie.year
+    res.json({
+        status: 200,
+        message: `Movie ${foundMovie} has been updated!`,
+        movie: foundMovie
+    })
+}

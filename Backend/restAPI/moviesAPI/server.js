@@ -20,7 +20,8 @@ app.get('/movies', movies.getAll)
 // get movie by title
 app.get('/movies/:title', movies.getTitle)
 
-
+// update movie
+app.put('/movies/:title', movies.updateMovie)
 
 // port
 app.listen(port, ()=>{
