@@ -13,6 +13,9 @@ app.use(express.json())
 //getAll
 app.get('/roles', roles.getAll)
 
+//get user by id
+app.get('/roles/:id', roles.getById)
+
         
         // PORT
 app.listen(port, () =>{
