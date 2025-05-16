@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const tasks = require('./controllers/controller.js')
 const post = 3000
 
 
@@ -9,7 +10,11 @@ const post = 3000
 app.use(express.json())
 
 
-// routes
+// ROUTES
+//getALL
+app.get('/tasks', tasks.getAll)
+//getByName
+app.get('/tasks/:name', tasks.getName)
 
 
 // post
