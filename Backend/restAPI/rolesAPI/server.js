@@ -19,6 +19,8 @@ app.get('/roles/:id', roles.getById)
 // create a role
 app.post('/roles/new', roles.createRole)
 
+// updating role
+app.patch('/roles/:id', roles.updateRole)
         
         // PORT
 app.listen(port, () =>{

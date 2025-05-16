@@ -27,3 +27,15 @@ exports.createRole = (req,res) =>{
         role: newRole
     })
 }
+
+// update role
+exports.updateRole = (req,res) =>{
+    const user = roles.rolesModel().find(x => x.id === parseInt(req.params.id))
+    if(!user){return res.status(404).send(`No user found`)}
+    user.role = req.body.role
+    res.json({
+        status: 200,
+        message: `Role has been updated`,
+        user: user
+    })
+}
