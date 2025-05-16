@@ -16,6 +16,9 @@ app.get('/roles', roles.getAll)
 //get user by id
 app.get('/roles/:id', roles.getById)
 
+// create a role
+app.post('/roles/new', roles.createRole)
+
         
         // PORT
 app.listen(port, () =>{

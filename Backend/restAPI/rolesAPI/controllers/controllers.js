@@ -15,3 +15,15 @@ exports.getById = (req,res) =>{
         user: role
     })
 }
+
+// create user
+exports.createRole = (req,res) =>{
+    const newRole = req.body
+    const rolesArray = roles.rolesModel()
+    rolesArray.push(newRole)
+
+    res.json({
+        status: 200,
+        role: newRole
+    })
+}
