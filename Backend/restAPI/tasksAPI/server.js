@@ -15,7 +15,12 @@ app.use(express.json())
 app.get('/tasks', tasks.getAll)
 //getByName
 app.get('/tasks/:name', tasks.getName)
-
+//createTask
+app.post('/tasks/new', tasks.createTask)
+//updateTask
+app.patch('/tasks/:name', tasks.updateTask)
+//deletTask
+app.delete('/tasks/:name', tasks.deleteTask)
 
 // post
 app.listen(post, ()=>{
