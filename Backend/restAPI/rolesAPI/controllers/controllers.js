@@ -39,3 +39,16 @@ exports.updateRole = (req,res) =>{
         user: user
     })
 }
+
+
+// delete role
+exports.deleteUser = (req,res) =>{
+    const index = roles.rolesModel().findIndex(x => x.id === parseInt(req.params.id))
+    const userArray = roles.rolesModel()
+    if(index < 0 ){return res.status(404).send(`User not found`)}
+    userArray.slice(index, 1)
+    res.json({
+        status:200,
+        message: `User ${req.params.id} has been deleted!`
+    })
+}

@@ -10,17 +10,20 @@ const port = 3000;
 app.use(express.json())
 
         // ROUTES
-//getAll
+//getAll route
 app.get('/roles', roles.getAll)
 
-//get user by id
+//get user by id route
 app.get('/roles/:id', roles.getById)
 
-// create a role
+// create a route
 app.post('/roles/new', roles.createRole)
 
-// updating role
+// updating route
 app.patch('/roles/:id', roles.updateRole)
+
+// delete route
+app.delete('/roles/:id' , roles.deleteUser)
         
         // PORT
 app.listen(port, () =>{
