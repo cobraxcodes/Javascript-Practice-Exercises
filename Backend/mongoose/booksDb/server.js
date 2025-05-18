@@ -13,13 +13,27 @@ app.use(morgan(':method :url| Status: :status | Time: :response-time ms | Date: 
 debugger;
 
 // connecting to the in-memory server
-connect()
+const startServer = async () => {
+  try {
+    await connect()
+    app.listen(port, () => {
+      console.log(`Server listening on port ${port}`)
+    })
+  } catch (err) {
+    console.error('Failed to connect to DB:', err)
+  }
+}
+
+startServer()
+
 
 //routes
+
+//getAll route - read 
 app.get('/books', books.getAll)
 
-
-
+// create a book - create
+app.post('/books/new', books.create)
 
 
 // global error handler here after routes

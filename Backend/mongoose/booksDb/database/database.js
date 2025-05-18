@@ -1,24 +1,20 @@
+require('dotenv').config()
+const mongoose = require('mongoose')
+// replace <db_password> with your actual password or use an env variable
+const mongoURI = process.env.MONGO_URI || 'mongodb+srv://cobraxcodes:<db_password>@testcluster.gylfdcd.mongodb.net/booksDb?retryWrites=true&w=majority&appName=testCluster'
 
+const connect = async () => {
+  try {
+    await mongoose.connect(mongoURI)
+    console.log(`✅ Connected to MongoDB Atlas at ${mongoURI}`)
+  } catch (error) {
+    console.error('❌ Error connecting to MongoDB:', error)
+    process.exit(1)
+  }
+}
 
-// CRUD: Full CRUD by book title or ID
+const close = async () => {
+  await mongoose.disconnect()
+}
 
-// connect backend to mongoose in-memory servre
-const mongoose = require ('mongoose') // require mongoose 
-const { MongoMemoryServer } = require ('mongodb-memory-server') // and the in-memory server
-
-let mongoServer; 
-
- const connect = async () =>{ // connect function to connect into in-memory server
-    mongoServer = await MongoMemoryServer.create()
-    const uri = mongoServer.getUri()
-    await mongoose.connect(uri)
-    console.log(`Connected to Mongo in-memory server`)
- }
-
-
- const close = async () =>{ // close function to close server
-    await mongoose.disconnect()
-    await mongoServer.stop()
- }
-
- module.exports = { connect, close } // exporting 
+module.exports = { connect, close }
