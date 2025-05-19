@@ -1,17 +1,6 @@
 const books = require('../model/model.js')
 
-// GET ALL logic
-exports.getAll = async (req,res, next) =>{
-    try{
-        const allBooks = await books.find()
-        res.json(allBooks)
-
-    }catch(err){
-        next(err)
-    }
-}
-
-// CREATE book logic
+// CREATE book logic = create
 exports.create = async (req, res, next) =>{
     try{
         const allBooks = await books.find()
@@ -28,7 +17,44 @@ exports.create = async (req, res, next) =>{
     }
 }
 
-// DELETE BOOK LOGIC
+
+// GET ALL logic = read
+exports.getAll = async (req,res, next) =>{
+    try{
+        const allBooks = await books.find()
+        res.json(allBooks)
+
+    }catch(err){
+        next(err)
+    }
+}
+
+// UPDATE logic = update
+exports.update = async (req,res,next) =>{
+    try{
+      const book = await books.findById(req.params.id)
+      
+      if(!book){return res.status(404).send(`Book Not Found!`)}
+
+      const updatedBook = await books.findByIdAndUpdate(req.params.id, {
+        title: req.body.title ?? book.title,
+        author: req.body.author ?? book.author,
+        pages: req.body.pages ?? book.pages,
+        published: req.body.published ?? book.published
+      },{ new:true, runValidators: true }
+    )
+      res.json({
+        status:200,
+        message: `${updatedBook.title} has been updated`,
+        update: updatedBook
+      })
+    }catch(err){
+        next(err)
+    }
+}
+
+
+// DELETE BOOK LOGIC = delete
 exports.delete = async (req, res, next) => {
     try{
         const book = await books.findByIdAndDelete(req.params.id)

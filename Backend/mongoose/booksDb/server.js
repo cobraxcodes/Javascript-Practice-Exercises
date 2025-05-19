@@ -28,12 +28,14 @@ startServer()
 
 
         // ROUTES
+//getAll route - get
+app.get('/books', books.getAll)
 
-// create a book - create
+// create a book - post
 app.post('/books/new', books.create)
 
-//getAll route - read 
-app.get('/books', books.getAll)
+// update a book - patch
+app.patch('/books/:id', books.update)
 
 // delete a book - delete
 app.delete('/books/:id', books.delete)
