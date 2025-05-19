@@ -39,7 +39,8 @@ app.get('/events', events.all)
 app.patch('/events/:name', events.update)
 //DELETE method - delete an event
 app.delete('/events/:id', events.delete)
-
+// GET method - find an event by name
+app.get('/events/:name' , events.getByName)
 
 
 

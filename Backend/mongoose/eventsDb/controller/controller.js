@@ -1,3 +1,4 @@
+const { get } = require('mongoose')
 const event = require ('../model/model.js')
 
 // CREATE Logic
@@ -69,6 +70,26 @@ exports.delete = async(req,res,next) =>{
             status:200,
             message: `${deleteEvent.name} has been deleted`,
             deleted: deleteEvent
+        })
+    }catch(err){
+        next(err)
+    }
+}
+
+
+// GET BY NAME
+exports.getByName = async (req,res,next) =>{
+    try{
+        const getName = await event.findOne( {
+            name: new RegExp(`^${req.params.name}$`, "i")
+
+        }) 
+        console.log(getName)
+
+        if(!getName){return res.status(404).send(`Event Not Found`)}
+        res.json({
+            status: 200,
+            foundEvent: getName
         })
     }catch(err){
         next(err)
