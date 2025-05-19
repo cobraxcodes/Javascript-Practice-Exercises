@@ -37,6 +37,8 @@ app.post('/events/new', events.create)
 app.get('/events', events.all)
 //PATCH method - update events
 app.patch('/events/:name', events.update)
+//DELETE method - delete an event
+app.delete('/events/:id', events.delete)
 
 
 

@@ -58,3 +58,19 @@ exports.update = async (req,res,next) =>{
         next(err)
     }
 }
+
+//DELETE logic
+exports.delete = async(req,res,next) =>{
+    try{
+        const deleteEvent = await event.findByIdAndDelete(req.params.id)
+        console.log(deleteEvent)
+        if(!deleteEvent){return res.status(404).send(`Event Not Found`)}
+        res.json({
+            status:200,
+            message: `${deleteEvent.name} has been deleted`,
+            deleted: deleteEvent
+        })
+    }catch(err){
+        next(err)
+    }
+}
