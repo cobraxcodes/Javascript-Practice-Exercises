@@ -89,6 +89,7 @@ exports.getByName = async (req,res,next) =>{
         if(!getName){return res.status(404).send(`Event Not Found`)}
         res.json({
             status: 200,
+            message: `${getName.name} found`,
             foundEvent: getName
         })
     }catch(err){
