@@ -68,3 +68,26 @@ exports.delete = async (req, res, next) => {
         next(err);
     }
 };
+
+// get by name
+exports.getByName = async (req, res, next) => {
+    try {
+        const book = await books.findOne({ 
+            title: new RegExp(`^${req.params.title}$`, "i") // ✅ Case-insensitive title match
+        });
+        console.log("Requested title param:", req.params.title);
+
+
+        if (!book) {
+            return res.status(404).send("Book Not Found!");
+        }
+
+        res.json({
+            status: 200,
+            foundBook: book
+        });
+
+    } catch (err) {
+        next(err);
+    }
+};

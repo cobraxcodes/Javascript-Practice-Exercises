@@ -40,6 +40,9 @@ app.patch('/books/:id', books.update)
 // delete a book - delete
 app.delete('/books/:id', books.delete)
 
+// get a book by name - get
+app.get('/books/:title', books.getByName)
+
 
 
 // global error handler here after routes
