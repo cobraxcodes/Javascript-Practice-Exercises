@@ -50,9 +50,3 @@ app.use((err, req, res, next) =>{ // global error handler
     console.error(`Stack trace: ${err.stack}`)
     res.status(404).send(`Resource Not Found`)
 });
-
-
-// port
-app.listen(port, ()=>{
-    console.log(`Server is listening on port ${port}`)
-}) 
