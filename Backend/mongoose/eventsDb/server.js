@@ -33,6 +33,8 @@ start()
 // routes
 // POST method - create an event
 app.post('/events/new', events.create)
+//GET method - read events
+app.get('/events', events.all)
 
 
 // global error handler
