@@ -22,7 +22,7 @@ exports.create = async (req,res,next) =>{
 //READ logic
 exports.all = async(req,res,next) =>{
     try{
-        const allEvents = event.find()
+        const allEvents = await event.find()
         res.json({
             status: 200,
             events: allEvents
@@ -30,5 +30,31 @@ exports.all = async(req,res,next) =>{
 
     }catch(err){
        next(err)
+    }
+}
+
+//UPDATE LOGIC
+exports.update = async (req,res,next) =>{
+    try{
+        const eventName = await event.findOne({ //mongoose function to findOne event that coincides with the req.params.name
+            name: new RegExp(`^${req.params.name}$`, "i") // make this express case insensitive
+        })
+
+        if(!eventName){return res.status(404).send(`Event not found`)}
+
+        const updateEvent = await event.findOneAndUpdate({name: new RegExp (`^${req.params.name}$`, "i")},  // uses mongoose findOneAndUpdate function after retrieving the document from the name
+        {
+            name: req.body.name ?? eventName.name,
+            date: req.body.date ?? eventName.date,
+            location: req.body.location ?? eventName.location
+        }, {new: true, runValidators: true} // tells that the changes in the document are new and sees if required areas are met
+    )
+        res.json({
+            status: 200,
+            message: `${req.body.name ?? eventName.name} has been updated`,
+            updatedEvent: updateEvent
+        })
+    }catch(err){
+        next(err)
     }
 }

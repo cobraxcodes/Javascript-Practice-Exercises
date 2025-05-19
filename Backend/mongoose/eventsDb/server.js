@@ -30,15 +30,20 @@ const start = async () =>{
 
 start() 
 
-// routes
+        // routes
 // POST method - create an event
 app.post('/events/new', events.create)
 //GET method - read events
 app.get('/events', events.all)
+//PATCH method - update events
+app.patch('/events/:name', events.update)
+
+
+
 
 
 // global error handler
-app.use((err,req,res,nexy) =>{
+app.use((err,req,res,next) =>{
     console.error(`Stack trace: ${err.stack}`)
     res.status(500).send(`Something went wrong, please try again later!`)
 })
