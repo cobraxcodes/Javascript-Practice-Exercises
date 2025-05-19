@@ -27,3 +27,18 @@ exports.create = async (req, res, next) =>{
         next(err)
     }
 }
+
+// DELETE BOOK LOGIC
+exports.delete = async (req, res, next) => {
+    try{
+        const book = await books.findByIdAndDelete(req.params.id)
+        if(!book){return res.status(404).send(`Book not found!`)}
+        res.json({
+            status:200,
+            message: `${book.title} has been deleted`,
+            deletd: book
+        })
+    }catch (err) {
+        next(err);
+    }
+};

@@ -27,13 +27,17 @@ const startServer = async () => {
 startServer()
 
 
-//routes
+        // ROUTES
+
+// create a book - create
+app.post('/books/new', books.create)
 
 //getAll route - read 
 app.get('/books', books.getAll)
 
-// create a book - create
-app.post('/books/new', books.create)
+// delete a book - delete
+app.delete('/books/:id', books.delete)
+
 
 
 // global error handler here after routes
