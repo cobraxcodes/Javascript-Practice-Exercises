@@ -21,7 +21,7 @@ const start = async () =>{
     try{
         await connect() // waiting for the connect function in database.js to work
         app.listen(port, () =>{ // when connected it listens to port 3002 for any requests
-            console.log(`MongoDB server is listening on port ${port} from ${dirname}`)
+            console.log(`MongoDB server is listening on port ${port} from ${__dirname}`)
         })
     }catch(error){
         console.log(`Failed to connect to Database`)

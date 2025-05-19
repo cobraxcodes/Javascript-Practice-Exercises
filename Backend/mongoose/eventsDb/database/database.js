@@ -5,8 +5,9 @@ const mongoURI = process.env.MONGO_URI || 'mongodb+srv://cobraxcodes:<db_passwor
 const connect = async () =>{
     try{
         await mongoose.connect(mongoURI)
+        console.log(`Successfully connected to MongoDB Atlas`)
     }catch(error){
-        console.log(error)
+        console.log(`There was a problem connecting to the MongoDb Atlas database: ${error}`)
         process.exit(1)
     }
 }
