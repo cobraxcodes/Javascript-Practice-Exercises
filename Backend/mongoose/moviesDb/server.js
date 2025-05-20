@@ -26,9 +26,9 @@ const port = 3002
     }
 start()
     // ROUTES
-// CREATE A MOVIE
+// CREATE A MOVIE = post route
 app.post('/movies/new', movies.create)
-// GET ALL MOVIES
+// GET ALL MOVIES = get route
 app.get('/movies', movies.getAll)
 
     //GLOBAL ERROR HANDLER
