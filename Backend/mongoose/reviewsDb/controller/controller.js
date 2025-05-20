@@ -65,3 +65,17 @@ exports.delete = async(req,res,next) =>{
 }
 
 //get by name logic
+exports.getByName = async (req,res,next) =>{
+    try{
+        const review = await reviews.findOne({
+            name: new RegExp (`^${req.params.name}$`, "i")
+        })
+        if(!review){return res.status(404).send(`Review Not Found`)}
+        res.json({
+            status:200,
+            foundReview: review
+        })
+    }catch(err){
+        next(err)
+    }
+}

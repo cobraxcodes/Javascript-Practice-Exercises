@@ -31,6 +31,7 @@ app.post('/reviews/new', reviews.create) // post method to create a review
 app.get('/reviews', reviews.getAll) // get method to get all reviews
 app.patch('/reviews/:id', reviews.update) // patch method to update a review
 app.delete('/reviews/:id', reviews.delete) // delete method to delete a review
+app.get('/reviews/:name', reviews.getByName) // get method to get a review by name
 
 
 //global handler 
