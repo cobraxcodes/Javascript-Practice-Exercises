@@ -50,6 +50,18 @@ exports.update = async(req,res,next) =>{
     }
 }
 //delete logic
+exports.delete = async(req,res,next) =>{
+    try{
+        const review = reviews.findByIdAndDelete(req.params.id)
+        if(!review){return res.status(404).send(`Review Not Found`)}
+        res.json({
+            status:200,
+            mesage: `Review deleted`
+        })
 
+    }catch(err){
+        next(err)
+    }
+}
 
 //get by name logic
