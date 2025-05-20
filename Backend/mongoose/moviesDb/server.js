@@ -32,7 +32,8 @@ app.post('/movies/new', movies.create)
 app.get('/movies', movies.getAll)
 // UPDATE A MOVIE = patch route
 app.patch('/movies/:id', movies.update)
-
+// DELETE A MOVIE = delete route
+app.delete('/movies/:id', movies.delete)
     //GLOBAL ERROR HANDLER
 app.use((err,req,res,next) =>{
     console.error(`Something went wrong \n Stack Trace: ${err.stack}` )

@@ -55,7 +55,7 @@ exports.update = async (req,res,next) =>{
 }
 
 //DELETE LOGIC -- delete an movie
-exports.delete = async (res,req,next) =>{
+exports.delete = async (req,res,next) =>{
     try{
            const deletedMovie = await movies.findByIdAndDelete(req.params.id)
            if(!deletedMovie){return res.status(404).send(`Movie Not Found`)}
