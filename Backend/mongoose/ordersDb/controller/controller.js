@@ -11,7 +11,7 @@ exports.create = async (req,res,next) =>{
         res.json({
             status: 200,
             message: `New Order Created!`,
-            order: saveNewOrder
+            order: newOrder
         })
     }catch(err){
         next(err)
