@@ -21,7 +21,7 @@ const port = 3002
                 console.log(`Server is listening to port ${port}`)
             })
         }catch(error){
-            console.error(`Error Connecting to the server Error: ${error.message}`)
+            console.error(`Unable to connect to the server Error: ${error.message}`)
         }
     }
 start()
@@ -34,6 +34,9 @@ app.get('/movies', movies.getAll)
 app.patch('/movies/:id', movies.update)
 // DELETE A MOVIE = delete route
 app.delete('/movies/:id', movies.delete)
+
+
+
     //GLOBAL ERROR HANDLER
 app.use((err,req,res,next) =>{
     console.error(`Something went wrong \n Stack Trace: ${err.stack}` )
