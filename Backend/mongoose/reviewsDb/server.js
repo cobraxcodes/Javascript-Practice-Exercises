@@ -28,11 +28,11 @@ start()
 
 //routes
 app.post('/reviews/new', reviews.create) // post method to create a review
-
+app.get('/reviews', reviews.getAll) // get method to get all reviews
 
 
 //global handler 
 app.use((err,req,res,next) =>{
-    console.err(`Something went wrong! \n StackTrace: ${err.stack}`)
+    console.log(`Something went wrong! \n StackTrace: ${err.stack}`)
     res.status(404).send(`Resource Not Found!`)
 })

@@ -17,6 +17,18 @@ exports.create = async (req,res,next) =>{
 }
 
 //read logic
+exports.getAll = async(req,res,next) =>{
+    try{
+        const allReviews = await reviews.find()
+        res.json({
+            status: 200,
+            reviews: allReviews
+        })
+
+    }catch(err){
+        next(err)
+    }
+}
 
 //update logic
 
