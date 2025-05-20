@@ -35,7 +35,24 @@ exports.getAll = async (req,res,next) =>{
 
 
 // UPDATE LOGIC
+exports.update = async (req,res,next) =>{
+    try{
+        const product = await products.findById(req.params.id)
+        if(!product){return res.status(404).send('Product Not Found!')}
+        const updatedProduct = await products.findByIdAndUpdate(req.params.id, {
+            name: req.body.name ?? product.name,
+            stock: req.body.stock ?? product.stock
+        })
+        res.json({
+            status: 200,
+            message: `${updatedProduct.name},  has been updated!`,
+            update: product
+        })
 
+    }catch(err){
+        next(err)
+    }
+}
 
 // DELETE LOGIC
 
