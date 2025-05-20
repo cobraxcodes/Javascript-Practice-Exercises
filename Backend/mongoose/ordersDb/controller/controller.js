@@ -38,15 +38,15 @@ exports.update = async (req,res,next) =>{
 
         if(!order){return res.status(404).send(`No Order Found!`)}
 
-        const orderToUpdate = order.findByIdAndUpdate({
+        const orderToUpdate = await orders.findByIdAndUpdate(req.params.id, {
             name: req.body.name ?? order.name,
-            quantity: req.body.quanity ?? order.quantity,
+            quantity: req.body.quantity ?? order.quantity,
             total: req.body.total ?? order.total
         })
         res.json({
             status:200,
             message: `Successfully updated ${order.name}`,
-            updatedOrder: orderToUpdate
+            updatedOrder: order
         })
     }catch(err){
         next(err)
