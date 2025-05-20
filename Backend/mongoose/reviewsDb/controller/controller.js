@@ -42,7 +42,7 @@ exports.update = async(req,res,next) =>{
         res.json({
             status: 200,
             message: `Successfully updated ${review.name}`,
-            update: foundReview
+            update: review
         })
 
     }catch(err) {
