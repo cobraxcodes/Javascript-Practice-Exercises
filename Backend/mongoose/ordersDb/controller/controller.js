@@ -56,7 +56,7 @@ exports.update = async (req,res,next) =>{
 // DELETE logic
 exports.delete = async (req,res,next) =>{
     try{
-        const orderToDelete = orders.findByIdAndDelet(req.params.id)
+        const orderToDelete = await orders.findByIdAndDelete(req.params.id)
         if(!orderToDelete){return res.status(404).send(`No Order Found!`)}
         res.json({
             status: 200,
