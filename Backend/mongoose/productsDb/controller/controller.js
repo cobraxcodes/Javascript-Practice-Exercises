@@ -69,3 +69,18 @@ exports.delete = async (req,res,next) =>{
 }
 
 // READ PRODUCT NAME
+exports.getByName = async (req,res,next) =>{
+    try{
+        const product = await products.findOne({
+            name: new RegExp(`^${req.params.name}$`, "i")
+        })
+        if(!product){return res.status(404).send(`Product Not Found`)}
+        res.json({
+            status: 200,
+            foundProduct: product
+        })
+
+    }catch(err){
+        next(err)
+    }
+}
