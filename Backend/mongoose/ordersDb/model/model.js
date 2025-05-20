@@ -10,4 +10,4 @@ const ordersSchema = new mongoose.Schema ({
 const orders = mongoose.model('Orders', ordersSchema)
 
 
-module.exports = {orders}
+module.exports = orders
