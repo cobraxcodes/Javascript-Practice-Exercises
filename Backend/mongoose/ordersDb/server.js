@@ -30,6 +30,7 @@ app.post('/orders/new', orders.create)  // post method to create a new order
 app.get('/orders', orders.getAll) // get method to get all orders
 app.patch('/orders/:id', orders.update) // patch method to update an order
 app.delete ('/orders/:id' , orders.delete) // delete method to delete an order
+app.get('/orders/:name', orders.getByName) // get method to fetch an order by name
 
 // global handler
 app.use((err,req,res,next) =>{

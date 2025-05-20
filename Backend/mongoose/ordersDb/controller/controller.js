@@ -69,3 +69,17 @@ exports.delete = async (req,res,next) =>{
 }
 
 // GET BY NAME logic
+exports.getByName = async (req,res,next) =>{
+    try{
+        const orderName = await orders.findOne({
+            name: new RegExp (`^${req.params.name}$` ,"i")
+        })
+        if(!orderName){return res.status(404).send(`Order Not Found`)}
+        res.json({
+            status: 200,
+            order: orderName
+        })
+    }catch(err){
+        next(err)
+    }
+}
