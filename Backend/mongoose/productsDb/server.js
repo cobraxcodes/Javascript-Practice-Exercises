@@ -29,6 +29,7 @@ start()
 
 //routes
 app.post('/products/new', products.create) // post method for creating a new product
+app.get('/products', products.getAll) // get method for fetching all products
 
 
 
