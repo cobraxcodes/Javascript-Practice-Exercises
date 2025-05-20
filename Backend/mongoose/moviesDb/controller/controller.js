@@ -36,6 +36,7 @@ exports.getAll = async (req,res,next) =>{
 exports.update = async (req,res,next) =>{
     try{
         const movie = await movies.findById(req.params.id)
+        console.log(movie)
         if(!movie){return res.status(404).send(`Movie Not Found!`)}
         const updateMovie = await movies.findByIdAndUpdate(req.params.id, {
             title: req.body.title ?? movie.title,

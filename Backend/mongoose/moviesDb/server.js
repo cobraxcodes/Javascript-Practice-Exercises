@@ -30,6 +30,8 @@ start()
 app.post('/movies/new', movies.create)
 // GET ALL MOVIES = get route
 app.get('/movies', movies.getAll)
+// UPDATE A MOVIE = patch route
+app.patch('/movies/:id', movies.update)
 
     //GLOBAL ERROR HANDLER
 app.use((err,req,res,next) =>{
