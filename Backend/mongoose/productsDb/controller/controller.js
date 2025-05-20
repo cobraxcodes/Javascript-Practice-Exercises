@@ -55,6 +55,17 @@ exports.update = async (req,res,next) =>{
 }
 
 // DELETE LOGIC
-
+exports.delete = async (req,res,next) =>{
+    try{
+        const product = await products.findByIdAndDelete(req.params.id)
+        if(!product){return res.status(404).send(`Product Not Found`)}
+        res.json({
+            status:200,
+            message: `${product.name} has been deleted`
+        })
+    }catch(err){
+        next(err)
+    }
+}
 
 // READ PRODUCT NAME
