@@ -29,6 +29,7 @@ start()
 //routes
 app.post('/reviews/new', reviews.create) // post method to create a review
 app.get('/reviews', reviews.getAll) // get method to get all reviews
+app.patch('/reviews/:id', reviews.update) // patch method to update a review
 
 
 //global handler 

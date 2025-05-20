@@ -31,7 +31,24 @@ exports.getAll = async(req,res,next) =>{
 }
 
 //update logic
+exports.update = async(req,res,next) =>{
+    try{
+        const review = await reviews.findById(req.params.id)
+        if(!review){return res.status(404).send(`Review Not Found`)}
+        const foundReview = await reviews.findByIdAndUpdate(req.params.id, {
+            name: req.body.name ?? review.name,
+            comment: req.body.comment ?? review.comment
+        })
+        res.json({
+            status: 200,
+            message: `Successfully updated ${review.name}`,
+            update: foundReview
+        })
 
+    }catch(err) {
+        next(err)
+    }
+}
 //delete logic
 
 
