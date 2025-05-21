@@ -60,3 +60,18 @@ exports.delete = async(req,res,next) =>{
 
 
 // get by name
+exports.getByName = async (req,res,next) =>{
+    try{
+        const foundByName = await roles.findOne({
+            name: new RegExp (`^${req.params.name}$`, "i")
+        })
+        if(!foundByName){return res.status(404).send(`Role Not Found`)}
+        res.json({
+            status:200,
+            role: foundByName
+        })
+
+    }catch(err){
+        next(err)
+    }
+}
