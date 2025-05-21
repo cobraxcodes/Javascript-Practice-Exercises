@@ -29,6 +29,8 @@ start()
 // routes
 app.post('/roles/new', roles.create) // post method for creating a new role
 app.get('/roles', roles.getAll) // get method for getting all roles
+app.patch('/roles/:id', roles.update) //patch method for updating all roles
+app.delete('/roles/:id', roles.delete) // delete method for deleting a role
 
 //global error handler
 app.use((err,req,res,next) =>{
