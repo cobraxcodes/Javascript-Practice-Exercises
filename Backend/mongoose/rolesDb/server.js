@@ -27,10 +27,11 @@ const start = async() =>{
 
 start()
 // routes
-app.post('/roles/new', roles.create) // get method for creating a new role
+app.post('/roles/new', roles.create) // post method for creating a new role
+app.get('/roles', roles.getAll) // get method for getting all roles
 
 //global error handler
 app.use((err,req,res,next) =>{
-    console.err(`Something went wrong! Error: ${err.message} \n Stack Trace: ${err.stack}`)
+    console.log(`Something went wrong! Error: ${err.message} \n Stack Trace: ${err.stack}`)
     res.status(404).send("Resource Not Found")
 })

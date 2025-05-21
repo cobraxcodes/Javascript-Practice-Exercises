@@ -17,7 +17,7 @@ exports.create = async (req,res,next) =>{
 // read
 exports.getAll = async (req,res,next) =>{
     try{
-        const allRoles = roles.find()
+        const allRoles = await roles.find()
         res.json({
             status:200,
             roles: allRoles
