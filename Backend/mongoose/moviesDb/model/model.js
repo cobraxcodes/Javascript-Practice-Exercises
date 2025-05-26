@@ -9,6 +9,15 @@ const movieSchema = new mongoose.Schema({
     genre: {type: String, required: true}
 })
 
+movieSchema.post('findOne', function (doc, next){
+  if(!doc){
+    console.log(`No movie found!`)
+  }else{
+    console.log(`Movie found : ${doc.name}`)
+  }
+  next()
+})
+
 const movies = mongoose.model('Movies', movieSchema)
 
 module.exports = movies

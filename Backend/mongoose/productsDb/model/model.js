@@ -6,7 +6,7 @@ const productsSchema = new mongoose.Schema({
 })
 
 productsSchema.pre('save', function(next){
-    console.log('About to save product')
+    console.log(`Saving product: ${this.name} with ${this.stock} stock`)
     next()
 }) 
 
