@@ -1,6 +1,7 @@
 const express = require ('express')
 const {connect} = require ('./database/database.js')
 const morgan = require ('morgan')
+const logger = require ('./logger.js')
 const roles = require ('./controller/controller.js')
 
 const app = express()
@@ -18,10 +19,10 @@ const start = async() =>{
     try{
     await connect()
     app.listen(port, ()=>{
-        console.log(`Server is Listening on port ${port}`)
+        logger.info(`Server is listening on port ${port}`)
     })
     }catch(error){
-       console.log(`Unable to connect to server ${error.message} \nStack Trace: ${error.stack}`)
+       logger.error(`Unable to connect to server! ${error.message} \n Stack Trace: ${error.stack}`)
     }
 }
 

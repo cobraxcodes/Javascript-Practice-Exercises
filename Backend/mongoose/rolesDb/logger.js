@@ -1,6 +1,4 @@
-const { transport } = require("winston")
-
-const winston = required ('winston')
+const winston = require ('winston')
 
 const logger = winston.createLogger({ // creating logger instance
     level: "info",
@@ -13,7 +11,7 @@ const logger = winston.createLogger({ // creating logger instance
     ),
     transports: [
         new winston.transports.Console(), // prints message in terminal
-        new winston.transposts.file({  __filename: ''}) // logs to file
+        // new winston.transports.file({  __filename: ''}) // logs to file
     ]
 })
 
