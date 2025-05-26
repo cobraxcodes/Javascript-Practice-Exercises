@@ -1,8 +1,18 @@
 const mongoose = require ('mongoose')
 
 const productsSchema = new mongoose.Schema({
-    name: {type: String, required: true},
-    stock: {type: Number, required: true}
+    name: {type: String,
+       required: true,
+       minlength: 3, 
+       maxlength: 50
+      },
+    stock: {type: Number, required: true},
+    price: { type: Number, required: true,
+      validator: function (value){
+        return value > 0;
+      },
+      message: `Price must be greater than $0`
+    }
 })
 
 productsSchema.pre('save', function(next){
