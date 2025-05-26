@@ -5,7 +5,17 @@ const productsSchema = new mongoose.Schema({
     stock: {type: Number, required: true}
 })
 
-const products = mongoose.model('Products', productsSchema)
+productsSchema.pre('save', function(next){
+    console.log('About to save product')
+    next()
+}) 
 
+productsSchema.post('findOne', function (doc, next) {
+  if(!doc){return null}
+  else{console.log(`${doc.name}`)}
+  next()
+})
+
+const products = mongoose.model('Products', productsSchema)
 
 module.exports = products

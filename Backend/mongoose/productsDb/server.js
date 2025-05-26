@@ -12,6 +12,7 @@ const port = 3004
 app.use(express.json())
 app.use(morgan('method: :url| Status: :status| Time: :response-time ms| Date: :date[clf]'))
 
+
 //connect to server
 const start = async() =>{
     try{
