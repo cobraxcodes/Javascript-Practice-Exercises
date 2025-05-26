@@ -10,6 +10,11 @@ productsSchema.pre('save', function(next){
     next()
 }) 
 
+productsSchema.pre('findOneAndUpdate', function (next){
+  this.set({lastStockUpdate: new Date()})
+  next()
+})
+
 productsSchema.post('findOne', function (doc, next) {
   if(!doc){return null}
   else{console.log(`${doc.name}`)}
