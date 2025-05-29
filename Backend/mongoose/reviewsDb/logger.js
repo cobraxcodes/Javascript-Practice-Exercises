@@ -11,7 +11,7 @@ const logger = winston.createLogger({ // createing winston instance
         })
     ),
     transports: [ 
-        new winston.transport.console() // this transports the log into the console
+        new winston.transports.Console() // this transports the log into the console
         // new.winston.transport.file({__filename: ' '}) // this is if you want your logs to be stored in a file
     ]
 })
