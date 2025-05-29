@@ -7,6 +7,6 @@ const app = express()
 app.post('/login', loginUser)
 
 // Protected route — only accessible if user has a valid JWT token
-app.get('/protected', authenticate, (req, res) => {
+app.get('/protected', authenticate, (req, res) => { // adding authenticate function in route
   res.json({ message: `Welcome ${req.user.username}, you're authorized!` });
 });

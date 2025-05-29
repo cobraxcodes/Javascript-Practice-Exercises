@@ -7,6 +7,7 @@ const loginUser = (req,res) =>{
 // simulate pass
 if(username === 'admin' && password === '1234'){  // checks if username and password are valid
     const token = generateToken ({ username, role: 'admin'}) // if valid it generates a token using the generate token function in utils
+                                            // embed claims inside the token payload which is username and the role (access) they have 
     res.status(200).json({
         message: 'Login sucessful', token // if token generation is successful, it sends a message and the token itself
     })
