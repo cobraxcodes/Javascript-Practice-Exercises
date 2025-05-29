@@ -1,4 +1,21 @@
 const orders = require ('../model/model.js')
+const {createToken} = require ('../utils/jwtUtils.js')
+
+
+// AUTHENTICATION LOGIC
+const loginUser = (req, res) =>{
+    const {username, password} = req.body // takes username and password from the request body and deconstruct it so we don't have to use dot notation when using it later
+}
+if(username === 'test' && password === 'qwerty123'){
+    const token = createToken ({username, role: 'user'})
+        res.status(200).json({
+            message: `Login successful`, token
+        })
+}else{
+    res.status(401).json({
+        message: `Invalid credentials`
+    })
+}
 
 
 // CREATE logic
@@ -85,3 +102,6 @@ exports.getByName = async (req,res,next) =>{
 }
 
 // finished
+
+
+module.exports = {loginUser}

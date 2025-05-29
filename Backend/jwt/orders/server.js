@@ -25,7 +25,9 @@ const start = async () => {
 
 start()
 
-// routes
+// login routes
+
+// regular routes
 app.post('/orders/new', orders.create)  // post method to create a new order
 app.get('/orders', orders.getAll) // get method to get all orders
 app.patch('/orders/:id', orders.update) // patch method to update an order
