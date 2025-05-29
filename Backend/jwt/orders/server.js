@@ -1,5 +1,6 @@
 const {connect} = require('./database/database.js')
 const orders = require('./controller/controller.js')
+const {authenticate} = require ('./middleware/authentication.js')
 const express = require ('express')
 const morgan = require ('morgan')
 const port = 3003
@@ -29,7 +30,7 @@ start()
 app.post('/login', orders.loginUser)
 
 // regular routes
-app.post('/orders/new', orders.create)  // post method to create a new order
+app.post('/orders/new', authenticate, orders.create)  // post method to create a new order
 app.get('/orders', orders.getAll) // get method to get all orders
 app.patch('/orders/:id', orders.update) // patch method to update an order
 app.delete ('/orders/:id' , orders.deleteOrder) // delete method to delete an order

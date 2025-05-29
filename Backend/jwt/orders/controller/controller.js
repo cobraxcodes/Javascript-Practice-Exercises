@@ -1,4 +1,4 @@
-const orders = require ('../model/model.js')
+const {orders} = require ('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
 
 
