@@ -3,10 +3,9 @@ const {createToken} = require ('../utils/jwtUtils.js')
 
 
 // AUTHENTICATION LOGIC
-const loginUser = (req, res) =>{
+exports.loginUser = (req, res) =>{
     const {username, password} = req.body // takes username and password from the request body and deconstruct it so we don't have to use dot notation when using it later
-}
-if(username === 'test' && password === 'qwerty123'){
+    if(username === 'test' && password === 'qwerty123'){
     const token = createToken ({username, role: 'user'})
         res.status(200).json({
             message: `Login successful`, token
@@ -15,6 +14,7 @@ if(username === 'test' && password === 'qwerty123'){
     res.status(401).json({
         message: `Invalid credentials`
     })
+}
 }
 
 
@@ -71,7 +71,7 @@ exports.update = async (req,res,next) =>{
 }
 
 // DELETE logic
-exports.delete = async (req,res,next) =>{
+exports.deleteOrder= async (req,res,next) =>{
     try{
         const orderToDelete = await orders.findByIdAndDelete(req.params.id)
         if(!orderToDelete){return res.status(404).send(`No Order Found!`)}
@@ -102,6 +102,3 @@ exports.getByName = async (req,res,next) =>{
 }
 
 // finished
-
-
-module.exports = {loginUser}

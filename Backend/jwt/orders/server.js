@@ -1,7 +1,7 @@
 const {connect} = require('./database/database.js')
+const orders = require('./controller/controller.js')
 const express = require ('express')
 const morgan = require ('morgan')
-const orders = require ('./controller/controller.js')
 const port = 3003
 const app = express ()
 
@@ -26,12 +26,13 @@ const start = async () => {
 start()
 
 // login routes
+app.post('/login', orders.loginUser)
 
 // regular routes
 app.post('/orders/new', orders.create)  // post method to create a new order
 app.get('/orders', orders.getAll) // get method to get all orders
 app.patch('/orders/:id', orders.update) // patch method to update an order
-app.delete ('/orders/:id' , orders.delete) // delete method to delete an order
+app.delete ('/orders/:id' , orders.deleteOrder) // delete method to delete an order
 app.get('/orders/:name', orders.getByName) // get method to fetch an order by name
 
 // global handler

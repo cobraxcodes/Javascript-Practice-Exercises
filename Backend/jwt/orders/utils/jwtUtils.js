@@ -5,7 +5,7 @@ const secretKey = 'example'
 
 // token creation function
 const createToken = payload =>{
-    return jwt.sign(payload, secret, options)
+    return jwt.sign(payload, secretKey) // can use options for token expiration and issuer
 }
 
 // token verification
