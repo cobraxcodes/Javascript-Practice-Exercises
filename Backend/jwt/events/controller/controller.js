@@ -1,4 +1,4 @@
-const event = require ('../model/model.js')
+const {event} = require ('../model/model.js') // use users for later
 const {generateToken} = require ('../utils/jwtUtils.js')
 
 
@@ -6,7 +6,7 @@ const {generateToken} = require ('../utils/jwtUtils.js')
 exports.login = (req,res,next) =>{
     try{
          const {username, password} = req.body
-         if(username === 'testMe' && password === 'qwert123'){
+         if(username === 'testMe' && password === 'qwerty123'){
             const token = generateToken ({username, role: 'admin'})
              res.status(201).json({
             message: `Login successful`, token

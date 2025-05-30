@@ -8,7 +8,7 @@ const eventSchema = new mongoose.Schema({ //creating an event schema here
     location: {type: String, required: true}
 })
 
-const userSchema = new mongoose.Schema({
+ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-const events = mongoose.model('Events', eventSchema)
+const event = mongoose.model('Events', eventSchema)
 const users = mongoose.model(`Users`, userSchema)
 
-module.exports = {events, users}
+module.exports = {event, users}

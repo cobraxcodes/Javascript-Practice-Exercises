@@ -31,6 +31,8 @@ const start = async () =>{
 start() 
 
         // routes
+// LOGIN 
+app.post('/login' , events.login)
 // POST method - create an event
 app.post('/events/new', events.create)
 //GET method - read events
