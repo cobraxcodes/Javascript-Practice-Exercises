@@ -8,7 +8,34 @@ const eventSchema = new mongoose.Schema({ //creating an event schema here
     location: {type: String, required: true}
 })
 
+const userSchema = new mongoose.Schema({
+    username: {
+        type: String,
+        required: true,
+        minlength: 6,
+        maxlength: 15,
+        validate: {
+            validator: function (value){
+                 return /^[A-Za-z]+$/.test(value)
+            }
+        },
+        message: props => `Invalid username ${props.value}`
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 8,
+        maxlength: 15,
+        validate: {
+            validator: function (value){
+             return /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(value);
+            }
+        },
+        message: props => `Password invalid ${props.value}`
+    }
+})
 
 const events = mongoose.model('Events', eventSchema)
+const users = mongoose.model(`Users`, userSchema)
 
-module.exports = events
+module.exports = {events, users}

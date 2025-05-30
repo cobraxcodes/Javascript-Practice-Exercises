@@ -1,5 +1,27 @@
-const { get } = require('mongoose')
 const event = require ('../model/model.js')
+const {generateToken} = require ('../utils/jwtUtils.js')
+
+
+// LOG IN 
+exports.login = (req,res,next) =>{
+    try{
+         const {username, password} = req.body
+         if(username === 'testMe' && password === 'qwert123'){
+            const token = generateToken ({username, role: 'admin'})
+             res.status(201).json({
+            message: `Login successful`, token
+         })
+         }else{
+            res.status(401).json({
+                message: `Invalid credentials`
+            })
+         }
+        
+    }catch(err){
+        next(err)
+    }
+}
+
 
 // CREATE Logic
 exports.create = async (req,res,next) =>{
