@@ -58,6 +58,12 @@ productsSchema.post('findOne', function (doc, next) {
   next()
 })
 
+userSchema.pre('save', function (next){
+  this.username.toLowerCase()
+  next()
+})
+
+const users = mongoose.model('Users', userSchema)
 const products = mongoose.model('Products', productsSchema)
 
 module.exports = products
