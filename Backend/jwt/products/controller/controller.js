@@ -24,7 +24,6 @@ exports.loginUser = (req,res) =>{
 // CREATE LOGIC
 exports.create = async (req,res,next) =>{
     try{
-        const getProduct = await products.findById()
         const newProduct = new products(req.body)
         const saveProduct = await newProduct.save()
         res.json({

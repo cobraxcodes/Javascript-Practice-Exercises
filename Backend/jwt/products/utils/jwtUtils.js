@@ -7,12 +7,8 @@ const createToken = payload =>{
     return jwt.sign(payload, secretKey)
 }
 
-const verifyToken = (token, next) =>{
-   try{
+const verifyToken = (token) =>{
         return jwt.verify(token, secretKey)
-   }catch(err){
-    next(err)
-   }
 }
 
 module.exports = {createToken, verifyToken}

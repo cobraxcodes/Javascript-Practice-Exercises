@@ -34,7 +34,7 @@ start()
 // login route
 app.post('/login', products.loginUser) // login user route
 //routes
-app.post('/products/new',authenticate, products.create) // post method for creating a new product
+app.post('/products/new', authenticate , products.create) // post method for creating a new product
 app.get('/products', products.getAll) // get method for fetching all products
 app.patch('/products/:id', products.update) // patch method for updating a product
 app.delete('/products/:id', products.delete) // delete method for deleting a product
