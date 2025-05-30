@@ -2,6 +2,7 @@
 const express = require ('express')
 const morgan = require('morgan')
 const events = require('./controller/controller.js')
+const {authenticate} = require ('./middleware/authJwt.js')
 
 // importing connect function here to connect to database whenever there is a http request
 const {connect} = require ('./database/database.js')
@@ -34,7 +35,7 @@ start()
 // LOGIN 
 app.post('/login' , events.login)
 // POST method - create an event
-app.post('/events/new', events.create)
+app.post('/events/new', authenticate, events.create)
 //GET method - read events
 app.get('/events', events.all)
 //PATCH method - update events
