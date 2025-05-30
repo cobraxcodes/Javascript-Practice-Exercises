@@ -9,7 +9,7 @@ exports.loginUser = (req,res) =>{
     const {username, password} = req.body;
 
     if(username === 'testMe' && password ==='qwerty123'){
-        const token = generateToken ({username, role: 'admin'}) // payload inside token
+        const token = createToken ({username, role: 'admin'}) // payload inside token
         res.status(200).json({
             message: `Login successful`, token
         })
