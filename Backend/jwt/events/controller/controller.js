@@ -1,5 +1,7 @@
 const {event} = require ('../model/model.js') // use users for later
 const {generateToken} = require ('../utils/jwtUtils.js')
+const blackListTokens = []
+module.exports = {blackListTokens}
 
 
 // LOG IN 
@@ -22,6 +24,20 @@ exports.login = (req,res,next) =>{
     }
 }
 
+// LOGOUT LOGIC
+exports.logout = (req,res,next) =>{
+    try{
+        const token = req.headers.authorization?.split(' ')[1]
+        if(token){
+            blackListTokens.push(token)
+            return res.status(201).json({
+                message: `Logged out successfully! `
+            })
+        }
+    }catch(err){
+        next(err)
+    }
+}
 
 // CREATE Logic
 exports.create = async (req,res,next) =>{

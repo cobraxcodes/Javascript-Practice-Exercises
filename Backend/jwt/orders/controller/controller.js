@@ -1,20 +1,43 @@
 const {orders} = require ('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
+const blackList = [] // to keep track of logged out tokens
+exports.blackList = blackList
 
 
-// AUTHENTICATION LOGIC
-exports.loginUser = (req, res) =>{
+// LOGIN LOGIC (SIMULATION)
+exports.loginUser = (req, res,next) =>{
+    try{
     const {username, password} = req.body // takes username and password from the request body and deconstruct it so we don't have to use dot notation when using it later
-    if(username === 'test' && password === 'qwerty123'){
+    if(username === 'testMe' && password === 'qwerty123'){
     const token = createToken ({username, role: 'user'})
         res.status(200).json({
             message: `Login successful`, token
         })
-}else{
+    }else{
     res.status(401).json({
         message: `Invalid credentials`
-    })
+    })}
+    }catch(err){
+        next(err)
+    }
+   
 }
+
+// LOGOUT LOGIC (SIMULATION)
+exports.logoutUser = (req,res,next) =>{
+    
+    try{
+        const token = req.headers.authorization?.split(' ')[1]
+        if(token){
+            blackList.push(token)
+            console.log(`Blacklisted tokens: ${blackList}` )
+            return res.status(200).json({
+                message: `Logout Successful!`
+            })
+        }
+    }catch(err){
+        next(err)
+    }
 }
 
 

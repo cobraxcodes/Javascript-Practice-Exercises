@@ -1,5 +1,6 @@
 const products = require('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
+const {verifyToken} = require('../utils/jwtUtils.js')
 
 
 
@@ -20,19 +21,34 @@ exports.loginUser = (req,res) =>{
 }
 
 // LOGOUT LOGIC
-const loggedOutTokens = []
-exports.loggedOutTokens = loggedOutTokens
-
-exports.logoutUser = (req,res) =>{
-    const token = req.headers.authorization?.split(' ')[1]
-    if(token){
-        loggedOutTokens.push(token)
-        return res.send({
-            message: `Log out succesful!`
-        })
+exports.logoutUser = (req, res, next) => {
+    
+  const token = req.headers.authorization?.split(' ')[1]
+  if (!token) {
+    return res.status(401).send(`No token provided!`)
+  }
+    const loggedOutTokens = []
+    console.log(loggedOutTokens)
+  try {
+    const verifiedToken = verifyToken(token) // skip verification of token next time and just push token to blacklist
+    if (verifiedToken) {
+      loggedOutTokens.push(token)
+      return res.send({
+        message: `Log out successful!`
+      })
     }
-    res.status(401).send(`No token provided!`)
+  } catch (err) {
+    // Token is invalid or expired, still push it to blacklist (or skip — up to you)
+    if (err.name === 'TokenExpiredError') {
+      loggedOutTokens.push(token)
+      return res.status(401).json({
+        message: `Token already expired — logged out anyway!`
+      })
+    }
+    return res.status(401).json({ message: 'Invalid token, cannot logout' })
+  }
 }
+
 
 
 // CREATE LOGIC

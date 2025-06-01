@@ -3,7 +3,7 @@ require ('dotenv') .config()
 
 const secretKey = process.env.JWT_SECRET;
 const options = {
-    expiresIn: '10'
+    expiresIn: '1h '
 }
 
 // //{  other factors that can be used for options personalization
@@ -16,12 +16,8 @@ const createToken = payload =>{
     return jwt.sign(payload, secretKey, options)
 }
 
-const verifyToken = (token, next) =>{
-    try{
+const verifyToken = (token) =>{
         return jwt.verify(token, secretKey)
-    }catch(err){
-        next(err)
-    }
         
 }
 

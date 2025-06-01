@@ -28,6 +28,8 @@ start()
 
 // login routes
 app.post('/login', orders.loginUser)
+// logout route
+app.post('/logout', orders.logoutUser)
 
 // regular routes
 app.post('/orders/new', authenticate, orders.create)  // post method to create a new order

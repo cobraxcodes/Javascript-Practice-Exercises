@@ -1,6 +1,6 @@
 const express = require ('express')
 const {connect} = require ('./database/database.js')
-const {authenticate} = require ('./middleware/authJwt.js')
+const {authenticate} = require ('./middleware/authenticate.js')
 const morgan = require ('morgan')
 const products = require('./controller/controller.js')
 
@@ -33,6 +33,8 @@ start()
 
 // login route
 app.post('/login', products.loginUser) // login user route
+// logout route
+app.post('/logout', products.logoutUser) // logout user route
 //routes
 app.post('/products/new', authenticate , products.create) // post method for creating a new product
 app.get('/products', products.getAll) // get method for fetching all products
