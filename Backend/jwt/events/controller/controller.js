@@ -1,24 +1,51 @@
-const {event} = require ('../model/model.js') // use users for later
+const bcrypt = require ('bcrypt')
+const {event, users} = require ('../model/model.js') // use users for later
 const {generateToken} = require ('../utils/jwtUtils.js')
 const blackListTokens = []
 exports.blackListTokens = blackListTokens
 
+// SIGNUP
+exports.signup = async (req,res,next) =>{
+    console.log('signup route hit!')
+    try{
+        const {username, password} = req.body
+        if(username.length < 6){
+            return res.status(403).json({message: 'Username must be longer than 6 characters'})
+    
+        }
+        if(password.length < 8){
+            return res.status(403).json({message: 'Password must be longer than 8 characters'})
+        }
+        const existingUser = await users.findOne({username})
+        if(existingUser){
+            return res.status(403).json({message: 'User exists! Please enter a different username'})
+        }
+        const newUser = new users ({username, password})
+        const saveNewUser = await newUser.save()
+        const token = generateToken ({username})
+         res.status(201).json({message: `User ${saveNewUser.username} created!`, token})
+    }catch(err){
+        next(err)
+    }
+}
+
 
 // LOG IN 
-exports.login = (req,res,next) =>{
+exports.login = async (req,res,next) =>{
     try{
-         const {username, password} = req.body
-         if(username === 'testMe' && password === 'qwerty123'){
-            const token = generateToken ({username, role: 'admin'})
-             res.status(201).json({
-            message: `Login successful`, token
-         })
-         }else{
-            res.status(401).json({
-                message: `Invalid credentials`
-            })
-         }
-        
+       const {username, password} = req.body
+        const user = await users.findOne({username})
+        if(!user){
+            res.status(400).json({message: "User Not Found"})
+        }
+        const passwordMatch = await bcrypt.compare(password, user.password)
+        if(!passwordMatch){
+            res.status(400).json({message: 'Password is invalid!'})
+        }
+        const token = generateToken({username: user.name})
+        res.status(200).json({
+            message: `User ${user.username} succesfully logged in`, token
+        })
     }catch(err){
         next(err)
     }
@@ -28,6 +55,7 @@ exports.login = (req,res,next) =>{
 exports.logout = (req,res,next) =>{
     try{
         const token = req.headers.authorization?.split(' ')[1]
+        if(!token){res.status(403).json({message: 'No token provided!'})}
         if(token){
             blackListTokens.push(token)
             return res.status(201).json({
@@ -37,6 +65,21 @@ exports.logout = (req,res,next) =>{
     }catch(err){
         next(err)
     }
+}
+
+// DELETE ROUTE
+exports.deletUser = async (req,res,next) =>{
+    const findUser = await users.findOneAndDelete({
+        username: new RegExp(`^${req.params.username}$`, "i")
+    })
+    if(!findUser){
+        res.status(400).json({
+            message: "User Not Found"
+        })
+    }
+    res.status(200).json({
+        message: 'User succesfully deleted!'
+    })
 }
 
 // CREATE Logic

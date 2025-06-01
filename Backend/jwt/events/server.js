@@ -32,10 +32,14 @@ const start = async () =>{
 start() 
 
         // routes
+// SIGNUP
+app.post('/signup', events.signup)
 // LOGIN 
 app.post('/login' , events.login)
 // LOGOUT
 app.post('/logout', events.logout)
+// DELETE USER
+app.delete('/user/:username', events.deletUser)
 // POST method - create an event
 app.post('/events/new', authenticate, events.create)
 //GET method - read events

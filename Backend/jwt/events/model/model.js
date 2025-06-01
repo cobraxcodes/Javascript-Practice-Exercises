@@ -1,6 +1,7 @@
 // Schema: { eventName: String, date: Date, location: String }
 
 const mongoose = require ('mongoose') // adding mongoose depency to create schema in database
+const bcrypt = require ('bcrypt')
 
 const eventSchema = new mongoose.Schema({ //creating an event schema here
     name: {type: String, required: true},
@@ -17,9 +18,10 @@ const eventSchema = new mongoose.Schema({ //creating an event schema here
         validate: {
             validator: function (value){
                  return /^[A-Za-z]+$/.test(value)
-            }
-        },
-        message: props => `Invalid username ${props.value}`
+            },
+            message: props => `Invalid username ${props.value}`
+        }
+        
     },
     password: {
         type: String,
@@ -29,14 +31,11 @@ const eventSchema = new mongoose.Schema({ //creating an event schema here
         validate: {
             validator: function (value){
              return /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(value);
-            }
-        },
-        message: props => `Password invalid ${props.value}`
+            },
+            message: props => `Password invalid ${props.value}`
+        }
+        
     }
-})
-
-userSchema.pre('save', function(next) {
-    this.username = this.username.toLowerCase()
 })
 
 userSchema.pre('save', async function(next){
