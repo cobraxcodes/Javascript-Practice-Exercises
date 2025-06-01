@@ -8,20 +8,20 @@ const bcrypt = require ('bcrypt')
 // LOGIN LOGIC
 exports.loginUser = async (req, res, next) =>{
     try{
-        const {username, password} = req.body
-        const user = await users.findOne({username})
-        if(!user){
+        const {username, password} = req.body // desctructuring username and password from the request's body
+        const user = await users.findOne({username}) // finding user by username
+        if(!user){ // if not user is found , then send message
             return res.status(404).json({
                 message: `Username Not Found`
             })
         }
-        const passwordMatch = await bcrypt.compare(password, user.password)
+        const passwordMatch = await bcrypt.compare(password, user.password) // if user is found, it then hashes the password and matches it using bcrypt compare to the hashed password in database
         if(!passwordMatch){
             return res.status(401).json({message: "Password is invalid!"})
         }
-        const token = createToken ({username: user.username})
+        const token = createToken ({username: user.username}) // if password is valid, token is then given to user specifically tied to their username
         res.status(200).json({message: "Login successful!", token})
-    }catch(err){
+    }catch(err){ // for unknown errors
         next(err)
     }
 }
