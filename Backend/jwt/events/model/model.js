@@ -35,6 +35,16 @@ const eventSchema = new mongoose.Schema({ //creating an event schema here
     }
 })
 
+userSchema.pre('save', function(next) {
+    this.username = this.username.toLowerCase()
+})
+
+userSchema.pre('save', async function(next){
+    this.password = await bcrypt.hash(this.password, 10)
+    console.log(`Hashed password: ${this.password}`)
+    next()
+})
+
 const event = mongoose.model('Events', eventSchema)
 const users = mongoose.model(`Users`, userSchema)
 

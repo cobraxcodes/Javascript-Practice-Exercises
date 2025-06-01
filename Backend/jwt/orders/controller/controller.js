@@ -52,12 +52,12 @@ exports.loginUser = async (req, res,next) =>{
 // LOGOUT LOGIC
 exports.logoutUser = (req,res,next) =>{
     try{
-        const token = req.headers.authorization?.split(' ')[1]
-        if(!token){
+        const token = req.headers.authorization?.split(' ')[1] // takes the token and splits it from the bearer
+        if(!token){ // if no token is provided send a 201
             res.status(201).json({message: 'No token provided!'})
         }
-        if(token){
-            blackList.push(token)
+        if(token){ // if there is a token
+            blackList.push(token) // add token in the blacklisted list so that it may not be used again when trying to access routes
             console.log(`Blacklisted tokens: ${blackList}` )
             return res.status(200).json({
                 message: `Logout Successful!`
