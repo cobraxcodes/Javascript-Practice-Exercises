@@ -1,4 +1,3 @@
-const { generateToken } = require('../../test/utils/jwtUtils.js')
 const products = require('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
 
@@ -18,6 +17,21 @@ exports.loginUser = (req,res) =>{
         message: `Invalid credentials`
     })
 }
+}
+
+// LOGOUT LOGIC
+const loggedOutTokens = []
+exports.loggedOutTokens = loggedOutTokens
+
+exports.logoutUser = (req,res) =>{
+    const token = req.headers.authorization?.split(' ')[1]
+    if(token){
+        loggedOutTokens.push(token)
+        return res.send({
+            message: `Log out succesful!`
+        })
+    }
+    res.status(401).send(`No token provided!`)
 }
 
 
