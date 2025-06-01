@@ -82,6 +82,26 @@ exports.signup = async (req,res,next) =>{
     }
     }
 
+    // DELETE USER 
+    exports.deleteUser = async (req,res,next) =>{
+        try{
+            const findUser = await users.findOneAndDelete({
+                username: new RegExp(`^${req.params.username}$`, "i")
+            })
+            if(!findUser){
+                return res.status(404).json({
+                    message: `User ${req.params.username} not found!`
+                })
+            }
+            res.status(200).json({
+                message: `User ${findUser.username} succesfully deleted!`
+            })
+
+        }catch(err){
+            next(err)
+        }
+    }
+
 
 // CREATE LOGIC
 exports.create = async (req,res,next) =>{
