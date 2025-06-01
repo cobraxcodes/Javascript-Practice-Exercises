@@ -1,4 +1,4 @@
-const products = require('../model/model.js')
+const {products, users} = require('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
 const {verifyToken} = require('../utils/jwtUtils.js')
 
@@ -49,6 +49,38 @@ exports.logoutUser = (req, res, next) => {
   }
 }
 
+
+// SIGN UP LOGIC
+exports.signup = async (req,res,next) =>{
+    try{
+        const {username, password} = req.body
+        if(!username || username.length < 6){
+            return res.status(401).json({
+                message: `username ${username} is invalid. Usernames must be atleast 6 characters long!`
+            })
+        }
+        if(!password || password.length < 8){
+            return res.status(401).json({
+                message: `password invalid. password must atleast be 8 characters long!`
+            })
+        }
+        const existingUser = await users.findOne({username})
+        if(existingUser){
+            return res.status(400).json({
+                message: `Username ${existingUser} already taken!`
+            })
+        }
+        const newUser = new users ({username, password})
+        const saveUser = await newUser.save()
+          console.log(saveUser)
+        const token = createToken({username})
+        res.status(201).json({
+            message: `User ${saveUser.username} successfully created!`, token
+        })
+    }catch(err){
+        next(err)
+    }
+    }
 
 
 // CREATE LOGIC

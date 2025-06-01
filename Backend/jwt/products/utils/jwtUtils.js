@@ -3,7 +3,7 @@ require ('dotenv') .config()
 
 const secretKey = process.env.JWT_SECRET;
 const options = {
-    expiresIn: '1h '
+    expiresIn: '1d'
 }
 
 // //{  other factors that can be used for options personalization

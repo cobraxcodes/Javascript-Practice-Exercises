@@ -66,4 +66,4 @@ userSchema.pre('save', function (next){
 const users = mongoose.model('Users', userSchema)
 const products = mongoose.model('Products', productsSchema)
 
-module.exports = products
+module.exports = {products, users}
