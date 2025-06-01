@@ -7,22 +7,22 @@ exports.blackList = blackList
 // SIGN UP LOGIC
 exports.signup = async (req, res, next) =>{
     try{
-        const {username, password} = req.body
-        if(username < 6){
+        const {username, password} = req.body // takes and destructures body from the request
+        if(username < 6){ // ensure that username is not lesser than 6 char. if so, sends a 401
             return res.status(401).json({message: `Username must be longer than 6 characters`})
         }
-        if(password < 6){
+        if(password < 6){ // same thing here with the username
             return res.status(401).json({message: 'Password must be longer than 8 characters'})
         }
-        const existingUser = await users.findOne({username})
-        if(existingUser){
+        const existingUser = await users.findOne({username}) // if username and password are good, it checks if there is already a username in the database (prevents duplicates)
+        if(existingUser){ // if so , sends a 401 again
             return res.status(401).json({message: 'Username exists. Please choose another username!'})
         }
 
-        const newUser = new users ({username, password})
-        const saveUser = await newUser.save()
-        const token = createToken ({username})
-        res.status(200).json({message: `User ${saveUser.username} sucessfully created!`, token})
+        const newUser = new users ({username, password}) // if there is no existing username, then the new user is created with its username and password
+        const saveUser = await newUser.save() // saves it :)
+        const token = createToken ({username}) // and of course, creates a token to access protected routes 
+        res.status(200).json({message: `User ${saveUser.username} sucessfully created!`, token}) 
     }catch(err){
         next(err)
     }
@@ -49,11 +49,13 @@ exports.loginUser = async (req, res,next) =>{
     }
 }
 
-// LOGOUT LOGIC (SIMULATION)
+// LOGOUT LOGIC
 exports.logoutUser = (req,res,next) =>{
-    
     try{
         const token = req.headers.authorization?.split(' ')[1]
+        if(!token){
+            res.status(201).json({message: 'No token provided!'})
+        }
         if(token){
             blackList.push(token)
             console.log(`Blacklisted tokens: ${blackList}` )
@@ -66,6 +68,20 @@ exports.logoutUser = (req,res,next) =>{
     }
 }
 
+
+// DELETE USER logic
+exports.deleteUser = (req,res,next) => {
+    try{
+        const findUser = users.findOneAndDelete({username: RegExp(`^${req.params.username}$`, "i") })
+        if(!findUser){
+            return res.status(404).json({message:'User Not Found!'})
+        }
+        return res.status(200).json({message: `User succesfully deleted!`})
+
+    }catch(err){
+        next(err)
+    }
+}
 
 // CREATE logic
 exports.create = async (req,res,next) =>{

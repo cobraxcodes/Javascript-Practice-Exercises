@@ -32,6 +32,8 @@ app.post('/login', orders.loginUser)
 app.post('/logout', orders.logoutUser)
 // signup route
 app.post('/signup', orders.signup)
+// deleteUser route
+app.delete('/user/:username', orders.deleteUser)
 
 // regular routes
 app.post('/orders/new', authenticate, orders.create)  // post method to create a new order

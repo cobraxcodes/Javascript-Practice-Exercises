@@ -36,11 +36,11 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save', function(next) {
-    this.username = this.username.toLowerCase()
+    this.username = this.username.toLowerCase() // converts username before saving it to database
     next()
 })
-userSchema.pre('save', async function(next){
-    this.password = await bcrypt.hash(this.password, 10)
+userSchema.pre('save', async function(next){ // hashes user name before saving it to database
+    this.password = await bcrypt.hash(this.password, 10)  // using bcrypt hash to "salt" (run password through hashing algorithm 10 times)
     console.log(`Hashed password: ${this.password}`)
     next()
 })
