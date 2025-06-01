@@ -1,5 +1,5 @@
 const {verifyToken} = require ('../utils/jwtUtils.js')
-const {blackListTokens} = require ('../controller/controller.js')
+const user = require ('../controller/controller.js')
 
 const authenticate = (req,res,next) =>{
     try{
@@ -10,7 +10,7 @@ const authenticate = (req,res,next) =>{
             message: `No token recieved!`
         })
     }
-    if(blackListTokens.includes(token)){
+    if(user.blackListTokens.includes(token)){
        return res.status(401).json({
         message: 'Token has been invalidated, please login again!'
        })

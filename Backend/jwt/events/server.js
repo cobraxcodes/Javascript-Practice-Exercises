@@ -34,6 +34,8 @@ start()
         // routes
 // LOGIN 
 app.post('/login' , events.login)
+// LOGOUT
+app.post('/logout', events.logout)
 // POST method - create an event
 app.post('/events/new', authenticate, events.create)
 //GET method - read events

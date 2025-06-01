@@ -1,7 +1,7 @@
 const {event} = require ('../model/model.js') // use users for later
 const {generateToken} = require ('../utils/jwtUtils.js')
 const blackListTokens = []
-module.exports = {blackListTokens}
+exports.blackListTokens = blackListTokens
 
 
 // LOG IN 
