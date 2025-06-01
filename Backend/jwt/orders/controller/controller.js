@@ -1,26 +1,52 @@
-const {orders} = require ('../model/model.js')
+const bcrypt = require ('bcrypt')
+const {orders, users} = require ('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
 const blackList = [] // to keep track of logged out tokens
 exports.blackList = blackList
 
-
-// LOGIN LOGIC (SIMULATION)
-exports.loginUser = (req, res,next) =>{
+// SIGN UP LOGIC
+exports.signup = async (req, res, next) =>{
     try{
-    const {username, password} = req.body // takes username and password from the request body and deconstruct it so we don't have to use dot notation when using it later
-    if(username === 'testMe' && password === 'qwerty123'){
-    const token = createToken ({username, role: 'user'})
-        res.status(200).json({
-            message: `Login successful`, token
-        })
-    }else{
-    res.status(401).json({
-        message: `Invalid credentials`
-    })}
+        const {username, password} = req.body
+        if(username < 6){
+            return res.status(401).json({message: `Username must be longer than 6 characters`})
+        }
+        if(password < 6){
+            return res.status(401).json({message: 'Password must be longer than 8 characters'})
+        }
+        const existingUser = await users.findOne({username})
+        if(existingUser){
+            return res.status(401).json({message: 'Username exists. Please choose another username!'})
+        }
+
+        const newUser = new users ({username, password})
+        const saveUser = await newUser.save()
+        const token = createToken ({username})
+        res.status(200).json({message: `User ${saveUser.username} sucessfully created!`, token})
     }catch(err){
         next(err)
     }
-   
+}
+
+
+// LOGIN LOGIC (SIMULATION)
+exports.loginUser = async (req, res,next) =>{
+    try{
+        const {username, password} = req.body
+        const user = await users.findOne({username})
+        if(!user){
+            return res.status(404).json({message: 'User Not Found!'})
+        }
+        const matchPassword = await bcrypt.compare(password, user.password)
+        if(!matchPassword){
+            res.status(404).json({message: 'Password is invalid!'})
+        }
+        const token = createToken({username: user.username})
+        res.status(200).json({mesage: `Login succesful!`, token})
+
+    }catch(err){
+        next(err)
+    }
 }
 
 // LOGOUT LOGIC (SIMULATION)
@@ -57,6 +83,7 @@ exports.create = async (req,res,next) =>{
         next(err)
     }
 }
+
 
 // READ logic
 exports.getAll = async(req,res,next) =>{
