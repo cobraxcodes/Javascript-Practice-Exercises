@@ -1,4 +1,5 @@
 const mongoose = require ('mongoose')
+const bcrypt = require ('bcrypt')
 
   // PRODUCT SCHEMA
 const productsSchema = new mongoose.Schema({
@@ -42,9 +43,9 @@ const userSchema = new mongoose.Schema({
         }
 })
 // using pre middleware hook for hasing new/modified passwords in sign up
-  userSchema.pre('save', function (next) {
+  userSchema.pre('save', async function (next) {
     if(!this.isModified('password')) return next() // if password is not modified then send to the next error handler
-    this.password = bcrypt.hash(this.password, 10) // if so, use bycrpt.hash function that takes the password and 'salt' (how many times to run it through the hashing algorithm)
+    this.password = await bcrypt.hash(this.password, 10) // if so, use bycrpt.hash function that takes the password and 'salt' (how many times to run it through the hashing algorithm)
     console.log(`Hashed password before saving new user: ${this.password}`)
     next()
   })
