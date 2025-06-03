@@ -3,15 +3,33 @@ const {connect} = require ('./database/database.js')
 const {authenticate} = require ('./middleware/authenticate.js')
 const morgan = require ('morgan')
 const products = require('./controller/controller.js')
-
+const ratelimit = require ('express-rate-limit')
+const cors = require ('cors')
+const helmet = require ('helmet')
 const app = express()
 const port = 3004
 
-// no templating engine
+// security header
+
+
+// rate limiter
+const limiter = ratelimit ({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: `Too many requests from IP, please try again later.`
+})
+
+
+// templating engine
 
 // middleware (express.json, morgan)
+app.use(limiter)
 app.use(express.json())
 app.use(morgan('method: :url| Status: :status| Time: :response-time ms| Date: :date[clf]'))
+app.use(cors())
+app.use(helmet())
+
+
 
 
 //connect to server
