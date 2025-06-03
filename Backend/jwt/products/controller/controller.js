@@ -1,7 +1,7 @@
+const bcrypt = require ('bcrypt')
 const {products, users} = require('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
 const {verifyToken} = require('../utils/jwtUtils.js')
-const bcrypt = require ('bcrypt')
 const client = require ('../utils/redis.js')
 
 
@@ -110,6 +110,10 @@ exports.signup = async (req,res,next) =>{
     }
 
 
+
+
+
+
 // CREATE LOGIC
 exports.create = async (req,res,next) =>{
     try{
@@ -132,7 +136,7 @@ exports.getAll = async (req,res,next) =>{
     const cachedProducts = await client.get('products')
     if(cachedProducts){
         console.log(`Showing products from cache`)
-        return res.json(JSON.parse(cachedProducts))
+         return res.json(JSON.parse(cachedProducts))
     }
     console.log(`Showing products from database`)
     const allProducts = await products.find()

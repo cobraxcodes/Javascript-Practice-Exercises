@@ -1,5 +1,5 @@
+require ('dotenv').config()
 const {connect} = require ('./database/database.js')
-const {createClient} = require ('redis')
 const {authenticate} = require ('./middleware/authenticate.js')
 const express = require ('express')
 const morgan = require ('morgan')
