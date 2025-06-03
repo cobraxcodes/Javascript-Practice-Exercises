@@ -1,6 +1,7 @@
-const express = require ('express')
 const {connect} = require ('./database/database.js')
+const {createClient} = require ('redis')
 const {authenticate} = require ('./middleware/authenticate.js')
+const express = require ('express')
 const morgan = require ('morgan')
 const products = require('./controller/controller.js')
 const ratelimit = require ('express-rate-limit')
@@ -8,6 +9,7 @@ const cors = require ('cors')
 const helmet = require ('helmet')
 const app = express()
 const port = 3004
+
 
 // security header
 
@@ -46,7 +48,6 @@ const start = async() =>{
 }
 
 start()
-
 
 
 // login route
