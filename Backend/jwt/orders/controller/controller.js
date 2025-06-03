@@ -1,4 +1,5 @@
 const bcrypt = require ('bcrypt')
+const client = require ('../utils/redis.js')
 const {orders, users} = require ('../model/model.js')
 const {createToken} = require ('../utils/jwtUtils.js')
 const blackList = [] // to keep track of logged out tokens
