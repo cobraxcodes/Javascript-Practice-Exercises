@@ -84,6 +84,9 @@ exports.deleteUser = (req,res,next) => {
     }
 }
 
+
+
+
 // CREATE logic
 exports.create = async (req,res,next) =>{
     try{
@@ -153,19 +156,62 @@ exports.deleteOrder= async (req,res,next) =>{
 }
 
 // GET BY NAME logic
-exports.getByName = async (req,res,next) =>{
-    try{
-        const orderName = await orders.findOne({
-            name: new RegExp (`^${req.params.name}$` ,"i")
-        })
-        if(!orderName){return res.status(404).send(`Order Not Found`)}
-        res.json({
-            status: 200,
-            order: orderName
-        })
-    }catch(err){
-        next(err)
+exports.getByName = async (req, res, next) => {
+  try {
+    const cachedOrderName = `order:${req.params.name.toLowerCase()}`
+
+    const cachedOrder = await client.get(cachedOrderName)
+    if (cachedOrder) {
+      console.log(`Retrieved product from cache: ${cachedOrderName}`)
+      return res.json(JSON.parse(cachedOrder))
     }
+
+    console.log('Retrieved order from database')
+    const orderName = await orders.findOne({
+      name: RegExp(`^${req.params.name}$`, 'i')
+    })
+    if (!orderName) {
+      return res.status(404).json({ message: 'Order Not Found' })
+    }
+
+    await client.setEx(cachedOrderName, 30, JSON.stringify({
+      status: 200,
+      order: orderName
+    }))
+
+    res.json({
+      status: 200,
+      order: orderName
+    })
+
+  } catch (err) {
+    next(err)
+  }
 }
 
-// finished
+// exports.getByName = async (req,res,next) =>{
+//     try{
+//         const cachedOrderName = `order: ${req.params.name.toLowerCase()}`
+//         const cachedOrder = await client.get(cachedOrderName)
+//         if (cachedOrder){
+//             console.log(`Retrieved product from cache`)
+//             return res.json(JSON.parse(cachedOrder))
+//         }
+//         console.log('Retrieved order from database')
+//         const orderName = await orders.findOne({
+//             name: RegExp((`^${req.params.name}$` ,"i"))
+//         })
+//         if(!orderName){return res.status(404).json({message: 'Order Not Found'})}
+        
+//           await client.setEx(cachedOrderName, 30, JSON.stringify({
+//             status: 200,
+//             order: orderName
+//             }))
+//                 res.json({
+//             status: 200,
+//             order: orderName
+//         })
+//     }catch(err){
+//         next(err)
+//     }
+// }
