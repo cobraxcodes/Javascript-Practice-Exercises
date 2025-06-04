@@ -1,3 +1,4 @@
+const client = require ('../utils/redis.js')
 const bcrypt = require ('bcrypt')
 const {event, users} = require ('../model/model.js') // use users for later
 const {generateToken} = require ('../utils/jwtUtils.js')
@@ -67,6 +68,10 @@ exports.logout = (req,res,next) =>{
     }
 }
 
+
+
+
+
 // DELETE ROUTE
 exports.deletUser = async (req,res,next) =>{
     const findUser = await users.findOneAndDelete({
@@ -81,9 +86,6 @@ exports.deletUser = async (req,res,next) =>{
         message: 'User succesfully deleted!'
     })
 }
-
-
-
 
 
 // CREATE Logic
@@ -107,16 +109,22 @@ exports.create = async (req,res,next) =>{
 
 //READ logic
 exports.all = async(req,res,next) =>{
-    try{
-        const allEvents = await event.find()
-        res.json({
-            status: 200,
-            events: allEvents
-        })
-
-    }catch(err){
-       next(err)
+  try{
+    const cachedEvents = await client.get('events')
+    if(cachedEvents){
+        console.log('Retrieving events from cache')
+        return res.json(JSON.parse(cachedEvents))
     }
+    const allEvents = await event.find()
+    await client.setEx('events', 30, JSON.stringify(allEvents))
+    console.log('Retrieved events from database')
+    return res.json({
+        status: 200,
+        events: allEvents
+    })
+  }catch(err){
+    next(err)
+  }
 }
 
 //UPDATE LOGIC

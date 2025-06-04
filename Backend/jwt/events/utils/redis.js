@@ -3,7 +3,7 @@ const client = createClient()
 
 client.on('error', (err) => console.log(`Unable to connect to Redis ${err}`))
 
-const startRedis = async() =>{
+const startRedis = async () =>{
     try{
         await client.connect()
         console.log('Successfully connected to redis')
@@ -13,3 +13,4 @@ const startRedis = async() =>{
 }
 
 startRedis()
+module.exports = client
